@@ -1,0 +1,48 @@
+{
+  "creativetab.persona_tab": "Persona Mod",
+
+  "item.personamod.agi": "Agi",
+  "item.personamod.agilao": "Agilao",
+  "item.personamod.agidyne": "Agidyne",
+  "item.personamod.maragi": "Maragi",
+  "item.personamod.maragion": "Maragion",
+  "item.personamod.maragidyne": "Maragidyne",
+
+  "item.personamod.bufu": "Bufu",
+  "item.personamod.bufula": "Bufula",
+  "item.personamod.bufudyne": "Bufudyne",
+  "item.personamod.mabufu": "Mabufu",
+  "item.personamod.mabufula": "Mabufula",
+  "item.personamod.mabufudyne": "Mabufudyne",
+
+  "item.personamod.garu": "Garu",
+  "item.personamod.garula": "Garula",
+  "item.personamod.garudyne": "Garudyne",
+  "item.personamod.magaru": "Magaru",
+  "item.personamod.magarula": "Magarula",
+  "item.personamod.magarudyne": "Magarudyne",
+
+  "item.personamod.zio": "Zio",
+  "item.personamod.zionga": "Zionga",
+  "item.personamod.ziodyne": "Ziodyne",
+  "item.personamod.mazio": "Mazio",
+  "item.personamod.mazionga": "Mazionga",
+  "item.personamod.maziodyne": "Maziodyne",
+
+  "item.personamod.frei": "Frei",
+  "item.personamod.freila": "Freila",
+  "item.personamod.freidyne": "Freidyne",
+  "item.personamod.mafrei": "Mafrei",
+  "item.personamod.mafreila": "Mafreila",
+  "item.personamod.mafreidyne": "Mafreidyne",
+
+  "item.personamod.flamethrowable": "Flame",
+  "item.personamod.icethrowable": "Ice",
+  "item.personamod.electricthrowable": "Electric",
+
+
+  "effect.personamod.freeze": "Freeze",
+  "effect.personamod.shock": "Shock",
+  "effect.personamod.burn": "Burn"
+
+}
