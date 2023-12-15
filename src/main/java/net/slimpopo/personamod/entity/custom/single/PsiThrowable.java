@@ -11,7 +11,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.item.ModItems;
-import net.slimpopo.personamod.item.constants.Spell;
+import net.slimpopo.personamod.constant.spell.Spell;
 
 public class PsiThrowable extends ThrowableItemProjectile {
 

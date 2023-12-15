@@ -6,8 +6,11 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.slimpopo.personamod.constant.damage.Affinity;
+import net.slimpopo.personamod.constant.damage.DamageType;
+import net.slimpopo.personamod.constant.spell.Spell;
+import net.slimpopo.personamod.constant.spell.SpellLevel;
 import net.slimpopo.personamod.entity.custom.single.PsiThrowable;
-import net.slimpopo.personamod.entity.custom.single.WindThrowable;
 import net.slimpopo.personamod.item.constants.*;
 import org.slf4j.Logger;
 

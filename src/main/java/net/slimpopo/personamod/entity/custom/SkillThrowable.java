@@ -1,28 +1,24 @@
 package net.slimpopo.personamod.entity.custom;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.effects.ModEffects;
-import net.slimpopo.personamod.item.constants.Affinity;
-import net.slimpopo.personamod.item.constants.Spell;
+import net.slimpopo.personamod.constant.damage.Affinity;
+import net.slimpopo.personamod.constant.spell.Spell;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class SkillThrowable{
@@ -86,6 +82,53 @@ public class SkillThrowable{
             }
         }
 
+    }
+
+    public void  getBlockAreaForMudoSpells(BlockPos bPos, Level pLevel, Spell spellInformation,
+                                           boolean isBlock, float chanceIncrease){
+        int sideWidth = spellInformation.getSPELL_LEVEL().getRange()/2;
+        int sideLength = spellInformation.getSPELL_LEVEL().getRange()/2;
+
+        BlockPos pos = bPos;
+        if(!isBlock)
+            pos = bPos.relative(Direction.DOWN);
+        BlockState affectState = pLevel.getBlockState(pos);
+
+        if(Objects.isNull(chanceIncrease)){
+            chanceIncrease = 0.0f;
+        }
+
+        if(sideLength < 1 && sideWidth <  1){
+            damageEntityForInstaKill(pLevel, spellInformation,pos, affectState,chanceIncrease);
+        }
+        else {
+            for(int i = -sideLength ; i < sideLength; i++){
+                for(int j = -sideWidth ; j< sideWidth;j++) {
+                    affectState = pLevel.getBlockState(pos);
+                    damageEntityForInstaKill(pLevel, spellInformation, pos.offset(i,0,j),
+                            affectState,chanceIncrease);
+                }
+            }
+        }
+
+    }
+
+    private void damageEntityForInstaKill(Level pLevel, Spell spellInformation,  BlockPos pos,
+                                          BlockState affectState, float chanceIncrease) {
+        if (!affectState.isAir()) {
+            AABB bounds = AABB.of(new BoundingBox(pos.above()));
+            List<Entity> entities = pLevel.getEntities(null, bounds);
+            if (!entities.isEmpty()) {
+                entities.forEach(le -> {
+                    if (le instanceof LivingEntity living && !(le instanceof Player)) {
+
+                        Random random = new Random();
+                        if(random.nextFloat() > (0.9f - chanceIncrease))
+                            living.die(pLevel.damageSources().magic());
+                    }
+                });
+            }
+        }
     }
 
     private boolean checkForWindAffinity(Affinity affinity) {

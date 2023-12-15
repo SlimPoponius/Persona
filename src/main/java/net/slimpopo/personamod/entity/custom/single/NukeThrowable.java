@@ -1,8 +1,6 @@
 package net.slimpopo.personamod.entity.custom.single;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,9 +11,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.item.ModItems;
-import net.slimpopo.personamod.item.constants.Spell;
-
-import java.util.Random;
+import net.slimpopo.personamod.constant.spell.Spell;
 
 public class NukeThrowable extends ThrowableItemProjectile {
 

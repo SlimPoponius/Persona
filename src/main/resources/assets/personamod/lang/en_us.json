@@ -1,5 +1,6 @@
 {
   "creativetab.persona_tab": "Persona Mod",
+  "creativetab.persona_spawn_tab": "Persona Spawns",
 
   "item.personamod.agi": "Agi",
   "item.personamod.agilao": "Agilao",
@@ -36,13 +37,56 @@
   "item.personamod.mafreila": "Mafreila",
   "item.personamod.mafreidyne": "Mafreidyne",
 
+  "item.personamod.psi": "Psi",
+  "item.personamod.psio": "Psio",
+  "item.personamod.psiodyne": "Psiodyne",
+  "item.personamod.mapsi": "Mapsi",
+  "item.personamod.mapsio": "Mapsio",
+  "item.personamod.mapsiodyne": "Mapsiodyne",
+
+
+  "item.personamod.hama": "Hama",
+  "item.personamod.hamaon": "Hamaon",
+  "item.personamod.mahama": "Mahama",
+  "item.personamod.mahamaon": "Mahamaon",
+
+  "item.personamod.kouha": "Kouha",
+  "item.personamod.kouga": "Kouga",
+  "item.personamod.kougaon": "Kougaon",
+  "item.personamod.makouha": "Makouha",
+  "item.personamod.makouga": "Makouga",
+  "item.personamod.makougaon": "Makougaon",
+
+  "item.personamod.mudo": "Mudo",
+  "item.personamod.mudoon": "Mudoon",
+  "item.personamod.mamudo": "Mamudo",
+  "item.personamod.mamudoon": "Mamudoon",
+
+  "item.personamod.eiha": "Eiha",
+  "item.personamod.eiga": "Eiga",
+  "item.personamod.eigaon": "Eigaon",
+  "item.personamod.maeiha": "Maeiha",
+  "item.personamod.maeiga": "Maeiga",
+  "item.personamod.maeigaon": "Maeigaon",
+
   "item.personamod.flamethrowable": "Flame",
   "item.personamod.icethrowable": "Ice",
   "item.personamod.electricthrowable": "Electric",
+  "item.personamod.windthrowable": "Wind",
+  "item.personamod.nukethrowable": "Nuke",
+  "item.personamod.psithrowable": "Psycho",
+
+  "item.personamod.pyro_jack_spawn_egg": "Pyro Jack Egg",
 
 
   "effect.personamod.freeze": "Freeze",
   "effect.personamod.shock": "Shock",
-  "effect.personamod.burn": "Burn"
+  "effect.personamod.burn": "Burn",
+  "effect.personamod.confuse": "Confuse",
+  "effect.personamod.despair": "Despair",
+  "effect.personamod.dizzy": "Dizzy",
+  "effect.personamod.fear": "Fear",
+  "effect.personamod.rage": "Rage",
 
+  "entity.personamod.pyro_jack": "Pyro_Jack"
 }

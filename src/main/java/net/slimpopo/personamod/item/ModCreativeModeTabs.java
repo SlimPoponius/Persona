@@ -54,6 +54,17 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.MAPSI.get());
                         pOutput.accept(ModItems.MAPSIO.get());
                         pOutput.accept(ModItems.MAPSIODYNE.get());
+
+                    })
+                    .build());
+
+    public static final RegistryObject<CreativeModeTab> PERSONA_SPAWN_TAB = CREATIVE_MODE_TABS.register("persona_spawn_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.ZIO.get()))
+                    .title(Component.translatable("creativetab.persona_spawn_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.PYRO_JACK_SPAWN_EGG.get());
+
+
                     })
                     .build());
 

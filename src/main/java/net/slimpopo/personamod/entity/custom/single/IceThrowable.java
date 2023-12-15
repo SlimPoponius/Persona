@@ -15,7 +15,7 @@ import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.entity.custom.SkillThrowable;
 import net.slimpopo.personamod.item.ModItems;
-import net.slimpopo.personamod.item.constants.Spell;
+import net.slimpopo.personamod.constant.spell.Spell;
 
 import java.util.Random;
 

@@ -1,6 +1,7 @@
 package net.slimpopo.personamod.entity;
 
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -8,11 +9,50 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.entity.custom.group.*;
+import net.slimpopo.personamod.entity.custom.personas.PyroJackEntity;
 import net.slimpopo.personamod.entity.custom.single.*;
 
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, PersonaMod.MOD_ID);
+
+
+    public static final RegistryObject<EntityType<CurseThrowable>> CURSE_THROWABLE =
+            ENTITY_TYPES.register("crs_throwable",() -> EntityType
+                    .Builder.<CurseThrowable>of(CurseThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("crs_throwable"));
+    public static final RegistryObject<EntityType<CurseMudoThrowable>> CURSE_MUDO_THROWABLE =
+            ENTITY_TYPES.register("crs_mudo_throwable",() -> EntityType
+                    .Builder.<CurseMudoThrowable>of(CurseMudoThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("crs_mudo_throwable"));
+
+    public static final RegistryObject<EntityType<MaCurseMudoThrowable>> GRP_CURSE_MUDO_THROWABLE =
+            ENTITY_TYPES.register("grp_crs_mudo_throwable",() -> EntityType
+                    .Builder.<MaCurseMudoThrowable>of(MaCurseMudoThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("grp_crs_mudo_throwable"));
+    public static final RegistryObject<EntityType<MaCurseThrowable>> GRP_CURSE_THROWABLE =
+            ENTITY_TYPES.register("grp_crs_throwable",() -> EntityType
+                    .Builder.<MaCurseThrowable>of(MaCurseThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("grp_crs_throwable"));
+
+    public static final RegistryObject<EntityType<BlessThrowable>> BLESS_THROWABLE =
+            ENTITY_TYPES.register("bls_throwable",() -> EntityType
+                    .Builder.<BlessThrowable>of(BlessThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("bls_throwable"));
+
+    public static final RegistryObject<EntityType<BlessHamaThrowable>> BLESS_HAMA_THROWABLE =
+            ENTITY_TYPES.register("bls_hama_throwable",() -> EntityType
+                    .Builder.<BlessHamaThrowable>of(BlessHamaThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("bls_hama_throwable"));
+
+    public static final RegistryObject<EntityType<MaBlessHamaThrowable>> GRP_BLESS_HAMA_THROWABLE =
+            ENTITY_TYPES.register("grp_bls_throwable",() -> EntityType
+                    .Builder.<MaBlessHamaThrowable>of(MaBlessHamaThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("grp_bls_throwable"));
+    public static final RegistryObject<EntityType<MaBlessThrowable>> GRP_BLESS_THROWABLE =
+            ENTITY_TYPES.register("grp_bls_hama_throwable",() -> EntityType
+                    .Builder.<MaBlessThrowable>of(MaBlessThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("grp_bls_hama_throwable"));
 
     public static final RegistryObject<EntityType<FlameThrowable>> FLAME_THROWABLE =
             ENTITY_TYPES.register("flame_throwable",() -> EntityType
@@ -73,6 +113,13 @@ public class ModEntities {
             ENTITY_TYPES.register("grp_psi_throwable",() -> EntityType
                     .Builder.<MaPsiThrowable>of(MaPsiThrowable::new, MobCategory.MISC)
                     .sized(0.5f,0.5f).build("grp_psi_throwable"));
+
+
+    //Mobs
+    public static final RegistryObject<EntityType<PyroJackEntity>> PYRO_JACK =
+            ENTITY_TYPES.register("pyro_jack", () -> EntityType.Builder.of(PyroJackEntity::new, MobCategory.MONSTER)
+                    .sized(1.0f,1.0f).build("pyro_jack"));
+
 
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);

@@ -9,12 +9,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.item.ModItems;
-import net.slimpopo.personamod.item.constants.Spell;
+import net.slimpopo.personamod.constant.spell.Spell;
 
 import java.util.Random;
 

@@ -15,9 +15,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
+import net.slimpopo.personamod.entity.client.PyroJackRenderer;
 import net.slimpopo.personamod.item.ModCreativeModeTabs;
 import net.slimpopo.personamod.item.ModItems;
+import net.slimpopo.personamod.item.block.ModBlocks;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(PersonaMod.MOD_ID)
@@ -36,15 +39,20 @@ public class PersonaMod
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        // Register the item to a creative tab
+        modEventBus.addListener(this::addCreative);
+
+        GeckoLib.initialize();
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -72,6 +80,8 @@ public class PersonaMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            EntityRenderers.register(ModEntities.PYRO_JACK.get(), PyroJackRenderer::new);
+
             EntityRenderers.register(ModEntities.FLAME_THROWABLE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.GRP_FLAME_THROWABLE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.ICE_THROWABLE.get(), ThrownItemRenderer::new);

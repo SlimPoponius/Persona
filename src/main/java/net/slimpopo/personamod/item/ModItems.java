@@ -1,11 +1,23 @@
 package net.slimpopo.personamod.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.slimpopo.personamod.PersonaMod;
+import net.slimpopo.personamod.entity.ModEntities;
+import net.slimpopo.personamod.item.custom.spells.bless.*;
+import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaItem;
+import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaonItem;
+import net.slimpopo.personamod.item.custom.spells.bless.instakill.MahamaItem;
+import net.slimpopo.personamod.item.custom.spells.bless.instakill.MahamaonItem;
+import net.slimpopo.personamod.item.custom.spells.curse.*;
+import net.slimpopo.personamod.item.custom.spells.curse.instakill.MamudoItem;
+import net.slimpopo.personamod.item.custom.spells.curse.instakill.MamudoonItem;
+import net.slimpopo.personamod.item.custom.spells.curse.instakill.MudoItem;
+import net.slimpopo.personamod.item.custom.spells.curse.instakill.MudoonItem;
 import net.slimpopo.personamod.item.custom.spells.electricity.*;
 import net.slimpopo.personamod.item.custom.spells.fire.*;
 import net.slimpopo.personamod.item.custom.spells.ice.*;
@@ -102,6 +114,51 @@ public class ModItems {
     public static final RegistryObject<MapsiodyneItem> MAPSIODYNE = ITEMS.register("mapsiodyne",
             () -> new MapsiodyneItem(new Item.Properties()));
 
+    //CURSE
+    public static final RegistryObject<MudoItem> MUDO = ITEMS.register("mudo",
+            () -> new MudoItem(new Item.Properties()));
+    public static final RegistryObject<MamudoItem> MAMUDO = ITEMS.register("mamudo",
+            () -> new MamudoItem(new Item.Properties()));
+    public static final RegistryObject<MudoonItem> MUDOON = ITEMS.register("mudoon",
+            () -> new MudoonItem(new Item.Properties()));
+    public static final RegistryObject<MamudoonItem> MAMUDOON = ITEMS.register("mamudoon",
+            () -> new MamudoonItem(new Item.Properties()));
+    public static final RegistryObject<EihaItem> EIHA = ITEMS.register("eiha",
+            () -> new EihaItem(new Item.Properties()));
+    public static final RegistryObject<EigaItem> EIGA = ITEMS.register("eiga",
+            () -> new EigaItem(new Item.Properties()));
+    public static final RegistryObject<EigaonItem> EIGAON = ITEMS.register("eigaon",
+            () -> new EigaonItem(new Item.Properties()));
+    public static final RegistryObject<MaeihaItem> MAEIHA = ITEMS.register("maeiha",
+            () -> new MaeihaItem(new Item.Properties()));
+    public static final RegistryObject<MaeigaItem> MAEIGA = ITEMS.register("maeiga",
+            () -> new MaeigaItem(new Item.Properties()));
+    public static final RegistryObject<MaeigaonItem> MAEIGAON = ITEMS.register("maeigaon",
+            () -> new MaeigaonItem(new Item.Properties()));
+
+    //BLESS
+    public static final RegistryObject<HamaItem> HAMA = ITEMS.register("hama",
+            () -> new HamaItem(new Item.Properties()));
+    public static final RegistryObject<HamaonItem> HAMAON = ITEMS.register("hamaon",
+            () -> new HamaonItem(new Item.Properties()));
+    public static final RegistryObject<MahamaItem> MAHAMA = ITEMS.register("mahama",
+            () -> new MahamaItem(new Item.Properties()));
+    public static final RegistryObject<MahamaonItem> MAHAMAON = ITEMS.register("mahamaon",
+            () -> new MahamaonItem(new Item.Properties()));
+    public static final RegistryObject<KouhaItem> KOUHA = ITEMS.register("kouha",
+            () -> new KouhaItem(new Item.Properties()));
+    public static final RegistryObject<KougaItem> KOUGA = ITEMS.register("kouga",
+            () -> new KougaItem(new Item.Properties()));
+    public static final RegistryObject<KougaonItem> KOUGAON = ITEMS.register("kougaon",
+            () -> new KougaonItem(new Item.Properties()));
+    public static final RegistryObject<MakouhaItem> MAKOUHA = ITEMS.register("makouha",
+            () -> new MakouhaItem(new Item.Properties()));
+    public static final RegistryObject<MakougaItem> MAKOUGA = ITEMS.register("makouga",
+            () -> new MakougaItem(new Item.Properties()));
+    public static final RegistryObject<MakougaonItem> MAKOUGAON = ITEMS.register("makougaon",
+            () -> new MakougaonItem(new Item.Properties()));
+
+
     //THROWABLE ITEMS
     public static final RegistryObject<Item> FLAMETHROWABLE = ITEMS.register("flamethrowable",
             () -> new Item(new Item.Properties()));
@@ -132,6 +189,25 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MAPSITHROWABLE = ITEMS.register("mpsithrowable",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CURSETHROWABLE = ITEMS.register("cursethrowable",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MACURSETHROWABLE = ITEMS.register("macursethrowable",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BLESSTHROWABLE = ITEMS.register("blessthrowable",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MABLESSTHROWABLE = ITEMS.register("mablessthrowable",
+            () -> new Item(new Item.Properties()));
+
+
+
+
+    //SPAWN
+    public static final RegistryObject<Item> PYRO_JACK_SPAWN_EGG = ITEMS.register("pyro_jack_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.PYRO_JACK,0xda9113,0x0d426b,
+                    new Item.Properties()));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

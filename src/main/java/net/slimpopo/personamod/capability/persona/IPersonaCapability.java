@@ -1,6 +1,9 @@
 package net.slimpopo.personamod.capability.persona;
 
 public interface IPersonaCapability {
+
+
+
     int getSP();
     int getMaxSP();
     int getSPLevel();
