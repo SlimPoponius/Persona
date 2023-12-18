@@ -1,6 +1,6 @@
 package net.slimpopo.personamod.capability.persona;
 
-public interface IPersonaCapability {
+public interface IPlayerPersona {
 
 
 

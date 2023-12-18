@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.entity.custom.group.*;
 import net.slimpopo.personamod.entity.custom.personas.PyroJackEntity;
+import net.slimpopo.personamod.entity.custom.personas.PyroJackSummonEntity;
 import net.slimpopo.personamod.entity.custom.single.*;
 
 public class ModEntities {
@@ -119,7 +120,9 @@ public class ModEntities {
     public static final RegistryObject<EntityType<PyroJackEntity>> PYRO_JACK =
             ENTITY_TYPES.register("pyro_jack", () -> EntityType.Builder.of(PyroJackEntity::new, MobCategory.MONSTER)
                     .sized(1.0f,1.0f).build("pyro_jack"));
-
+    public static final RegistryObject<EntityType<PyroJackSummonEntity>> PYRO_JACK_SUMMON =
+            ENTITY_TYPES.register("pyro_jack_summon", () -> EntityType.Builder.of(PyroJackSummonEntity::new, MobCategory.MISC)
+                    .sized(1.0f,1.0f).build("pyro_jack_summon"));
 
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);

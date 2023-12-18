@@ -54,6 +54,26 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.MAPSI.get());
                         pOutput.accept(ModItems.MAPSIO.get());
                         pOutput.accept(ModItems.MAPSIODYNE.get());
+                        pOutput.accept(ModItems.EIHA.get());
+                        pOutput.accept(ModItems.EIGA.get());
+                        pOutput.accept(ModItems.EIGAON.get());
+                        pOutput.accept(ModItems.MAEIHA.get());
+                        pOutput.accept(ModItems.MAEIGA.get());
+                        pOutput.accept(ModItems.MAEIGAON.get());
+                        pOutput.accept(ModItems.MUDO.get());
+                        pOutput.accept(ModItems.MUDOON.get());
+                        pOutput.accept(ModItems.MAMUDO.get());
+                        pOutput.accept(ModItems.MAMUDOON.get());
+                        pOutput.accept(ModItems.KOUHA.get());
+                        pOutput.accept(ModItems.KOUGA.get());
+                        pOutput.accept(ModItems.KOUGAON.get());
+                        pOutput.accept(ModItems.MAKOUHA.get());
+                        pOutput.accept(ModItems.MAKOUGA.get());
+                        pOutput.accept(ModItems.MAKOUGAON.get());
+                        pOutput.accept(ModItems.HAMA.get());
+                        pOutput.accept(ModItems.HAMAON.get());
+                        pOutput.accept(ModItems.MAHAMA.get());
+                        pOutput.accept(ModItems.MAHAMAON.get());
 
                     })
                     .build());

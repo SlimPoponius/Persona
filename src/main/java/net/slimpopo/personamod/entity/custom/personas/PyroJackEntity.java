@@ -31,9 +31,9 @@ import java.util.List;
 public class PyroJackEntity extends PersonaEntity {
 
     private static final MobPersona PERSONA_DATA =
-            new MobPersona(2,3,3,3,2,
+            new MobPersona("pyro_jack",2,3,3,3,2,
                     new ArrayList<>(),List.of(Affinity.ICE,Affinity.WIND),new ArrayList<>(),
-                    List.of(Affinity.FIRE), List.of(ModItems.AGI.get()), 2);
+                    List.of(Affinity.FIRE), List.of(ModItems.AGI.get()), 2, new ArrayList<>());
 
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(PyroJackEntity.class, EntityDataSerializers.BOOLEAN);

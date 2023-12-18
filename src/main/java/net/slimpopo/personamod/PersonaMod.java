@@ -15,10 +15,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
-import net.slimpopo.personamod.entity.client.PyroJackRenderer;
+import net.slimpopo.personamod.entity.client.renderer.PyroJackRenderer;
+import net.slimpopo.personamod.entity.client.renderer.PyroJackSummonRenderer;
 import net.slimpopo.personamod.item.ModCreativeModeTabs;
 import net.slimpopo.personamod.item.ModItems;
 import net.slimpopo.personamod.item.block.ModBlocks;
+import net.slimpopo.personamod.networking.ModMessages;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -57,6 +59,9 @@ public class PersonaMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() -> {
+            ModMessages.register();
+        });
 
     }
 
@@ -81,6 +86,7 @@ public class PersonaMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.PYRO_JACK.get(), PyroJackRenderer::new);
+            EntityRenderers.register(ModEntities.PYRO_JACK_SUMMON.get(), PyroJackSummonRenderer::new);
 
             EntityRenderers.register(ModEntities.FLAME_THROWABLE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.GRP_FLAME_THROWABLE.get(), ThrownItemRenderer::new);

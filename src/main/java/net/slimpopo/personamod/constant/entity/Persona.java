@@ -5,9 +5,11 @@ import net.slimpopo.personamod.constant.entity.level.PersonaLevel;
 import net.slimpopo.personamod.item.constants.SpellItem;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Persona {
 
+    private String personaName;
 
     private int STRENGTH;
     private int MAGIC;
@@ -19,8 +21,14 @@ public class Persona {
     private List<Affinity> WeakAgainst;
     private List<Affinity> NullAgainst;
     private List<Affinity> AbsorbAgainst;
+    private List<Affinity> ReflectAgainst;
 
-    public Persona(int STRENGTH, int MAGIC, int ENDURANCE, int AGILITY, int LUCK) {
+    public Persona(){
+
+    }
+
+    public Persona(String personaName,int STRENGTH, int MAGIC, int ENDURANCE, int AGILITY, int LUCK) {
+        this.personaName = personaName;
         this.STRENGTH = STRENGTH;
         this.MAGIC = MAGIC;
         this.ENDURANCE = ENDURANCE;
@@ -28,9 +36,10 @@ public class Persona {
         this.LUCK = LUCK;
     }
 
-    public Persona(int STRENGTH, int MAGIC, int ENDURANCE, int AGILITY, int LUCK,
+    public Persona(String personaName,int STRENGTH, int MAGIC, int ENDURANCE, int AGILITY, int LUCK,
                    List<Affinity> strongAgainst, List<Affinity> weakAgainst, List<Affinity> nullAgainst,
-                   List<Affinity> absorbAgainst) {
+                   List<Affinity> absorbAgainst, List<Affinity> reflectAgainst) {
+        this.personaName = personaName;
         this.STRENGTH = STRENGTH;
         this.MAGIC = MAGIC;
         this.ENDURANCE = ENDURANCE;
@@ -40,6 +49,7 @@ public class Persona {
         WeakAgainst = weakAgainst;
         NullAgainst = nullAgainst;
         AbsorbAgainst = absorbAgainst;
+        ReflectAgainst = reflectAgainst;
     }
 
     public int getSTRENGTH() {
@@ -78,6 +88,10 @@ public class Persona {
         return AbsorbAgainst;
     }
 
+    public List<Affinity> getReflectAgainst() {
+        return ReflectAgainst;
+    }
+
     public void setMAGIC(int MAGIC) {
         this.MAGIC = MAGIC;
     }
@@ -114,4 +128,21 @@ public class Persona {
         AbsorbAgainst = absorbAgainst;
     }
 
+    public void setReflectAgainst(List<Affinity> reflectAgainst) {
+        ReflectAgainst = reflectAgainst;
+    }
+
+    public String getListString(List<Affinity> listing) {
+        return listing.stream()
+                .map(n -> n.toString())
+                .collect(Collectors.joining(",","",""));
+    }
+
+    public String getPersonaName() {
+        return personaName;
+    }
+
+    public void setPersonaName(String personaName) {
+        this.personaName = personaName;
+    }
 }

@@ -6,7 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.entity.client.ModModelLayers;
-import net.slimpopo.personamod.entity.client.PyroJackModel;
+import net.slimpopo.personamod.entity.client.models.PyroJackModel;
 
 @Mod.EventBusSubscriber(modid = PersonaMod.MOD_ID,bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventBusClientEvents {

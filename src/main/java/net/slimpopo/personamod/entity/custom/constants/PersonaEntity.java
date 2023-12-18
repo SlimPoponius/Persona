@@ -2,14 +2,14 @@ package net.slimpopo.personamod.entity.custom.constants;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.constant.entity.MobPersona;
 import net.slimpopo.personamod.constant.spell.Spell;
+import net.slimpopo.personamod.item.constants.SpellList;
 
-public class PersonaEntity extends PathfinderMob implements Enemy {
-    private MobPersona personaData;
+public class PersonaEntity extends PathfinderMob{
+    private SpellList spellList = new SpellList();
+    private final MobPersona personaData;
 
     protected PersonaEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel, MobPersona mobPersona) {
         super(pEntityType, pLevel);
@@ -33,5 +33,13 @@ public class PersonaEntity extends PathfinderMob implements Enemy {
             multiplier = 0.0f;
         }
         return super.hurt(pSource, pAmount * multiplier);
+    }
+
+    public SpellList getSpellList() {
+        return spellList;
+    }
+
+    public MobPersona getPersonaData() {
+        return personaData;
     }
 }

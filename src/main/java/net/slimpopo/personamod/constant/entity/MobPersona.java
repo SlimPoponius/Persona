@@ -13,11 +13,12 @@ public class MobPersona extends Persona{
         return currentSkills;
     }
 
-    public MobPersona(int STRENGTH, int MAGIC, int ENDURANCE, int AGILITY, int LUCK, List<Affinity> strongAgainst,
+    public MobPersona(String name,int STRENGTH, int MAGIC, int ENDURANCE, int AGILITY, int LUCK, List<Affinity> strongAgainst,
                       List<Affinity> weakAgainst, List<Affinity> nullAgainst, List<Affinity> absorbAgainst,
-                      List<SpellItem> currentSkills, int level) {
+                      List<SpellItem> currentSkills, int level, List<Affinity> repelAgainst) {
 
-        super(STRENGTH, MAGIC, ENDURANCE, AGILITY, LUCK, strongAgainst, weakAgainst, nullAgainst, absorbAgainst);
+        super(name,STRENGTH, MAGIC, ENDURANCE, AGILITY, LUCK, strongAgainst, weakAgainst, nullAgainst,
+                absorbAgainst, repelAgainst);
         this.currentSkills = currentSkills;
         this.LEVEL = level;
     }
