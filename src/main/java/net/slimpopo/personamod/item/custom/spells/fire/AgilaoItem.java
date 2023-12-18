@@ -20,13 +20,8 @@ import org.slf4j.Logger;
 public class AgilaoItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell AGILAO = new Spell("Agilao","Medium Fire damage to 1 foe.",
-            Affinity.FIRE, DamageType.MEDIUM, SpellLevel.TWO_STAR, Blocks.MAGMA_BLOCK,
-            new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.TWO_STAR.getLevel(), 1));
-
     public AgilaoItem(Properties pProperties) {
-        super(pProperties,AGILAO);
+        super(pProperties,"AGILAO");
     }
 
     @Override
@@ -35,7 +30,7 @@ public class AgilaoItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            FlameThrowable projectile = new FlameThrowable(pLevel, pPlayer, AGILAO);
+            FlameThrowable projectile = new FlameThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

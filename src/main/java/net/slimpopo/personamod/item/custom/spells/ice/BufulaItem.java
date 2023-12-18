@@ -20,13 +20,8 @@ import org.slf4j.Logger;
 public class BufulaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell BUFULA = new Spell("Bufula","Medium Ice damage to 1 foe.",
-            Affinity.ICE, DamageType.MEDIUM, SpellLevel.TWO_STAR, Blocks.ICE,
-            new MobEffectInstance(ModEffects.FREEZE.get(),60 * SpellLevel.TWO_STAR.getLevel(), 1));
-
     public BufulaItem(Properties pProperties) {
-        super(pProperties, BUFULA);
+        super(pProperties, "BUFULA");
     }
 
     @Override
@@ -35,7 +30,7 @@ public class BufulaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            IceThrowable projectile = new IceThrowable(pLevel, pPlayer, BUFULA);
+            IceThrowable projectile = new IceThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

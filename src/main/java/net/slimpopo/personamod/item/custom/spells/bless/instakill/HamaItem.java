@@ -18,12 +18,8 @@ import org.slf4j.Logger;
 public class HamaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell HAMA = new Spell("Hama","Light Chance of death to enemy.",
-            Affinity.BLESS, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null);
-
     public HamaItem(Properties pProperties) {
-        super(pProperties,HAMA);
+        super(pProperties,"HAMA");
     }
 
     @Override
@@ -32,7 +28,7 @@ public class HamaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            BlessHamaThrowable projectile = new BlessHamaThrowable(pLevel, pPlayer, HAMA);
+            BlessHamaThrowable projectile = new BlessHamaThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

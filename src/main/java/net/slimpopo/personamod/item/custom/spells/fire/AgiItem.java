@@ -20,13 +20,8 @@ import org.slf4j.Logger;
 public class AgiItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell AGI = new Spell("Agi","Light Fire damage to 1 foe.",
-            Affinity.FIRE, DamageType.LIGHT, SpellLevel.ONE_STAR, Blocks.MAGMA_BLOCK,
-            new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1));
-
     public AgiItem(Properties pProperties) {
-        super(pProperties,AGI);
+        super(pProperties,"AGI");
     }
 
     @Override
@@ -35,7 +30,7 @@ public class AgiItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            FlameThrowable projectile = new FlameThrowable(pLevel, pPlayer, AGI);
+            FlameThrowable projectile = new FlameThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

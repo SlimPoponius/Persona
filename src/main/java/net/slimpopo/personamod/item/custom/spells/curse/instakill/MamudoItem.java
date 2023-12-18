@@ -17,13 +17,8 @@ import org.slf4j.Logger;
 
 public class MamudoItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
-
-
-    private static final Spell MAMUDO = new Spell("Mamudo","Light Chance of death to enemies.",
-            Affinity.CURSE, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null);
-
     public MamudoItem(Properties pProperties) {
-        super(pProperties,MAMUDO);
+        super(pProperties,"MAMUDO");
     }
 
     @Override
@@ -32,7 +27,7 @@ public class MamudoItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaCurseMudoThrowable projectile = new MaCurseMudoThrowable(pLevel, pPlayer, MAMUDO,0.0f);
+            MaCurseMudoThrowable projectile = new MaCurseMudoThrowable(pLevel, pPlayer, getSpellData(),0.0f);
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

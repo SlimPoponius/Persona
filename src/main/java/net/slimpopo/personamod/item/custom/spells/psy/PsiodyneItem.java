@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class PsiodyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell PSIODYNE = new Spell("Psiodyne","Heavy Psy damage to 1 foe.",
-            Affinity.PSYCHOKINESIS, DamageType.HEAVY, SpellLevel.THREE_STAR, null, null);
-
     public PsiodyneItem(Properties pProperties) {
-        super(pProperties, PSIODYNE);
+        super(pProperties, "PSIODYNE");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class PsiodyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            PsiThrowable projectile = new PsiThrowable(pLevel, pPlayer, PSIODYNE);
+            PsiThrowable projectile = new PsiThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

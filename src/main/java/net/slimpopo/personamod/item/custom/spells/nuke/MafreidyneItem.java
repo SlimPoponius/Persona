@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MafreidyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAFREIDYNE = new Spell("Mafreidyne","Heavy Nuke damage to all foe.",
-            Affinity.NUCLEAR, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null, null);
-
     public MafreidyneItem(Properties pProperties) {
-        super(pProperties, MAFREIDYNE);
+        super(pProperties, "MAFREIDYNE");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MafreidyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaNukeThrowable projectile = new MaNukeThrowable(pLevel, pPlayer, MAFREIDYNE);
+            MaNukeThrowable projectile = new MaNukeThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(),
                     pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);

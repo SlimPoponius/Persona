@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class EigaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell EIGA = new Spell("Eiga","Medium Curse damage to enemy.",
-            Affinity.CURSE, DamageType.MEDIUM, SpellLevel.TWO_STAR, null,null);
-
     public EigaItem(Properties pProperties) {
-        super(pProperties, EIGA);
+        super(pProperties, "EIGA");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class EigaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            CurseThrowable projectile = new CurseThrowable(pLevel, pPlayer, EIGA);
+            CurseThrowable projectile = new CurseThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

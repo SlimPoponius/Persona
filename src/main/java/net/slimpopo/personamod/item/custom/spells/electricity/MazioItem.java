@@ -19,13 +19,8 @@ import org.slf4j.Logger;
 public class MazioItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAZIO = new Spell("Mazio","Light Electricity damage to all foes.",
-            Affinity.ELECTRIC, DamageType.LIGHT, SpellLevel.MA_ONE_STAR, null,
-            new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1));
-
     public MazioItem(Properties pProperties) {
-        super(pProperties, MAZIO);
+        super(pProperties, "MAZIO");
     }
 
     @Override
@@ -34,7 +29,7 @@ public class MazioItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaElectricThrowable projectile = new MaElectricThrowable(pLevel, pPlayer, MAZIO);
+            MaElectricThrowable projectile = new MaElectricThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

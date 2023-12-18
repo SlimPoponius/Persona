@@ -20,13 +20,8 @@ import org.slf4j.Logger;
 public class AgidyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell AGIDYNE = new Spell("Agidyne","Heavy Fire damage to 1 foe.",
-            Affinity.FIRE, DamageType.HEAVY, SpellLevel.THREE_STAR, Blocks.MAGMA_BLOCK,
-            new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1));
-
     public AgidyneItem(Properties pProperties) {
-        super(pProperties, AGIDYNE);
+        super(pProperties, "AGIDYNE");
     }
 
     @Override
@@ -35,7 +30,7 @@ public class AgidyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            FlameThrowable projectile = new FlameThrowable(pLevel, pPlayer, AGIDYNE);
+            FlameThrowable projectile = new FlameThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MapsiItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAPSI = new Spell("Psi","Light Psy damage to all foe.",
-            Affinity.PSYCHOKINESIS, DamageType.LIGHT, SpellLevel.MA_ONE_STAR, null, null);
-
     public MapsiItem(Properties pProperties) {
-        super(pProperties, MAPSI);
+        super(pProperties, "MAPSI");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MapsiItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaPsiThrowable projectile = new MaPsiThrowable(pLevel, pPlayer, MAPSI);
+            MaPsiThrowable projectile = new MaPsiThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

@@ -6,11 +6,11 @@ import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.damage.DamageType;
 
 public class Spell {
-    private String SPELL_NAME;
-    private String SPELL_DESC;
-    private Affinity AFFINITY;
-    private DamageType DAMAGE_TYPE;
-    private SpellLevel SPELL_LEVEL;
+    private final String SPELL_NAME;
+    private final String SPELL_DESC;
+    private final Affinity AFFINITY;
+    private final DamageType DAMAGE_TYPE;
+    private final SpellLevel SPELL_LEVEL;
     private MobEffectInstance SPELL_EFFECT;
 
     private Block block;

@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MakougaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAKOUHA = new Spell("Makouha","Light bless damage to enemies.",
-            Affinity.BLESS, DamageType.LIGHT, SpellLevel.MA_ONE_STAR, null,null);
-
     public MakougaItem(Properties pProperties) {
-        super(pProperties,MAKOUHA);
+        super(pProperties,"MAKOUHA");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MakougaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaBlessThrowable projectile = new MaBlessThrowable(pLevel, pPlayer, MAKOUHA);
+            MaBlessThrowable projectile = new MaBlessThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

@@ -20,12 +20,10 @@ public class MagarudyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
-    private static final Spell MAGARUDYNE = new Spell("Magarudyne","Heavy Wind damage to all foe.",
-            Affinity.WIND, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null,
-            new MobEffectInstance(MobEffects.LEVITATION,60 * SpellLevel.THREE_STAR.getLevel(), 1));
+
 
     public MagarudyneItem(Properties pProperties) {
-        super(pProperties, MAGARUDYNE);
+        super(pProperties, "MAGARUDYNE");
     }
 
     @Override
@@ -34,7 +32,7 @@ public class MagarudyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaWindThrowable projectile = new MaWindThrowable(pLevel, pPlayer, MAGARUDYNE);
+            MaWindThrowable projectile = new MaWindThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

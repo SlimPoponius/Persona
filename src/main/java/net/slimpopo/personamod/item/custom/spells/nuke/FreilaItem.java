@@ -18,11 +18,8 @@ public class FreilaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
-    private static final Spell FREILA = new Spell("Freila","Medium Nuke damage to 1 foe.",
-            Affinity.NUCLEAR, DamageType.MEDIUM, SpellLevel.TWO_STAR, null, null);
-
     public FreilaItem(Properties pProperties) {
-        super(pProperties, FREILA);
+        super(pProperties, "FREILA");
     }
 
     @Override
@@ -31,7 +28,7 @@ public class FreilaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, FREILA);
+            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

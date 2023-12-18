@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MamudoonItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAMUDOON = new Spell("Mamudoon","High Chance of death to enemies.",
-            Affinity.CURSE, DamageType.INSTAKILL, SpellLevel.TWO_STAR, null,null);
-
     public MamudoonItem(Properties pProperties) {
-        super(pProperties, MAMUDOON);
+        super(pProperties, "MAMUDOON");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MamudoonItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaCurseMudoThrowable projectile = new MaCurseMudoThrowable(pLevel, pPlayer, MAMUDOON,0.15f);
+            MaCurseMudoThrowable projectile = new MaCurseMudoThrowable(pLevel, pPlayer, getSpellData(),0.15f);
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

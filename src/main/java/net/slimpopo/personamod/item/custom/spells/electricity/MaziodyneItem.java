@@ -19,13 +19,8 @@ import org.slf4j.Logger;
 public class MaziodyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAZIODYNE = new Spell("Maziodyne","Heavy Electricity damage to all foe.",
-            Affinity.ELECTRIC, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null,
-            new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1));
-
     public MaziodyneItem(Properties pProperties) {
-        super(pProperties, MAZIODYNE);
+        super(pProperties, "MAZIODYNE");
     }
 
     @Override
@@ -34,7 +29,7 @@ public class MaziodyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaElectricThrowable projectile = new MaElectricThrowable(pLevel, pPlayer, MAZIODYNE);
+            MaElectricThrowable projectile = new MaElectricThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

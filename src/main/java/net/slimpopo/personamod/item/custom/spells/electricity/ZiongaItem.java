@@ -19,13 +19,8 @@ import org.slf4j.Logger;
 public class ZiongaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell ZIONGA = new Spell("Zionga","Medium Electricity damage to 1 foe.",
-            Affinity.ELECTRIC, DamageType.MEDIUM, SpellLevel.TWO_STAR, null,
-            new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.TWO_STAR.getLevel(), 1));
-
     public ZiongaItem(Properties pProperties) {
-        super(pProperties, ZIONGA);
+        super(pProperties, "ZIONGA");
     }
 
     @Override
@@ -34,7 +29,7 @@ public class ZiongaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            ElectricThrowable projectile = new ElectricThrowable(pLevel, pPlayer, ZIONGA);
+            ElectricThrowable projectile = new ElectricThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

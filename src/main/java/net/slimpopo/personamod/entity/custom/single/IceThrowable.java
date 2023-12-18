@@ -67,6 +67,8 @@ public class IceThrowable extends ThrowableItemProjectile {
             Entity entity1 = this.getOwner();
             int i = entity.getRemainingFireTicks();
 
+            int level = null != spellInformation ? spellInformation.getSPELL_LEVEL().getLevel(): 0;
+
             boolean flag = entity.hurt(this.damageSources().playerAttack(Minecraft.getInstance().player), 5.0F);
             if (entity1 instanceof LivingEntity) {
                 Random random = new Random();
@@ -74,10 +76,10 @@ public class IceThrowable extends ThrowableItemProjectile {
                     if(entity instanceof LivingEntity) {
                         ((LivingEntity) entity).addEffect(
                                 new MobEffectInstance(ModEffects.FREEZE.get(),
-                                        60 * spellInformation.getSPELL_LEVEL().getLevel(), 1));
+                                        60 * level, 1));
                         ((LivingEntity) entity).addEffect(
                                 new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
-                                        60 * spellInformation.getSPELL_LEVEL().getLevel(), 2000));
+                                        60 * level, 2000));
                     }
                 }
 

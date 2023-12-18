@@ -20,13 +20,8 @@ import org.slf4j.Logger;
 public class MaragiItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MARAGI = new Spell("Maragi","Light Fire damage to all foes.",
-            Affinity.FIRE, DamageType.LIGHT, SpellLevel.MA_ONE_STAR, Blocks.MAGMA_BLOCK,
-            new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1));
-
     public MaragiItem(Properties pProperties) {
-        super(pProperties, MARAGI);
+        super(pProperties, "MARAGI");
     }
 
     @Override
@@ -35,7 +30,7 @@ public class MaragiItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaFlameThrowable projectile = new MaFlameThrowable(pLevel, pPlayer, MARAGI);
+            MaFlameThrowable projectile = new MaFlameThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

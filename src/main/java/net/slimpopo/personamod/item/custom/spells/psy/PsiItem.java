@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class PsiItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell PSI = new Spell("Psi","Light Psy damage to 1 foe.",
-            Affinity.PSYCHOKINESIS, DamageType.LIGHT, SpellLevel.ONE_STAR, null, null);
-
     public PsiItem(Properties pProperties) {
-        super(pProperties, PSI);
+        super(pProperties, "PSI");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class PsiItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            PsiThrowable projectile = new PsiThrowable(pLevel, pPlayer, PSI);
+            PsiThrowable projectile = new PsiThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

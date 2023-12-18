@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class FreiItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell FREI = new Spell("Frei","Light Nuke damage to 1 foe.",
-            Affinity.NUCLEAR, DamageType.LIGHT, SpellLevel.ONE_STAR, null, null);
-
     public FreiItem(Properties pProperties) {
-        super(pProperties, FREI);
+        super(pProperties, "FREI");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class FreiItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, FREI);
+            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

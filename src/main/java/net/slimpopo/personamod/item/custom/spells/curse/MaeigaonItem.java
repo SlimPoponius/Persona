@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MaeigaonItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAEIGAON = new Spell("Maeigaon","Heavy Curse damage to enemies.",
-            Affinity.CURSE, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null,null);
-
     public MaeigaonItem(Properties pProperties) {
-        super(pProperties, MAEIGAON);
+        super(pProperties, "MAEIGAON");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MaeigaonItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaCurseThrowable projectile = new MaCurseThrowable(pLevel, pPlayer, MAEIGAON);
+            MaCurseThrowable projectile = new MaCurseThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MahamaonItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAHAMAON = new Spell("Mahamaon","High Chance of death to enemies.",
-            Affinity.BLESS, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null);
-
     public MahamaonItem(Properties pProperties) {
-        super(pProperties, MAHAMAON);
+        super(pProperties, "MAHAMAON");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MahamaonItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaBlessHamaThrowable projectile = new MaBlessHamaThrowable(pLevel, pPlayer, MAHAMAON,0.15f);
+            MaBlessHamaThrowable projectile = new MaBlessHamaThrowable(pLevel, pPlayer, getSpellData(),0.15f);
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

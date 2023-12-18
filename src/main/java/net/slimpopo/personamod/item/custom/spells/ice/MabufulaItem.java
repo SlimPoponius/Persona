@@ -20,13 +20,8 @@ import org.slf4j.Logger;
 public class MabufulaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MABUFULA = new Spell("Mabufula","Medium Ice damage to all foes.",
-            Affinity.ICE, DamageType.MEDIUM, SpellLevel.MA_TWO_STAR, Blocks.ICE,
-            new MobEffectInstance(ModEffects.FREEZE.get(),60 * SpellLevel.TWO_STAR.getLevel(), 1));
-
     public MabufulaItem(Properties pProperties) {
-        super(pProperties, MABUFULA);
+        super(pProperties, "MABUFULA");
     }
 
     @Override
@@ -35,7 +30,7 @@ public class MabufulaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaIceThrowable projectile = new MaIceThrowable(pLevel, pPlayer, MABUFULA);
+            MaIceThrowable projectile = new MaIceThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

@@ -18,12 +18,8 @@ import org.slf4j.Logger;
 public class KougaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell KOUGA = new Spell("Kouga","Medium bless damage to enemy.",
-            Affinity.BLESS, DamageType.MEDIUM, SpellLevel.TWO_STAR, null,null);
-
     public KougaItem(Properties pProperties) {
-        super(pProperties, KOUGA);
+        super(pProperties, "KOUGA");
     }
 
     @Override
@@ -32,7 +28,7 @@ public class KougaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            BlessThrowable projectile = new BlessThrowable(pLevel, pPlayer, KOUGA);
+            BlessThrowable projectile = new BlessThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

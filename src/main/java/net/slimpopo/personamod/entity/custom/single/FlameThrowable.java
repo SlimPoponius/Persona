@@ -62,6 +62,8 @@ public class FlameThrowable extends ThrowableItemProjectile {
         if (!this.level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte)3);
 
+            int level = null != spellInformation ? spellInformation.getSPELL_LEVEL().getLevel(): 0;
+
             Entity entity = pResult.getEntity();
             if (!entity.fireImmune()) {
                 Entity entity1 = this.getOwner();
@@ -71,7 +73,7 @@ public class FlameThrowable extends ThrowableItemProjectile {
                     if(random.nextFloat() > 0.85f) {
                         ((LivingEntity) entity).addEffect(
                                 new MobEffectInstance(ModEffects.BURN.get(),
-                                        60 * spellInformation.getSPELL_LEVEL().getLevel(), 1));
+                                        60 * level, 1));
                     }
                     this.doEnchantDamageEffects((LivingEntity)entity1, entity);
                 }

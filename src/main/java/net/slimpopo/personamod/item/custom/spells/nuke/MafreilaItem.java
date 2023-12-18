@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MafreilaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAFREILA = new Spell("Mafreila","Medium Nuke damage to all foe.",
-            Affinity.NUCLEAR, DamageType.MEDIUM, SpellLevel.MA_TWO_STAR, null, null);
-
     public MafreilaItem(Properties pProperties) {
-        super(pProperties, MAFREILA);
+        super(pProperties, "MAFREILA");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MafreilaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaNukeThrowable projectile = new MaNukeThrowable(pLevel, pPlayer, MAFREILA);
+            MaNukeThrowable projectile = new MaNukeThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(),
                     pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);

@@ -50,17 +50,20 @@ public class WindThrowable extends ThrowableItemProjectile {
             Entity entity1 = this.getOwner();
             int i = entity.getRemainingFireTicks();
 
+            int level = null != spellInformation ? spellInformation.getSPELL_LEVEL().getLevel(): 0;
+
             boolean flag = entity.hurt(this.damageSources().playerAttack(Minecraft.getInstance().player), 5.0F);
+
             if (entity1 instanceof LivingEntity) {
-                ((LivingEntity) entity).knockback(spellInformation.getSPELL_LEVEL().getLevel(),
-                        -3.0 * spellInformation.getSPELL_LEVEL().getLevel(),
-                        -3.0 * spellInformation.getSPELL_LEVEL().getLevel());
+                ((LivingEntity) entity).knockback(level,
+                        -3.0 * level,
+                        -3.0 * level);
                 Random random = new Random();
                 if(random.nextFloat() > 0.85f){
                     if(entity instanceof LivingEntity) {
                         ((LivingEntity) entity).addEffect(
                                 new MobEffectInstance(MobEffects.LEVITATION,
-                                        60 * spellInformation.getSPELL_LEVEL().getLevel(), 1));
+                                        60 * level, 1));
                     }
                 }
 

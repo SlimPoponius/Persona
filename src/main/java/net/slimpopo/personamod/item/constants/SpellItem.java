@@ -9,8 +9,13 @@ import net.minecraft.world.item.ItemStack;
 import net.slimpopo.personamod.constant.spell.Spell;
 
 public class SpellItem extends Item {
-
+    private final SpellList spellList = new SpellList();
     private Spell spellData;
+
+    public SpellItem(Properties pProperties, String spellName) {
+        super(pProperties);
+        this.spellData = spellList.getSpellDataWithName(spellName);
+    }
 
     public SpellItem(Properties pProperties, Spell spellData) {
         super(pProperties);
@@ -32,4 +37,7 @@ public class SpellItem extends Item {
         return false;
     }
 
+    public Spell getSpellData() {
+        return spellData;
+    }
 }

@@ -19,13 +19,8 @@ import org.slf4j.Logger;
 public class ZiodyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell ZIODYNE = new Spell("Ziodyne","Heavy Electricity damage to 1 foe.",
-            Affinity.ELECTRIC, DamageType.HEAVY, SpellLevel.THREE_STAR, null,
-            new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1));
-
     public ZiodyneItem(Properties pProperties) {
-        super(pProperties, ZIODYNE);
+        super(pProperties, "ZIODYNE");
     }
 
     @Override
@@ -34,7 +29,7 @@ public class ZiodyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            ElectricThrowable projectile = new ElectricThrowable(pLevel, pPlayer, ZIODYNE);
+            ElectricThrowable projectile = new ElectricThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

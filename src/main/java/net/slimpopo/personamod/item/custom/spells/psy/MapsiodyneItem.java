@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class MapsiodyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAPSI = new Spell("Psi","Heavy Psy damage to all foe.",
-            Affinity.PSYCHOKINESIS, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null, null);
-
     public MapsiodyneItem(Properties pProperties) {
-        super(pProperties, MAPSI);
+        super(pProperties, "MAPSIODYNE");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class MapsiodyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaPsiThrowable projectile = new MaPsiThrowable(pLevel, pPlayer, MAPSI);
+            MaPsiThrowable projectile = new MaPsiThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

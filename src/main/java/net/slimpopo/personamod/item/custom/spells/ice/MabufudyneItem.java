@@ -20,13 +20,8 @@ import org.slf4j.Logger;
 public class MabufudyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MABUFUDYNE = new Spell("Mabufudyne","Heavy Ice damage to all foes.",
-            Affinity.ICE, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, Blocks.ICE,
-            new MobEffectInstance(ModEffects.FREEZE.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1));
-
     public MabufudyneItem(Properties pProperties) {
-        super(pProperties,MABUFUDYNE);
+        super(pProperties,"MABUFUDYNE");
     }
 
     @Override
@@ -35,7 +30,7 @@ public class MabufudyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaIceThrowable projectile = new MaIceThrowable(pLevel, pPlayer, MABUFUDYNE);
+            MaIceThrowable projectile = new MaIceThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

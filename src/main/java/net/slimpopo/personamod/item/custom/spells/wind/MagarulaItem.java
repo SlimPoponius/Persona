@@ -19,13 +19,8 @@ import org.slf4j.Logger;
 public class MagarulaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MAGARULA = new Spell("Garula","Medium Wind damage to all foe.",
-            Affinity.WIND, DamageType.MEDIUM, SpellLevel.MA_TWO_STAR, null,
-            new MobEffectInstance(MobEffects.LEVITATION,60 * SpellLevel.ONE_STAR.getLevel(), 1));
-
     public MagarulaItem(Properties pProperties) {
-        super(pProperties, MAGARULA);
+        super(pProperties, "MAGARULA");
     }
 
     @Override
@@ -34,7 +29,7 @@ public class MagarulaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaWindThrowable projectile = new MaWindThrowable(pLevel, pPlayer, MAGARULA);
+            MaWindThrowable projectile = new MaWindThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

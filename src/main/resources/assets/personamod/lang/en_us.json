@@ -88,5 +88,8 @@
   "effect.personamod.fear": "Fear",
   "effect.personamod.rage": "Rage",
 
-  "entity.personamod.pyro_jack": "Pyro_Jack"
+  "entity.personamod.pyro_jack": "Pyro_Jack",
+  "key.category.personamod.persona": "Persona Mod",
+  "key.personamod.persona.summon": "Summon Persona",
+  "key.personamod.persona.attack": "Persona Attack"
 }

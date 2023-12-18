@@ -17,12 +17,8 @@ import org.slf4j.Logger;
 public class FreidyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell FREIDYNE = new Spell("Freidyne","Heavy Nuke damage to 1 foe.",
-            Affinity.NUCLEAR, DamageType.HEAVY, SpellLevel.THREE_STAR, null, null);
-
     public FreidyneItem(Properties pProperties) {
-        super(pProperties, FREIDYNE);
+        super(pProperties, "FREIDYNE");
     }
 
     @Override
@@ -31,7 +27,7 @@ public class FreidyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, FREIDYNE);
+            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

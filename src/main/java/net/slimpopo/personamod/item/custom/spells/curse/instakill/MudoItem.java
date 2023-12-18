@@ -21,12 +21,8 @@ import org.slf4j.Logger;
 public class MudoItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell MUDO = new Spell("Mudo","Light Chance of death to enemy.",
-            Affinity.CURSE, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null);
-
     public MudoItem(Properties pProperties) {
-        super(pProperties,MUDO);
+        super(pProperties,"MUDO");
     }
 
     @Override
@@ -35,7 +31,7 @@ public class MudoItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            CurseMudoThrowable projectile = new CurseMudoThrowable(pLevel, pPlayer, MUDO,0.0f);
+            CurseMudoThrowable projectile = new CurseMudoThrowable(pLevel, pPlayer, getSpellData(),0.0f);
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

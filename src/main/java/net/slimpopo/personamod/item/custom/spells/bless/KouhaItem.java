@@ -18,12 +18,8 @@ import org.slf4j.Logger;
 public class KouhaItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
-    private static final Spell KOUHA = new Spell("Kouha","Light bless damage to enemy.",
-            Affinity.BLESS, DamageType.LIGHT, SpellLevel.ONE_STAR, null,null);
-
     public KouhaItem(Properties pProperties) {
-        super(pProperties, KOUHA);
+        super(pProperties, "KOUHA");
     }
 
     @Override
@@ -32,7 +28,7 @@ public class KouhaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            BlessThrowable projectile = new BlessThrowable(pLevel, pPlayer, KOUHA);
+            BlessThrowable projectile = new BlessThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

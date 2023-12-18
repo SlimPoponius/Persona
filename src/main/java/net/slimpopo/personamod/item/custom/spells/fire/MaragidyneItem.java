@@ -19,14 +19,8 @@ import org.slf4j.Logger;
 
 public class MaragidyneItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
-
-
-    private static final Spell MARAGIDYNE = new Spell("Maragidyne","Heavy Fire damage to 1 foe.",
-            Affinity.FIRE, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, Blocks.MAGMA_BLOCK,
-            new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1));
-
     public MaragidyneItem(Properties pProperties) {
-        super(pProperties, MARAGIDYNE);
+        super(pProperties, "MARAGIDYNE");
     }
 
     @Override
@@ -35,7 +29,7 @@ public class MaragidyneItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            MaFlameThrowable projectile = new MaFlameThrowable(pLevel, pPlayer, MARAGIDYNE);
+            MaFlameThrowable projectile = new MaFlameThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);

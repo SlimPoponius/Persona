@@ -20,12 +20,9 @@ public class GaruItem extends SpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
-    private static final Spell GARU = new Spell("Garu","Light Wind damage to 1 foe.",
-            Affinity.WIND, DamageType.LIGHT, SpellLevel.ONE_STAR, null,
-            new MobEffectInstance(MobEffects.LEVITATION,60 * SpellLevel.ONE_STAR.getLevel(), 1));
 
     public GaruItem(Properties pProperties) {
-        super(pProperties, GARU);
+        super(pProperties, "GARU");
     }
 
     @Override
@@ -34,7 +31,7 @@ public class GaruItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, GARU);
+            WindThrowable projectile = new WindThrowable(pLevel, pPlayer, getSpellData());
             projectile.setItem(itemStack);
             projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
             pLevel.addFreshEntity(projectile);
