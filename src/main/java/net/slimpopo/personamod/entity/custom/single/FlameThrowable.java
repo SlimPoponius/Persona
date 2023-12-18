@@ -10,6 +10,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.slimpopo.personamod.damagesource.ModDamageSources;
+import net.slimpopo.personamod.damagesource.ModDamageTypes;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.entity.custom.SkillThrowable;
@@ -67,7 +69,7 @@ public class FlameThrowable extends ThrowableItemProjectile {
             Entity entity = pResult.getEntity();
             if (!entity.fireImmune()) {
                 Entity entity1 = this.getOwner();
-                boolean flag = entity.hurt(this.damageSources().playerAttack(Minecraft.getInstance().player), 5.0F);
+                entity.hurt(new ModDamageSources(level().registryAccess()).personaDamage(entity1, null), 5.0F);
                 if (entity1 instanceof LivingEntity) {
                     Random random = new Random();
                     if(random.nextFloat() > 0.85f) {

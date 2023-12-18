@@ -54,7 +54,7 @@ public class ClientEvents {
 
         @SubscribeEvent
         public static void registerGuiOverlays(RegisterGuiOverlaysEvent event){
-//            event.registerAboveAll("personasp", PersonaSpOverlay.PERSONA_SP);
+            event.registerAboveAll("personasp", PersonaSpOverlay.PERSONA_SP);
         }
     }
 }

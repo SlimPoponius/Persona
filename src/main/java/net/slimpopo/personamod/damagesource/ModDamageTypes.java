@@ -12,17 +12,17 @@ import net.minecraftforge.registries.RegistryObject;
 import net.slimpopo.personamod.PersonaMod;
 
 public interface ModDamageTypes {
-//    ResourceKey<DamageType> PERSONA_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE,
-//            new ResourceLocation(PersonaMod.MOD_ID, "persona_damage")
-//    );
-//
-//    private static ResourceKey<DamageType> register(String name) {
-//        return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(PersonaMod.MOD_ID, name));
-//    }
-//
-//    // bootstrap method
-//    static void bootstrap(BootstapContext<DamageType> bootstapContext) {
-//        bootstapContext.register(PERSONA_DAMAGE, new DamageType("persona_damage", 0.1f));
-//    }
+    ResourceKey<DamageType> PERSONA_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE,
+            new ResourceLocation(PersonaMod.MOD_ID, "persona_damage")
+    );
+
+    private static ResourceKey<DamageType> register(String name) {
+        return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(PersonaMod.MOD_ID, name));
+    }
+
+    // bootstrap method
+    static void bootstrap(BootstapContext<DamageType> bootstapContext) {
+        bootstapContext.register(PERSONA_DAMAGE, new DamageType("persona_damage", 0.1f));
+    }
 
 }

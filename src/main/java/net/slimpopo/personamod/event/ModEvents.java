@@ -19,6 +19,7 @@ import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
 import net.slimpopo.personamod.capability.persona.impl.PlayerPersona;
 import net.slimpopo.personamod.client.ClientPersonaPlayerData;
 import net.slimpopo.personamod.client.ClientPersonaPlayerPersonaData;
+import net.slimpopo.personamod.damagesource.ModDamageTypes;
 import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
 import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerPersonasS2CPacket;
@@ -92,14 +93,17 @@ public class ModEvents {
         }
     }
 
-//    @SubscribeEvent
-//    public static void onEntityHurtEvent(LivingHurtEvent event){
-//        //if(event.)
-//        if(event.getEntity() instanceof Player player){
-//
-//        }
-//        if(event.getEntity()  instanceof PersonaEntity persona){
-//
-//        }
-//    }
+    @SubscribeEvent
+    public static void onEntityHurtEvent(LivingHurtEvent event){
+        if(event.getSource().is(ModDamageTypes.PERSONA_DAMAGE)) {
+            if (event.getEntity() instanceof Player player) {
+
+            }
+            if (event.getEntity() instanceof PersonaEntity persona) {
+
+            }
+            System.out.println("Entity got hit with Persona Damage");
+
+        }
+    }
 }
