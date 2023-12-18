@@ -1,6 +1,7 @@
 package net.slimpopo.personamod.client;
 
 public class ClientPersonaPlayerPersonaData {
+    private static boolean unlockedPersonas;
     private static int playerPersonaIdx;
     private static int playerPersonaLvl;
     private static int playerPersonaCurrentXp;
@@ -34,6 +35,7 @@ public class ClientPersonaPlayerPersonaData {
     public static int getPlayerPersonaNeededXp(){
         return playerPersonaNeededXp;
     }
+    public static boolean isUnlockedPersonas(){return unlockedPersonas;}
     public static boolean getUpdatedStatus(){return updatedData;}
 
 }

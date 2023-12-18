@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
+import net.slimpopo.personamod.client.PersonaSelectedOverlay;
 import net.slimpopo.personamod.client.PersonaSpOverlay;
 import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaAttackC2SPacket;
@@ -55,6 +56,8 @@ public class ClientEvents {
         @SubscribeEvent
         public static void registerGuiOverlays(RegisterGuiOverlaysEvent event){
             event.registerAboveAll("personasp", PersonaSpOverlay.PERSONA_SP);
+            event.registerAboveAll("persona_sel", PersonaSelectedOverlay.PERSONA_SEL);
+
         }
     }
 }

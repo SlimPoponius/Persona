@@ -98,12 +98,11 @@ public class ModEvents {
         if(event.getSource().is(ModDamageTypes.PERSONA_DAMAGE)) {
             if (event.getEntity() instanceof Player player) {
 
+
             }
             if (event.getEntity() instanceof PersonaEntity persona) {
 
             }
-            System.out.println("Entity got hit with Persona Damage");
-
         }
     }
 }
