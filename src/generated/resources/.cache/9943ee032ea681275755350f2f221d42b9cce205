@@ -1,7 +1,8 @@
-// 1.20.1	2023-12-18T12:04:16.9765226	Item Models: personamod
+// 1.20.1	2023-12-31T21:44:25.6394875	Item Models: personamod
 f509f99512c4d9036db41abd6782d7da700ea34c assets/personamod/models/item/agi.json
 f509f99512c4d9036db41abd6782d7da700ea34c assets/personamod/models/item/agidyne.json
 f509f99512c4d9036db41abd6782d7da700ea34c assets/personamod/models/item/agilao.json
+cfe661c136349d5ea58077e87b5b9d363afef2e4 assets/personamod/models/item/arcanacard.json
 51e83e52ab6523c57794a124e116d000f62b32c3 assets/personamod/models/item/blessthrowable.json
 5f53bd223a6bdbe5237981d85f1a70945cb0d0c1 assets/personamod/models/item/bufu.json
 5f53bd223a6bdbe5237981d85f1a70945cb0d0c1 assets/personamod/models/item/bufudyne.json
@@ -63,11 +64,13 @@ d299d4f2ade64faab72fd9c21fcb992068ef22b1 assets/personamod/models/item/mazionga.
 9127db910c305ad8d3fb8c55cb7602b72f31c51b assets/personamod/models/item/mudo.json
 9127db910c305ad8d3fb8c55cb7602b72f31c51b assets/personamod/models/item/mudoon.json
 6a198cee3652c1b4b390e9fc8ca6529a2a0dd82d assets/personamod/models/item/nukethrowable.json
+cfe661c136349d5ea58077e87b5b9d363afef2e4 assets/personamod/models/item/personacard.json
 5c731aa48f1ad86291ada5ed5eef374cffef5ddf assets/personamod/models/item/psi.json
 5c731aa48f1ad86291ada5ed5eef374cffef5ddf assets/personamod/models/item/psio.json
 5c731aa48f1ad86291ada5ed5eef374cffef5ddf assets/personamod/models/item/psiodyne.json
 5c731aa48f1ad86291ada5ed5eef374cffef5ddf assets/personamod/models/item/psithrowable.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/personamod/models/item/pyro_jack_spawn_egg.json
+cfe661c136349d5ea58077e87b5b9d363afef2e4 assets/personamod/models/item/skillcard.json
 b7dbe980772544771b0aac1c4be4485d3412ae8a assets/personamod/models/item/windthrowable.json
 d299d4f2ade64faab72fd9c21fcb992068ef22b1 assets/personamod/models/item/zio.json
 d299d4f2ade64faab72fd9c21fcb992068ef22b1 assets/personamod/models/item/ziodyne.json

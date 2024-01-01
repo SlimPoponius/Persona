@@ -83,8 +83,16 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.persona_spawn_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.PYRO_JACK_SPAWN_EGG.get());
+                    })
+                    .build());
 
-
+    public static final RegistryObject<CreativeModeTab> PERSONA_ITEMS_TAB = CREATIVE_MODE_TABS.register("persona_item_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SKILLCARD.get()))
+                    .title(Component.translatable("creativetab.persona_item_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.SKILLCARD.get());
+                        pOutput.accept(ModItems.PERSONACARD.get());
+                        pOutput.accept(ModItems.ARCANACARD.get());
                     })
                     .build());
 

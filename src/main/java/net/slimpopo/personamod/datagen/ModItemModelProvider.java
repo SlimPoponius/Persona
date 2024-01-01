@@ -97,6 +97,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemWithCustomTag(ModItems.BLESSTHROWABLE, ModItems.KOUHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.MABLESSTHROWABLE, ModItems.KOUHA.getId().getPath());
 
+        simpleItemWithCustomTag(ModItems.SKILLCARD, "arcana");
+        simpleItemWithCustomTag(ModItems.PERSONACARD, "arcana");
+        simpleItemWithCustomTag(ModItems.ARCANACARD, "arcana");
+
         withExistingParent(ModItems.PYRO_JACK_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
 
 

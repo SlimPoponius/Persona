@@ -23,6 +23,8 @@ public class Persona {
     private List<Affinity> AbsorbAgainst;
     private List<Affinity> ReflectAgainst;
 
+    private final int MAX_STAT = 99;
+
     public Persona(){
 
     }
@@ -93,23 +95,83 @@ public class Persona {
     }
 
     public void setMAGIC(int MAGIC) {
+        if(MAGIC >= MAX_STAT)
+            MAGIC = MAX_STAT;
         this.MAGIC = MAGIC;
     }
 
     public void setSTRENGTH(int STRENGTH) {
+        if(STRENGTH >= MAX_STAT)
+            STRENGTH = MAX_STAT;
         this.STRENGTH = STRENGTH;
     }
 
     public void setENDURANCE(int ENDURANCE) {
+        if(ENDURANCE >= MAX_STAT)
+            ENDURANCE = MAX_STAT;
         this.ENDURANCE = ENDURANCE;
     }
 
     public void setAGILITY(int AGILITY) {
+        if(AGILITY >= MAX_STAT)
+            AGILITY = MAX_STAT;
         this.AGILITY = AGILITY;
     }
 
     public void setLUCK(int LUCK) {
+        if(LUCK >= MAX_STAT)
+            LUCK = MAX_STAT;
         this.LUCK = LUCK;
+    }
+
+    public void addMAGIC(int MAGIC) {
+        if(MAGIC >= MAX_STAT)
+            MAGIC = MAX_STAT;
+        this.MAGIC += MAGIC;
+    }
+
+    public void addSTRENGTH(int STRENGTH) {
+        if(this.STRENGTH + STRENGTH >= MAX_STAT)
+            STRENGTH = MAX_STAT - this.STRENGTH;
+        this.STRENGTH += STRENGTH;
+    }
+
+    public void addENDURANCE(int ENDURANCE) {
+        if(this.ENDURANCE + ENDURANCE >= MAX_STAT)
+            ENDURANCE = MAX_STAT - this.ENDURANCE;
+        this.ENDURANCE += ENDURANCE;
+    }
+
+    public void addAGILITY(int AGILITY) {
+        if(this.AGILITY + AGILITY >= MAX_STAT)
+            AGILITY = MAX_STAT - this.AGILITY;
+        this.AGILITY += AGILITY;
+    }
+
+    public void addLUCK(int LUCK) {
+        if(this.LUCK + LUCK >= MAX_STAT)
+            LUCK = MAX_STAT - this.LUCK;
+        this.LUCK += LUCK;
+    }
+
+    public float getMagicPercentage(){
+        return (float)(this.MAGIC/MAX_STAT);
+    }
+
+    public float getStrengthPercentage(){
+        return (float)(this.STRENGTH/MAX_STAT);
+    }
+
+    public float getEndurancePercentage(){
+        return (float)(this.ENDURANCE/MAX_STAT);
+    }
+
+    public float getAgilityPercentage(){
+        return (float)(this.AGILITY/MAX_STAT);
+    }
+
+    public float getLuckPercentage(){
+        return (float)(this.LUCK/MAX_STAT);
     }
 
     public void setStrongAgainst(List<Affinity> strongAgainst) {

@@ -8,6 +8,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.entity.ModEntities;
+import net.slimpopo.personamod.item.constants.card.ArcanaCardItem;
+import net.slimpopo.personamod.item.constants.card.PersonaCardItem;
+import net.slimpopo.personamod.item.constants.card.SkillCardItem;
 import net.slimpopo.personamod.item.custom.spells.bless.*;
 import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaItem;
 import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaonItem;
@@ -200,8 +203,12 @@ public class ModItems {
     public static final RegistryObject<Item> MABLESSTHROWABLE = ITEMS.register("mablessthrowable",
             () -> new Item(new Item.Properties()));
 
-
-
+    public static final RegistryObject<SkillCardItem> SKILLCARD = ITEMS.register("skillcard",
+            () -> new SkillCardItem(new Item.Properties().stacksTo(1).durability(1)));
+    public static final RegistryObject<PersonaCardItem> PERSONACARD = ITEMS.register("personacard",
+            () -> new PersonaCardItem(new Item.Properties().stacksTo(1).durability(1)));
+    public static final RegistryObject<ArcanaCardItem> ARCANACARD = ITEMS.register("arcanacard",
+            () -> new ArcanaCardItem(new Item.Properties().stacksTo(1).durability(1)));
 
     //SPAWN
     public static final RegistryObject<Item> PYRO_JACK_SPAWN_EGG = ITEMS.register("pyro_jack_spawn_egg",

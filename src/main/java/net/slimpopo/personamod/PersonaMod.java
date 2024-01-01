@@ -1,6 +1,7 @@
 package net.slimpopo.personamod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -21,6 +22,8 @@ import net.slimpopo.personamod.item.ModCreativeModeTabs;
 import net.slimpopo.personamod.item.ModItems;
 import net.slimpopo.personamod.item.block.ModBlocks;
 import net.slimpopo.personamod.networking.ModMessages;
+import net.slimpopo.personamod.screen.ModMenuTypes;
+import net.slimpopo.personamod.screen.personastat.PersonaStatMenuScreen;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -42,7 +45,7 @@ public class PersonaMod
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        ModMenuTypes.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -100,6 +103,8 @@ public class PersonaMod
             EntityRenderers.register(ModEntities.GRP_NUKE_THROWABLE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.PSI_THROWABLE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.GRP_PSI_THROWABLE.get(), ThrownItemRenderer::new);
+
+            MenuScreens.register(ModMenuTypes.PERSONA_STAT_MENU.get(), PersonaStatMenuScreen::new);
 
         }
     }

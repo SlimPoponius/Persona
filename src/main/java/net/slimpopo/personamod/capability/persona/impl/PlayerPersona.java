@@ -21,7 +21,7 @@ public class PlayerPersona implements IPlayerPersona {
 
     private boolean hasUnlockedPersonas;
     private boolean hasPersonaReleased;
-    private int currentPersonaIndex;
+    private int currentPersonaIndex = -1;
     private List<ControlledPersona> personas = new ArrayList<>();
 
 
@@ -142,6 +142,7 @@ public class PlayerPersona implements IPlayerPersona {
         return this.spLevel < MAX_LEVEL;
     }
 
+
     public void copyFrom(PlayerPersona src){
         this.sp = src.sp;
         this.maxSp = src.maxSp;
@@ -164,6 +165,8 @@ public class PlayerPersona implements IPlayerPersona {
     }
 
     public int getCurrentPersonaIndex() {
+        if(currentPersonaIndex == -1)
+            return 0;
         return currentPersonaIndex;
     }
 
@@ -174,13 +177,17 @@ public class PlayerPersona implements IPlayerPersona {
     public void setPersonas(List<ControlledPersona> personas) {
         this.personas = personas;
     }
+    public void addToCurrentPersonaListing(ControlledPersona cp){this.personas.add(cp);}
 
+    public int getPersonaCount(){ return personas.size();}
     public ControlledPersona getControlledPersonaFromIndex(int idx){
         return personas.get(idx);
     }
     public int getIndexForPersona(ControlledPersona pData){
         return personas.indexOf(pData);
     }
+
+
 
     public void saveNBTData(CompoundTag nbt){
         nbt.putInt("sp",this.sp);
@@ -225,5 +232,10 @@ public class PlayerPersona implements IPlayerPersona {
 
     }
 
+
+    public boolean findControlledPersonaWithName(String personaName) {
+        return personas.stream().filter(persona -> persona.getPersonaName().equalsIgnoreCase(personaName))
+                .findFirst().isPresent();
+    }
 
 }

@@ -55,6 +55,12 @@ public class ModMessages {
                 .encoder(PersonaPlayerPersonasS2CPacket::toBytes)
                 .consumerMainThread(PersonaPlayerPersonasS2CPacket::handle)
                 .add();
+
+        net.messageBuilder(PersonaPlayerUnlockS2CPacket.class,id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PersonaPlayerUnlockS2CPacket::new)
+                .encoder(PersonaPlayerUnlockS2CPacket::toBytes)
+                .consumerMainThread(PersonaPlayerUnlockS2CPacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG message){

@@ -11,9 +11,10 @@ import net.slimpopo.personamod.effects.ModEffects;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SpellList {
-    private List<Spell> spellList = new ArrayList<>();
+    private static List<Spell> spellList = new ArrayList<>();
 
     public SpellList() {
         spellList.add(new Spell("Agi", "Light Fire damage to 1 foe.",
@@ -154,9 +155,14 @@ public class SpellList {
                 Affinity.BLESS, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null));
     }
 
-    public Spell getSpellDataWithName(String name){
+    public static Spell getSpellDataWithName(String name){
        return spellList.stream().filter(spell -> spell.getSPELL_NAME().equalsIgnoreCase(name)).findFirst()
                .orElse(new Spell());
+    }
+
+    public static Spell getSpellFromRandom(){
+        Random random = new Random();
+        return spellList.get(random.nextInt(spellList.size()));
     }
 
 }

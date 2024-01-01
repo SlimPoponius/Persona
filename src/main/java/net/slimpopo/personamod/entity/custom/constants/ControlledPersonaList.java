@@ -8,10 +8,7 @@ import net.slimpopo.personamod.item.constants.SpellItem;
 import net.slimpopo.personamod.item.constants.SpellItemList;
 import net.slimpopo.personamod.item.constants.SpellList;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ControlledPersonaList {
 
@@ -33,5 +30,12 @@ public class ControlledPersonaList {
             }
         }
         return null;
+    }
+
+    public static ControlledPersona getRandomPersona(){
+        Random random = new Random();
+        Object[] values = personaCompendium.values().toArray();
+        if(personaCompendium.size() == 1) return (ControlledPersona) values[0];
+        return (ControlledPersona) values[random.nextInt(personaCompendium.size())];
     }
 }

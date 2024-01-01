@@ -1,6 +1,7 @@
 {
   "creativetab.persona_tab": "Persona Mod",
   "creativetab.persona_spawn_tab": "Persona Spawns",
+  "creativetab.persona_item_tab": "Persona Items",
 
   "item.personamod.agi": "Agi",
   "item.personamod.agilao": "Agilao",
@@ -76,6 +77,10 @@
   "item.personamod.nukethrowable": "Nuke",
   "item.personamod.psithrowable": "Psycho",
 
+  "item.personamod.skillcard":   "Skill Card",
+  "item.personamod.personacard": "Persona Card",
+  "item.personamod.arcanacard":  "Arcana Card",
+
   "item.personamod.pyro_jack_spawn_egg": "Pyro Jack Egg",
 
 
@@ -89,7 +94,11 @@
   "effect.personamod.rage": "Rage",
 
   "entity.personamod.pyro_jack": "Pyro_Jack",
+
+
   "key.category.personamod.persona": "Persona Mod",
   "key.personamod.persona.summon": "Summon Persona",
-  "key.personamod.persona.attack": "Persona Attack"
+  "key.personamod.persona.attack": "Persona Attack",
+
+  "menu.title.personamod.skillreplace" : "Replace Skill"
 }

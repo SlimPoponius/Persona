@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.entity.level.PersonaLevel;
 import net.slimpopo.personamod.constant.entity.level.SkillLearnedLevel;
+import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.item.constants.SpellItem;
 import net.slimpopo.personamod.item.constants.SpellItemList;
 
@@ -52,7 +53,8 @@ public class ControlledPersona extends Persona{
     }
 
     public void generateItemStacks() {
-       var skills = learnedSkillsFromLevel.stream()
+       learnedItems = new ArrayList<>();
+        var skills = learnedSkillsFromLevel.stream()
                 .filter(skill -> personaLevel.getCurrentLevel() >= skill.getLevelRequired())
                 .map(skill -> skill.getSpellItemRelated())
                 .collect(Collectors.toList());
@@ -158,5 +160,16 @@ public class ControlledPersona extends Persona{
         }
 
         return affinities;
+    }
+
+    public boolean hasLearnedSkill(String spell_name) {
+        return learnedSkills.stream().anyMatch(x -> x.getSpellData().getSPELL_NAME().equalsIgnoreCase(spell_name));
+    }
+
+    public String[] getSkillNameList() {
+        return (String[]) learnedSkills.stream()
+                .map(spell -> spell.getSpellData().getSPELL_NAME())
+                .collect(Collectors.toList())
+                .toArray();
     }
 }

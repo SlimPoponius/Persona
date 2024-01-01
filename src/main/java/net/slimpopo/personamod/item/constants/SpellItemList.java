@@ -7,6 +7,7 @@ import net.slimpopo.personamod.item.constants.SpellItem;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class SpellItemList {
     private static Map<String, SpellItem> spellItemsForPersonas = new LinkedHashMap<String, SpellItem>(){
@@ -87,6 +88,12 @@ public class SpellItemList {
             }
         }
         return null;
+    }
+
+    public static SpellItem getSpellItemFromRandom(){
+        Random random = new Random();
+        Object[] values = spellItemsForPersonas.values().toArray();
+        return (SpellItem) values[random.nextInt(spellItemsForPersonas.size())];
     }
 
     public static ItemStack getItemStack(String spellName){
