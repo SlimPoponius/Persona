@@ -19,11 +19,14 @@ import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
 import net.slimpopo.personamod.capability.persona.impl.PlayerPersona;
 import net.slimpopo.personamod.client.ClientPersonaPlayerData;
 import net.slimpopo.personamod.client.ClientPersonaPlayerPersonaData;
+import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.damagesource.ModDamageTypes;
 import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
 import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerPersonasS2CPacket;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerSpS2CPacket;
+import net.slimpopo.personamod.networking.packet.PersonaPlayerUnlockS2CPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateS2CPacket;
 
 
 @Mod.EventBusSubscriber(modid = PersonaMod.MOD_ID)
@@ -33,7 +36,7 @@ public class ModEvents {
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event){
         if(event.getObject() instanceof Player){
             if(!event.getObject().getCapability(PlayerPersonaProvider.PLAYER_PERSONA).isPresent()){
-                event.addCapability(new ResourceLocation(PersonaMod.MOD_ID,"properties"),
+                event.addCapability(new ResourceLocation(PersonaMod.MOD_ID,"personadata"),
                         new PlayerPersonaProvider());
             }
         }
@@ -63,10 +66,15 @@ public class ModEvents {
                     playerPersona.addSP(3);
                     System.out.println("On Player Tick Player Id: " + event.player.getUUID());
                     System.out.println("Mod Event Current Sp: " + playerPersona.getSP());
-                    ModMessages.sendToPlayer(
-                            new PersonaPlayerSpS2CPacket(playerPersona.getSP(),playerPersona.getMaxSP()),
-                            ((ServerPlayer)event.player));
+
                 }
+                ModMessages.sendToPlayer(
+                        new PersonaPlayerSpS2CPacket(playerPersona.getSP(),playerPersona.getMaxSP()),
+                        ((ServerPlayer)event.player));
+//                ModMessages.sendToPlayer(
+//                        new PlayerPersonaUpdateS2CPacket(playerPersona.getPersonaParty(),
+//                                playerPersona.getPersonaCount())
+//                        ,((ServerPlayer)event.player));
 //                if(ClientPersonaPlayerPersonaData.getUpdatedStatus()){
 //                    playerPersona.getControlledPersonaFromIndex(ClientPersonaPlayerPersonaData.getPlayerPersonaIdx())
 //                            .getPersonaLevel()
@@ -76,7 +84,6 @@ public class ModEvents {
 //                    playerPersona.getControlledPersonaFromIndex(ClientPersonaPlayerPersonaData.getPlayerPersonaIdx())
 //                            .generateItemStacks();
 //                }
-
             });
         }
     }
@@ -88,6 +95,20 @@ public class ModEvents {
                 player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
                     ModMessages.sendToPlayer(
                             new PersonaPlayerSpS2CPacket(playerPersona.getSP(), playerPersona.getMaxSP()),player);
+                    ModMessages.sendToPlayer(
+                            new PlayerPersonaUpdateS2CPacket(playerPersona.getPersonaParty(),
+                                    playerPersona.getPersonaCount())
+                            ,player);
+
+                    if(playerPersona.getCurrentPersonaIndex() != -1) {
+                        ControlledPersona pPersona = playerPersona
+                                .getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex());
+                        ModMessages.sendToPlayer(new PersonaPlayerUnlockS2CPacket(playerPersona.unlockedPersonaUse(),
+                                        pPersona.getPersonaName(),
+                                        pPersona.getLearnedSkills().get(pPersona.getCurrentSelectedLearnedSkill())
+                                                .getSpellData().getSPELL_NAME())
+                                , player);
+                    }
                 });
             }
         }
@@ -104,5 +125,9 @@ public class ModEvents {
 
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerPickedUpPersona(PlayerEvent.ItemPickupEvent event){
     }
 }

@@ -11,6 +11,7 @@ import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.item.constants.card.ArcanaCardItem;
 import net.slimpopo.personamod.item.constants.card.PersonaCardItem;
 import net.slimpopo.personamod.item.constants.card.SkillCardItem;
+import net.slimpopo.personamod.item.constants.card.StatCardItem;
 import net.slimpopo.personamod.item.custom.spells.bless.*;
 import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaItem;
 import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaonItem;
@@ -205,6 +206,8 @@ public class ModItems {
 
     public static final RegistryObject<SkillCardItem> SKILLCARD = ITEMS.register("skillcard",
             () -> new SkillCardItem(new Item.Properties().stacksTo(1).durability(1)));
+    public static final RegistryObject<StatCardItem> STATCARD = ITEMS.register("statcard",
+            () -> new StatCardItem(new Item.Properties().stacksTo(1).durability(1)));
     public static final RegistryObject<PersonaCardItem> PERSONACARD = ITEMS.register("personacard",
             () -> new PersonaCardItem(new Item.Properties().stacksTo(1).durability(1)));
     public static final RegistryObject<ArcanaCardItem> ARCANACARD = ITEMS.register("arcanacard",

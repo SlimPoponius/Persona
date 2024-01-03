@@ -165,8 +165,6 @@ public class PlayerPersona implements IPlayerPersona {
     }
 
     public int getCurrentPersonaIndex() {
-        if(currentPersonaIndex == -1)
-            return 0;
         return currentPersonaIndex;
     }
 
@@ -177,7 +175,12 @@ public class PlayerPersona implements IPlayerPersona {
     public void setPersonas(List<ControlledPersona> personas) {
         this.personas = personas;
     }
-    public void addToCurrentPersonaListing(ControlledPersona cp){this.personas.add(cp);}
+    public void addToCurrentPersonaListing(ControlledPersona cp){
+        this.personas.add(cp);
+        if(this.personas.size() == 1){
+            this.currentPersonaIndex = 0;
+        }
+    }
 
     public int getPersonaCount(){ return personas.size();}
     public ControlledPersona getControlledPersonaFromIndex(int idx){
@@ -198,9 +201,10 @@ public class PlayerPersona implements IPlayerPersona {
         nbt.putBoolean("unlocked_personas",this.hasUnlockedPersonas);
         nbt.putBoolean("persona_released",this.hasPersonaReleased);
         nbt.putInt("current_persona",this.currentPersonaIndex);
+        nbt.putInt("persona_party_size", this.personas.size());
 
         for(int i = 0; i < 6;i++) {
-            if(i < personas.size() - 1) {
+            if(i < personas.size()) {
                 nbt.put("persona" + i, personas.get(i).createCompoundNBTData());
             }
             else{
@@ -211,21 +215,23 @@ public class PlayerPersona implements IPlayerPersona {
     }
 
     public void loadNBTData(CompoundTag nbt){
-        sp = nbt.getInt("sp");
-        maxSp = nbt.getInt("maxsp");
-        spLevel = nbt.getInt("splevel");
-        spExperienceNeeded = nbt.getInt("needed_experience");
-        currentSpExperience = nbt.getInt("current_experience");
-        hasUnlockedPersonas = nbt.getBoolean("unlocked_personas");
-        hasPersonaReleased = nbt.getBoolean("persona_released");
-        currentPersonaIndex = nbt.getInt("current_persona");
+        this.sp = nbt.getInt("sp");
+        this.maxSp = nbt.getInt("maxsp");
+        this.spLevel = nbt.getInt("splevel");
+        this.spExperienceNeeded = nbt.getInt("needed_experience");
+        this.currentSpExperience = nbt.getInt("current_experience");
+        this.hasUnlockedPersonas = nbt.getBoolean("unlocked_personas");
+        this.hasPersonaReleased = nbt.getBoolean("persona_released");
+        this.currentPersonaIndex = nbt.getInt("current_persona");
+        int partySize = nbt.getInt("persona_party_size");
 
-        for(int i = 0; i < 6;i++) {
+        for(int i = 0; i <partySize;i++) {
             ControlledPersona persona = new ControlledPersona();
             try{
-                personas.add(persona.readFromCompoundNbtData(nbt.get("persona" + i)));
+                this.personas.add(persona.readFromCompoundNbtData(nbt.get("persona" + i)));
             }
             catch (Throwable throwable){
+                System.out.println(throwable.getMessage());
                 break;
             }
         }
@@ -238,4 +244,7 @@ public class PlayerPersona implements IPlayerPersona {
                 .findFirst().isPresent();
     }
 
+    public List<ControlledPersona> getPersonaParty() {
+        return personas;
+    }
 }

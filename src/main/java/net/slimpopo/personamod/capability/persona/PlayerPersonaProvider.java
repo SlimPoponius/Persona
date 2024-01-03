@@ -23,7 +23,7 @@ public class PlayerPersonaProvider implements ICapabilityProvider, INBTSerializa
         if(null == this.playerPersona){
             this.playerPersona = new PlayerPersona();
         }
-        return  this.playerPersona;
+        return this.playerPersona;
     }
 
     @Override

@@ -92,6 +92,7 @@ public class ModCreativeModeTabs {
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.SKILLCARD.get());
                         pOutput.accept(ModItems.PERSONACARD.get());
+                        pOutput.accept(ModItems.STATCARD.get());
                         pOutput.accept(ModItems.ARCANACARD.get());
                     })
                     .build());

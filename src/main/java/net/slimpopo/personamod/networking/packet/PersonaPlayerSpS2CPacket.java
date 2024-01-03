@@ -38,7 +38,7 @@ public class PersonaPlayerSpS2CPacket {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
 
-            ClientPersonaPlayerData.set((float)currentSp/maxSp);
+            ClientPersonaPlayerData.set(currentSp,maxSp);
 
 
         });

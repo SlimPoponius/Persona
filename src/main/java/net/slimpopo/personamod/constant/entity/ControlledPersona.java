@@ -6,7 +6,6 @@ import net.minecraft.world.item.ItemStack;
 import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.entity.level.PersonaLevel;
 import net.slimpopo.personamod.constant.entity.level.SkillLearnedLevel;
-import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.item.constants.SpellItem;
 import net.slimpopo.personamod.item.constants.SpellItemList;
 
@@ -19,12 +18,16 @@ import java.util.stream.Collectors;
 public class ControlledPersona extends Persona{
 
 
-    private List<SpellItem> learnedSkills;
-    private List<SkillLearnedLevel> learnedSkillsFromLevel;
-    private List<ItemStack> learnedItems;
-    private List<String> learnedSkillList;
+    private List<SpellItem> learnedSkills = new ArrayList<>();
+    private List<SkillLearnedLevel> learnedSkillsFromLevel = new ArrayList<>();
+    private List<ItemStack> learnedItems = new ArrayList<>();
+    private List<String> learnedSkillList = new ArrayList<>();
+
     private PersonaLevel personaLevel;
+
     private UUID playerOwnerId;
+
+    private int currentSelectedLearnedSkill;
 
     public ControlledPersona(){
         super();
@@ -69,11 +72,12 @@ public class ControlledPersona extends Persona{
         learnedSkillList = learnedSkills.stream()
                 .map(n -> n.getSpellData().getSPELL_NAME())
                 .collect(Collectors.toList());
+
+        if(currentSelectedLearnedSkill == -1) currentSelectedLearnedSkill = 0;
     }
 
     private String returnSpellListing(){
         return learnedSkillList.stream()
-                .map(n -> n.toString())
                 .collect(Collectors.joining(",","",""));
     }
 
@@ -83,6 +87,7 @@ public class ControlledPersona extends Persona{
 
     public void setLearnedSkills(List<SpellItem> learnedSkills) {
         this.learnedSkills = learnedSkills;
+        generateLearnedSpellList();
     }
 
     public PersonaLevel getPersonaLevel() {
@@ -105,46 +110,69 @@ public class ControlledPersona extends Persona{
         CompoundTag personaNbt = new CompoundTag();
 
         //personaNbt.putUUID("owned_by",playerOwnerId);
+        personaNbt.putString("persona_name",getPersonaName());
         personaNbt.putInt("persona_strength",getSTRENGTH());
         personaNbt.putInt("persona_magic",getMAGIC());
         personaNbt.putInt("persona_endurance",getENDURANCE());
         personaNbt.putInt("persona_agility",getAGILITY());
         personaNbt.putInt("persona_luck",getLUCK());
-        personaNbt.putString("persona_str_against",getListString(getStrongAgainst()));
-        personaNbt.putString("persona_wk_against",getListString(getWeakAgainst()));
-        personaNbt.putString("persona_nil_against",getListString(getNullAgainst()));
-        personaNbt.putString("persona_abs_against",getListString(getAbsorbAgainst()));
-        personaNbt.putString("persona_abs_against",getListString(getReflectAgainst()));
+        personaNbt.putInt("cur_persona_sel_skill",getCurrentSelectedLearnedSkill());
+        personaNbt.putInt("learned_skills_size", learnedSkillsFromLevel.size());
+        personaNbt.putString("persona_str_against", getAffinityListAsString(getStrongAgainst()));
+        personaNbt.putString("persona_wk_against", getAffinityListAsString(getWeakAgainst()));
+        personaNbt.putString("persona_nil_against", getAffinityListAsString(getNullAgainst()));
+        personaNbt.putString("persona_abs_against", getAffinityListAsString(getAbsorbAgainst()));
+        personaNbt.putString("persona_abs_against", getAffinityListAsString(getReflectAgainst()));
         personaNbt.putString("persona_cur_skills",returnSpellListing());
         personaNbt.put("persona_level_data",personaLevel.createCompoundNBTData());
-
-        return null;
+        for(int i = 0; i < learnedSkillsFromLevel.size();i++){
+            personaNbt.put("learned_skill_"+i,
+                    learnedSkillsFromLevel.get(i).createCompoundNBTData());
+        }
+        return personaNbt;
     }
 
     public ControlledPersona readFromCompoundNbtData(Tag persona_data) {
         CompoundTag actualData = (CompoundTag)persona_data;
+        this.setPersonaName(actualData.getString("persona_name"));
         this.setSTRENGTH(actualData.getInt("persona_strength"));
         this.setMAGIC(actualData.getInt("persona_magic"));
         this.setENDURANCE(actualData.getInt("persona_endurance"));
         this.setAGILITY(actualData.getInt("persona_agility"));
         this.setLUCK(actualData.getInt("persona_luck"));
+        this.setCurrentSelectedLearnedSkill(actualData.getInt("cur_persona_sel_skill"));
         this.setStrongAgainst(convertToList(actualData.getString("persona_str_against")));
         this.setWeakAgainst(convertToList(actualData.getString("persona_wk_against")));
         this.setNullAgainst(convertToList(actualData.getString("persona_nil_against")));
         this.setAbsorbAgainst(convertToList(actualData.getString("persona_abs_against")));
         this.setAbsorbAgainst(convertToList(actualData.getString("persona_ref_against")));
         this.setLearnedSkills(getListFromData(actualData.getString("persona_cur_skills")));
-        PersonaLevel levelData = personaLevel.readCompoundNBTData(actualData.get("persona_level_data"));
+        this.personaLevel.readCompoundNBTData(actualData.get("persona_level_data"));
+
+        int sll = actualData.getInt("learned_skills_size");
+        for(int i = 0; i < sll;i++){
+            SkillLearnedLevel skillLearnedLevel = new SkillLearnedLevel();
+            learnedSkillsFromLevel.add(skillLearnedLevel.loadCompoundNBTData(actualData.get("learned_skill_"+i)));
+        }
+
+        generateLearnedSpellList();
+        generateItemStacks();
         return this;
     }
 
 
     private List<SpellItem> getListFromData(String stringData) {
-        var listFromString = Arrays.stream(stringData.split(",")).toList();
+        if(stringData.isEmpty())
+            return new ArrayList<>();
+
+        List<String> listFromString = new ArrayList<>(Arrays.stream(stringData.split(",")).toList());
+        listFromString.removeAll(Arrays.asList("",null));
         List<SpellItem> spellItems = new ArrayList<>();
 
-        for(String str: listFromString){
-            spellItems.add(SpellItemList.getSpellItem(str));
+        if(!listFromString.isEmpty()) {
+            for (String str : listFromString) {
+                spellItems.add(SpellItemList.getSpellItem(str));
+            }
         }
 
         return spellItems;
@@ -152,11 +180,17 @@ public class ControlledPersona extends Persona{
     }
 
     private List<Affinity> convertToList(String stringData) {
-        var listFromString = Arrays.stream(stringData.split(",")).toList();
+        if(stringData.isEmpty())
+            return new ArrayList<>();
+
+        List<String> listFromString = new ArrayList<>(Arrays.stream(stringData.split(",")).toList());
+        listFromString.removeAll(Arrays.asList("",null));
         List<Affinity> affinities = new ArrayList<>();
 
-        for(String str: listFromString){
-            affinities.add(Affinity.valueOf(str));
+        if(!listFromString.isEmpty()) {
+            for (String str : listFromString) {
+                affinities.add(Affinity.valueOf(str));
+            }
         }
 
         return affinities;
@@ -166,10 +200,17 @@ public class ControlledPersona extends Persona{
         return learnedSkills.stream().anyMatch(x -> x.getSpellData().getSPELL_NAME().equalsIgnoreCase(spell_name));
     }
 
+    public int getCurrentSelectedLearnedSkill() {
+        return currentSelectedLearnedSkill;
+    }
+
+    public void setCurrentSelectedLearnedSkill(int currentSelectedLearnedSkill) {
+        this.currentSelectedLearnedSkill = currentSelectedLearnedSkill;
+    }
+
     public String[] getSkillNameList() {
         return (String[]) learnedSkills.stream()
-                .map(spell -> spell.getSpellData().getSPELL_NAME())
-                .collect(Collectors.toList())
-                .toArray();
+                .map(spell -> spell.getSpellData().getSPELL_NAME()).toList()
+                .toArray(new String[learnedSkills.size()]);
     }
 }

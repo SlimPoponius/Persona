@@ -93,7 +93,9 @@ public class SpellItemList {
     public static SpellItem getSpellItemFromRandom(){
         Random random = new Random();
         Object[] values = spellItemsForPersonas.values().toArray();
-        return (SpellItem) values[random.nextInt(spellItemsForPersonas.size())];
+        int idx = Math.abs(random.nextInt() % spellItemsForPersonas.size());
+        SpellItem item = (SpellItem) values[idx];
+        return item;
     }
 
     public static ItemStack getItemStack(String spellName){

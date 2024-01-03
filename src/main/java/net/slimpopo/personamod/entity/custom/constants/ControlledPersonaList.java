@@ -35,7 +35,8 @@ public class ControlledPersonaList {
     public static ControlledPersona getRandomPersona(){
         Random random = new Random();
         Object[] values = personaCompendium.values().toArray();
-        if(personaCompendium.size() == 1) return (ControlledPersona) values[0];
-        return (ControlledPersona) values[random.nextInt(personaCompendium.size())];
+        //if(personaCompendium.size() == 1) return (ControlledPersona) values[0];
+        int idx = Math.abs(random.nextInt() % personaCompendium.size());
+        return (ControlledPersona) values[idx];
     }
 }

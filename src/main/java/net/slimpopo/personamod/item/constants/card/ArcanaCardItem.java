@@ -13,11 +13,14 @@ import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.item.ModItems;
 import net.slimpopo.personamod.item.constants.SpellItem;
 import org.jetbrains.annotations.Nullable;
+import org.stringtemplate.v4.ST;
+import software.bernie.shadowed.eliotlash.mclib.math.functions.classic.Mod;
 
 import java.util.List;
 import java.util.Random;
 
 public class ArcanaCardItem extends Item {
+
     public ArcanaCardItem(Properties pProperties) {
         super(pProperties);
     }
@@ -28,10 +31,11 @@ public class ArcanaCardItem extends Item {
 
         if(!pLevel.isClientSide){
             //determine if it will be a spell, status, or persona card.
-            ItemStack generatedItem = new ItemStack(generateCardItemType());
+            CardItem cardItem = generateCardItemType();
+            ItemStack generatedItem = new ItemStack(cardItem);
             addNbtDataToItem(generatedItem);
             //replace this item with new item;
-            pPlayer.getInventory().setPickedItem(generatedItem);
+            pPlayer.setItemInHand(pUsedHand,generatedItem);
         }
 
         return super.use(pLevel, pPlayer, pUsedHand);
@@ -39,13 +43,21 @@ public class ArcanaCardItem extends Item {
 
     private CardItem generateCardItemType() {
         Random random = new Random();
-        int cardType = random.nextInt() % 2;
+        int cardType = Math.abs(random.nextInt() % 3);
 
         switch (cardType){
             case 0:
-                return ModItems.PERSONACARD.get();
+                PersonaCardItem pCard = ModItems.PERSONACARD.get();
+                pCard.randomizeItemOnRightClick();
+                return pCard;
             case 1:
-                return ModItems.SKILLCARD.get();
+                SkillCardItem sCard = ModItems.SKILLCARD.get();
+                sCard.randomizeItemOnRightClick();
+                return sCard;
+            case 3:
+                StatCardItem stCard = ModItems.STATCARD.get();
+                stCard.randomizeItemOnRightClick();
+                return stCard;
         }
         return ModItems.SKILLCARD.get();
     }
@@ -59,14 +71,18 @@ public class ArcanaCardItem extends Item {
     public void addNbtDataToItem(ItemStack pStack){
         CompoundTag compoundTag = new CompoundTag();
         if(pStack.getItem() instanceof  PersonaCardItem personaCardItem){
-            compoundTag.putString("personamod.personacarddata", personaCardItem.getPersona().getPersonaName());
+            compoundTag.putString("personamod.personacarddata",
+                    personaCardItem.getPersona().getPersonaName());
         }
         else if(pStack.getItem() instanceof SkillCardItem skillCardItem){
             compoundTag.putString("personamod.skillcarddata", skillCardItem.getSpellItem()
                     .getSpellData().getSPELL_NAME());
-
         }
+        else if(pStack.getItem() instanceof StatCardItem statCardItem){
+            compoundTag.putString("personamod.statcarddata", statCardItem.getStatToUpdate());
+        }
+        System.out.println("compoundTag created");
         pStack.setTag(compoundTag);
-
+        System.out.println("compoundTag saved to item stack");
     }
 }

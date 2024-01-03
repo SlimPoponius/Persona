@@ -1,6 +1,7 @@
 package net.slimpopo.personamod.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
@@ -26,6 +27,9 @@ public class PersonaSpOverlay {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f,1.0f,1.0f,1.0f);
         RenderSystem.setShaderTexture(0,PERSONASP_UNDERLAY);
+
+        guiGraphics.drawString(Minecraft.getInstance().font,String.valueOf(ClientPersonaPlayerData.getCurSp())
+                ,x,y-60,0xFFFFFF);
 
         guiGraphics.blit(PERSONASP_UNDERLAY,x-94,y-54,0,
                 0,182,5,182,5);

@@ -14,6 +14,7 @@ import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.damage.DamageType;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.constant.spell.SpellLevel;
+import net.slimpopo.personamod.item.constants.SpellList;
 
 public class PyroJackRangedAttackGoal extends MeleeAttackGoal {
     private final PyroJackEntity entity;
@@ -21,9 +22,7 @@ public class PyroJackRangedAttackGoal extends MeleeAttackGoal {
     private int ticksUntilNextAttack = 20;
     private boolean shouldCountTillNextAttack = false;
 
-    private static final Spell AGI = new Spell("Agi","Light Fire damage to 1 foe.",
-            Affinity.FIRE, DamageType.LIGHT, SpellLevel.ONE_STAR, Blocks.MAGMA_BLOCK,
-            new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1));
+    private static final Spell AGI = SpellList.getSpellDataWithName("agi");
 
     public PyroJackRangedAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);

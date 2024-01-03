@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-31T21:44:25.6394875	Item Models: personamod
+// 1.20.1	2024-01-02T20:47:40.5407614	Item Models: personamod
 f509f99512c4d9036db41abd6782d7da700ea34c assets/personamod/models/item/agi.json
 f509f99512c4d9036db41abd6782d7da700ea34c assets/personamod/models/item/agidyne.json
 f509f99512c4d9036db41abd6782d7da700ea34c assets/personamod/models/item/agilao.json
@@ -71,6 +71,7 @@ cfe661c136349d5ea58077e87b5b9d363afef2e4 assets/personamod/models/item/personaca
 5c731aa48f1ad86291ada5ed5eef374cffef5ddf assets/personamod/models/item/psithrowable.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/personamod/models/item/pyro_jack_spawn_egg.json
 cfe661c136349d5ea58077e87b5b9d363afef2e4 assets/personamod/models/item/skillcard.json
+cfe661c136349d5ea58077e87b5b9d363afef2e4 assets/personamod/models/item/statcard.json
 b7dbe980772544771b0aac1c4be4485d3412ae8a assets/personamod/models/item/windthrowable.json
 d299d4f2ade64faab72fd9c21fcb992068ef22b1 assets/personamod/models/item/zio.json
 d299d4f2ade64faab72fd9c21fcb992068ef22b1 assets/personamod/models/item/ziodyne.json

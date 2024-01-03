@@ -12,7 +12,6 @@ public enum SpellLevel {
     private int level;
     private int range;
 
-
     SpellLevel(int level, int range) {
         this.level = level;
         this.range = range;

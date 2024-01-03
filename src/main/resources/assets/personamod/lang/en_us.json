@@ -80,6 +80,7 @@
   "item.personamod.skillcard":   "Skill Card",
   "item.personamod.personacard": "Persona Card",
   "item.personamod.arcanacard":  "Arcana Card",
+  "item.personamod.statcard":    "Stat Card",
 
   "item.personamod.pyro_jack_spawn_egg": "Pyro Jack Egg",
 
@@ -99,6 +100,10 @@
   "key.category.personamod.persona": "Persona Mod",
   "key.personamod.persona.summon": "Summon Persona",
   "key.personamod.persona.attack": "Persona Attack",
+  "key.personamod.persona.nextskill": "Next Persona Skill",
+  "key.personamod.persona.next": "Next Persona",
 
-  "menu.title.personamod.skillreplace" : "Replace Skill"
+  "menu.title.personamod.skillreplace" : "Replace Skill",
+
+  "key.personamod.personaname.pyro_jack": "Pyro Jack"
 }

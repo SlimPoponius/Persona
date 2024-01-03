@@ -1,34 +1,34 @@
-[31Dec2023 21:44:18.402] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\nickd\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.2.16, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, personamod, --all, --output, E:\Mincecraft Mod\Persona\src\generated\resources, --existing, E:\Mincecraft Mod\Persona\src\main\resources]
-[31Dec2023 21:44:18.407] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.2 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[31Dec2023 21:44:18.545] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[31Dec2023 21:44:18.594] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/nickd/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23132!/ Service=ModLauncher Env=CLIENT
-[31Dec2023 21:44:18.911] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.2.16\f577d6351d9e103670e660dbb191cabd05e2144b\javafmllanguage-1.20.1-47.2.16.jar is missing mods.toml file
-[31Dec2023 21:44:18.916] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.2.16\bda363aeb14759edae81402cdbfcd1a3bbcae360\lowcodelanguage-1.20.1-47.2.16.jar is missing mods.toml file
-[31Dec2023 21:44:18.921] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.2.16\b072fa4c6b9d05781e7fc62d4c649afa6745014\mclanguage-1.20.1-47.2.16.jar is missing mods.toml file
-[31Dec2023 21:44:18.926] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.2.16\3045b348d13183b8dd93d2f00413c6cac0d36c64\fmlcore-1.20.1-47.2.16.jar is missing mods.toml file
-[31Dec2023 21:44:19.004] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[31Dec2023 21:44:20.241] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[31Dec2023 21:44:20.244] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\nickd\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, personamod, --all, --output, E:\Mincecraft Mod\Persona\src\generated\resources, --existing, E:\Mincecraft Mod\Persona\src\main\resources]
-[31Dec2023 21:44:20.547] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using E:\Mincecraft Mod\Persona\build\createSrgToMcp\output.srg
-[31Dec2023 21:44:20.923] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [personamod]
-[31Dec2023 21:44:24.734] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.16, for MC 1.20.1 with MCP 20230612.114412
-[31Dec2023 21:44:24.738] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.16 Initialized
-[31Dec2023 21:44:24.791] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
-[31Dec2023 21:44:25.261] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/nickd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[31Dec2023 21:44:25.262] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/nickd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[31Dec2023 21:44:25.428] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: personamod
-[31Dec2023 21:44:25.534] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: personamod finished after 105 ms
-[31Dec2023 21:44:25.534] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id personamod
-[31Dec2023 21:44:25.620] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id personamod finished after 86 ms
-[31Dec2023 21:44:25.621] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id personamod
-[31Dec2023 21:44:25.621] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id personamod finished after 0 ms
-[31Dec2023 21:44:25.621] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[31Dec2023 21:44:25.622] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 0 ms
-[31Dec2023 21:44:25.622] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[31Dec2023 21:44:25.631] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 9 ms
-[31Dec2023 21:44:25.632] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: personamod
-[31Dec2023 21:44:25.632] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: personamod finished after 0 ms
-[31Dec2023 21:44:25.632] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[31Dec2023 21:44:25.638] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 6 ms
-[31Dec2023 21:44:25.638] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 211 ms
-[31Dec2023 21:44:25.659] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 77, old count: 76, new count: 78, removed stale: 0, written: 1
+[02Jan2024 20:47:33.149] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\nickd\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.2.16, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, personamod, --all, --output, E:\Mincecraft Mod\Persona\src\generated\resources, --existing, E:\Mincecraft Mod\Persona\src\main\resources]
+[02Jan2024 20:47:33.305] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.2 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[02Jan2024 20:47:33.434] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[02Jan2024 20:47:33.487] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/nickd/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23132!/ Service=ModLauncher Env=CLIENT
+[02Jan2024 20:47:33.819] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.2.16\f577d6351d9e103670e660dbb191cabd05e2144b\javafmllanguage-1.20.1-47.2.16.jar is missing mods.toml file
+[02Jan2024 20:47:33.823] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.2.16\bda363aeb14759edae81402cdbfcd1a3bbcae360\lowcodelanguage-1.20.1-47.2.16.jar is missing mods.toml file
+[02Jan2024 20:47:33.828] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.2.16\b072fa4c6b9d05781e7fc62d4c649afa6745014\mclanguage-1.20.1-47.2.16.jar is missing mods.toml file
+[02Jan2024 20:47:33.832] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\nickd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.2.16\3045b348d13183b8dd93d2f00413c6cac0d36c64\fmlcore-1.20.1-47.2.16.jar is missing mods.toml file
+[02Jan2024 20:47:33.913] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[02Jan2024 20:47:35.077] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[02Jan2024 20:47:35.079] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\nickd\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, personamod, --all, --output, E:\Mincecraft Mod\Persona\src\generated\resources, --existing, E:\Mincecraft Mod\Persona\src\main\resources]
+[02Jan2024 20:47:35.449] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using E:\Mincecraft Mod\Persona\build\createSrgToMcp\output.srg
+[02Jan2024 20:47:35.787] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [personamod]
+[02Jan2024 20:47:39.597] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.16, for MC 1.20.1 with MCP 20230612.114412
+[02Jan2024 20:47:39.600] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.16 Initialized
+[02Jan2024 20:47:39.651] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[02Jan2024 20:47:40.115] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/nickd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[02Jan2024 20:47:40.115] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/nickd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.16_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[02Jan2024 20:47:40.277] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: personamod
+[02Jan2024 20:47:40.399] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: personamod finished after 121 ms
+[02Jan2024 20:47:40.399] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id personamod
+[02Jan2024 20:47:40.520] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id personamod finished after 121 ms
+[02Jan2024 20:47:40.521] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id personamod
+[02Jan2024 20:47:40.521] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id personamod finished after 0 ms
+[02Jan2024 20:47:40.521] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[02Jan2024 20:47:40.522] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 0 ms
+[02Jan2024 20:47:40.522] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[02Jan2024 20:47:40.532] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 9 ms
+[02Jan2024 20:47:40.532] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: personamod
+[02Jan2024 20:47:40.532] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: personamod finished after 0 ms
+[02Jan2024 20:47:40.532] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[02Jan2024 20:47:40.539] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 6 ms
+[02Jan2024 20:47:40.539] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 262 ms
+[02Jan2024 20:47:40.583] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 78, old count: 77, new count: 79, removed stale: 0, written: 1

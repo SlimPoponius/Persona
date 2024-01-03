@@ -14,5 +14,9 @@ public class CardItem extends Item {
         super(pProperties);
     }
 
+    protected void randomizeItemOnRightClick(){
+
+    }
+
 
 }

@@ -8,6 +8,10 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.networking.packet.*;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateC2SPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateCurrentPersonaC2SPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateCurrentPersonaSkillC2SPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateS2CPacket;
 
 public class ModMessages {
     private static SimpleChannel INSTANCE;
@@ -54,6 +58,34 @@ public class ModMessages {
                 .decoder(PersonaPlayerPersonasS2CPacket::new)
                 .encoder(PersonaPlayerPersonasS2CPacket::toBytes)
                 .consumerMainThread(PersonaPlayerPersonasS2CPacket::handle)
+                .add();
+
+
+
+
+        //UPDATE PERSONA TEAMS/DATA
+        net.messageBuilder(PlayerPersonaUpdateC2SPacket.class,id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PlayerPersonaUpdateC2SPacket::new)
+                .encoder(PlayerPersonaUpdateC2SPacket::toBytes)
+                .consumerMainThread(PlayerPersonaUpdateC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(PlayerPersonaUpdateS2CPacket.class,id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PlayerPersonaUpdateS2CPacket::new)
+                .encoder(PlayerPersonaUpdateS2CPacket::toBytes)
+                .consumerMainThread(PlayerPersonaUpdateS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(PlayerPersonaUpdateCurrentPersonaSkillC2SPacket.class,id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PlayerPersonaUpdateCurrentPersonaSkillC2SPacket::new)
+                .encoder(PlayerPersonaUpdateCurrentPersonaSkillC2SPacket::toBytes)
+                .consumerMainThread(PlayerPersonaUpdateCurrentPersonaSkillC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(PlayerPersonaUpdateCurrentPersonaC2SPacket.class,id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PlayerPersonaUpdateCurrentPersonaC2SPacket::new)
+                .encoder(PlayerPersonaUpdateCurrentPersonaC2SPacket::toBytes)
+                .consumerMainThread(PlayerPersonaUpdateCurrentPersonaC2SPacket::handle)
                 .add();
 
         net.messageBuilder(PersonaPlayerUnlockS2CPacket.class,id(), NetworkDirection.PLAY_TO_CLIENT)

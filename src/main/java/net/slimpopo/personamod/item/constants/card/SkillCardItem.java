@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SkillCardItem extends CardItem implements MenuProvider {
+public class SkillCardItem extends CardItem {
     private final ItemStackHandler itemStackHandler = new ItemStackHandler(0);
     private LazyOptional<IItemHandler> lazYItemhandler = LazyOptional.empty();
 
@@ -38,7 +38,6 @@ public class SkillCardItem extends CardItem implements MenuProvider {
 
     public SkillCardItem(Properties pProperties) {
         super(pProperties);
-        this.spellItem = SpellItemList.getSpellItemFromRandom();
     }
 
     @Override
@@ -92,6 +91,7 @@ public class SkillCardItem extends CardItem implements MenuProvider {
                         Component.literal("Persona has learned skill: " + spellItem.getSpellData().getSPELL_NAME()));
             }
         }
+        pPlayer.setItemInHand(pUsedHand,ItemStack.EMPTY);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
@@ -117,15 +117,21 @@ public class SkillCardItem extends CardItem implements MenuProvider {
         return controlledPersona.getLearnedSkills().size() < val;
     }
 
-    @Override
-    public Component getDisplayName() {
-        return null;
-    }
+//    @Override
+//    public Component getDisplayName() {
+//        return null;
+//    }
+//
+//    @Nullable
+//    @Override
+//    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+//        return null;
+//    }
 
-    @Nullable
+
     @Override
-    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return null;
+    protected void randomizeItemOnRightClick() {
+        this.spellItem = SpellItemList.getSpellItemFromRandom();
     }
 
     @Override
@@ -134,8 +140,10 @@ public class SkillCardItem extends CardItem implements MenuProvider {
         if(pStack.hasTag()){
             spellItem = SpellItemList.getSpellItem(pStack.getTag().getString("personamod.skillcarddata"));
         }
-        pTooltipComponents.add(Component.literal("Skill: " + spellItem.getSpellData().getSPELL_NAME()));
 
+        if(null != spellItem) {
+            pTooltipComponents.add(Component.literal("Skill: " + spellItem.getSpellData().getSPELL_NAME()));
+        }
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 

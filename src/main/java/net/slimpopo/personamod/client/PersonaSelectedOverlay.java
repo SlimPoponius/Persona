@@ -29,13 +29,13 @@ public class PersonaSelectedOverlay {
                     0, 182, 33, 182, 33);
 
             guiGraphics.drawString(Minecraft.getInstance().font,currentSelectedPersona,65,
-                    20,0x000000);
+                    25,0xFF0000);
 
             guiGraphics.blit(PERSONA_SEL_OVERLAY, -10, 33, 0,
                     0, 182, 33, 182, 33);
 
-            guiGraphics.drawString(Minecraft.getInstance().font,currentSelectedPersonaSkill,65,
-                    20,0x000000);
+            guiGraphics.drawString(Minecraft.getInstance().font,currentSelectedPersonaSkill,55,
+                    48,0xFFFFFF);
 
         }
 

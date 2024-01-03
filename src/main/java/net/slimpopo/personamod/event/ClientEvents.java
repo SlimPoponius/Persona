@@ -13,12 +13,18 @@ import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
 import net.slimpopo.personamod.client.PersonaSelectedOverlay;
 import net.slimpopo.personamod.client.PersonaSpOverlay;
+import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaAttackC2SPacket;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerSpC2SPacket;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerSpS2CPacket;
 import net.slimpopo.personamod.networking.packet.PersonaSummonC2SPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateC2SPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateCurrentPersonaC2SPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateCurrentPersonaSkillC2SPacket;
 import net.slimpopo.personamod.util.KeyBinding;
+
+import java.util.Arrays;
 
 public class ClientEvents {
 
@@ -30,15 +36,14 @@ public class ClientEvents {
                 Minecraft.getInstance().player.sendSystemMessage(Component.literal("Summoned a Persona!"));
                 ModMessages.sendToServer(new PersonaSummonC2SPacket());
             }
+            if(KeyBinding.NEXT_PERSONA_SKILL_KEY.consumeClick()){
+                ModMessages.sendToServer(new PlayerPersonaUpdateCurrentPersonaSkillC2SPacket());
+            }
+            if(KeyBinding.NEXT_PERSONA_KEY.consumeClick()){
+                ModMessages.sendToServer(new PlayerPersonaUpdateCurrentPersonaC2SPacket());
+            }
             if(KeyBinding.ATTACK_KEY.consumeClick()){
                 Minecraft.getInstance().player.sendSystemMessage(Component.literal("Command Persona to attack!"));
-                Minecraft.getInstance().player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA)
-                        .ifPresent(playerPersona -> {
-                            playerPersona.subSP(15);
-                            ModMessages.sendToServer(new PersonaPlayerSpC2SPacket());
-                            System.out.println("Client Events Player Id: " + Minecraft.getInstance().player.getUUID());
-                            System.out.println("Client Events Current Sp: "+ playerPersona.getSP());
-                        });
                 ModMessages.sendToServer(new PersonaAttackC2SPacket());
             }
         }
@@ -51,6 +56,9 @@ public class ClientEvents {
         public static void onKeyRegister(RegisterKeyMappingsEvent event){
             event.register(KeyBinding.SUMMON_KEY);
             event.register(KeyBinding.ATTACK_KEY);
+            event.register(KeyBinding.NEXT_PERSONA_SKILL_KEY);
+            event.register(KeyBinding.NEXT_PERSONA_KEY);
+
         }
 
         @SubscribeEvent

@@ -11,6 +11,9 @@ public class Spell {
     private final Affinity AFFINITY;
     private final DamageType DAMAGE_TYPE;
     private final SpellLevel SPELL_LEVEL;
+    private final Integer spCost;
+    private final Float healthCost;
+
     private MobEffectInstance SPELL_EFFECT;
 
     private Block block;
@@ -21,10 +24,13 @@ public class Spell {
         AFFINITY = Affinity.PHYSICAL;
         DAMAGE_TYPE = DamageType.LIGHT;
         SPELL_LEVEL = SpellLevel.ONE_STAR;
+        healthCost = 0f;
+        spCost = 0;
     }
 
     public Spell(String spellName,String spellDesc,Affinity affinity,
-                 DamageType damageType, SpellLevel spellLevel, Block affectBlock, MobEffectInstance spellEffect){
+                 DamageType damageType, SpellLevel spellLevel, Block affectBlock, MobEffectInstance spellEffect,
+                 Integer spCost, Float healthCost){
         SPELL_NAME = spellName;
         SPELL_DESC = spellDesc;
         AFFINITY = affinity;
@@ -32,6 +38,8 @@ public class Spell {
         SPELL_LEVEL = spellLevel;
         SPELL_EFFECT = spellEffect;
         this.block = affectBlock;
+        this.healthCost = healthCost;
+        this.spCost = spCost;
 
     }
 
@@ -61,5 +69,13 @@ public class Spell {
 
     public Block getBlock() {
         return block;
+    }
+
+    public Float getHealthCost() {
+        return healthCost;
+    }
+
+    public Integer getSpCost() {
+        return spCost;
     }
 }

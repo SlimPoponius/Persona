@@ -19,17 +19,19 @@ import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerPersonasS2CPacket;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerSpS2CPacket;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerUnlockS2CPacket;
+import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateS2CPacket;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PersonaCardItem extends CardItem {
+    private final String personaNameKey = "key.personamod.personaname";
+
     private ControlledPersona persona;
 
     public PersonaCardItem(Properties pProperties) {
         super(pProperties);
-        this.persona = ControlledPersonaList.getRandomPersona();
     }
 
     @Override
@@ -47,6 +49,11 @@ public class PersonaCardItem extends CardItem {
                         if(playerPersona.unlockedPersonaUse() && playerPersona.getPersonaCount() < 6 &&
                            !playerPersona.findControlledPersonaWithName(persona.getPersonaName())){
                             playerPersona.addToCurrentPersonaListing(persona);
+                            postCompletionMessage(playerPersona);
+                            ModMessages.sendToPlayer(
+                                    new PlayerPersonaUpdateS2CPacket(playerPersona.getPersonaParty(),
+                                            playerPersona.getPersonaCount())
+                                    ,(ServerPlayer) pPlayer);
                         }
                         else if(playerPersona.getPersonaCount() > 6){
                             if(null != Minecraft.getInstance().player) {
@@ -58,7 +65,13 @@ public class PersonaCardItem extends CardItem {
                         else if(!playerPersona.unlockedPersonaUse()){
                             playerPersona.setPersonaFlag(true);
                             playerPersona.addToCurrentPersonaListing(persona);
-
+                            postCompletionMessage(playerPersona);
+                            ModMessages.sendToPlayer(new PersonaPlayerUnlockS2CPacket(playerPersona.unlockedPersonaUse(),
+                                            playerPersona.getControlledPersonaFromIndex(0)
+                                                    .getPersonaName(),
+                                            playerPersona.getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex())
+                                                    .getLearnedSkills().get(0).getSpellData().getSPELL_NAME())
+                                    ,(ServerPlayer) pPlayer);
                         }
                         else{
                             if(null != Minecraft.getInstance().player) {
@@ -67,40 +80,24 @@ public class PersonaCardItem extends CardItem {
                             }
                             hasFailed.set(true);
                         }
-                        ModMessages.sendToPlayer(new PersonaPlayerUnlockS2CPacket(playerPersona.unlockedPersonaUse(),
-                                playerPersona.getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex())
-                                        .getPersonaName(),
-                                playerPersona.getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex())
-                                        .getLearnedSkills().get(0).getSpellData().getSPELL_NAME()),
-                                (ServerPlayer) pPlayer);
-                        sendPersonaDataToClient((ServerPlayer) pPlayer,playerPersona,
-                                playerPersona.getControlledPersonaFromIndex(playerPersona.getPersonaCount()-1));
-
                     });
         }
         if(hasFailed.get()){
             return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
         }
-        if(null != Minecraft.getInstance().player) {
-            Minecraft.getInstance().player.sendSystemMessage(
-                    Component.literal("You have obtained: " + persona.getPersonaName()));
-        }
+
+        pPlayer.setItemInHand(pUsedHand,ItemStack.EMPTY);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
-    public void sendPersonaDataToClient(ServerPlayer pPlayer, PlayerPersona data, ControlledPersona controlledPersona){
-        ModMessages.sendToPlayer(
-                new PersonaPlayerPersonasS2CPacket(data.getCurrentPersonaIndex(),
-                        controlledPersona.getPersonaLevel().getCurrentLevel(),
-                        controlledPersona.getPersonaLevel().getCurrentXp(),
-                        controlledPersona.getPersonaLevel().getNeededXP(),
-                        controlledPersona.getSTRENGTH(),
-                        controlledPersona.getMAGIC(),
-                        controlledPersona.getAGILITY(),
-                        controlledPersona.getENDURANCE(),
-                        controlledPersona.getLUCK(), controlledPersona.getSkillNameList(),
-                        controlledPersona.getLearnedSkills().size())
-                , pPlayer);
+    private void postCompletionMessage(PlayerPersona playerPersona) {
+        if(null != Minecraft.getInstance().player) {
+            Minecraft.getInstance().player.sendSystemMessage(
+                    Component.literal("You have obtained: " + persona.getPersonaName() + "!"));
+            Minecraft.getInstance().player.sendSystemMessage(
+                    Component.literal("Your current party size is: " +
+                            playerPersona.getPersonaCount() + "!"));
+        }
     }
 
     @Override
@@ -109,11 +106,20 @@ public class PersonaCardItem extends CardItem {
             persona = ControlledPersonaList.getDataFromList(pStack
                     .getTag().getString("personamod.personacarddata"));
         }
-        pTooltipComponents.add(Component.literal("Persona: " + persona.getPersonaName()));
+
+        if(null != persona) {
+            pTooltipComponents.add(Component.translatable(personaNameKey +"."+ persona.getPersonaName()));
+        }
+
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
     public ControlledPersona getPersona() {
         return persona;
+    }
+
+    @Override
+    protected void randomizeItemOnRightClick() {
+        this.persona = ControlledPersonaList.getRandomPersona();
     }
 }

@@ -1,9 +1,8 @@
 package net.slimpopo.personamod.constant.entity;
 
 import net.slimpopo.personamod.constant.damage.Affinity;
-import net.slimpopo.personamod.constant.entity.level.PersonaLevel;
-import net.slimpopo.personamod.item.constants.SpellItem;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,11 +16,11 @@ public class Persona {
     private int AGILITY;
     private int LUCK;
 
-    private List<Affinity> StrongAgainst;
-    private List<Affinity> WeakAgainst;
-    private List<Affinity> NullAgainst;
-    private List<Affinity> AbsorbAgainst;
-    private List<Affinity> ReflectAgainst;
+    private List<Affinity> StrongAgainst = new ArrayList<>();
+    private List<Affinity> WeakAgainst = new ArrayList<>();
+    private List<Affinity> NullAgainst = new ArrayList<>();
+    private List<Affinity> AbsorbAgainst = new ArrayList<>();
+    private List<Affinity> ReflectAgainst = new ArrayList<>();
 
     private final int MAX_STAT = 99;
 
@@ -194,7 +193,9 @@ public class Persona {
         ReflectAgainst = reflectAgainst;
     }
 
-    public String getListString(List<Affinity> listing) {
+    public String getAffinityListAsString(List<Affinity> listing) {
+        if(null == listing)
+            return "";
         return listing.stream()
                 .map(n -> n.toString())
                 .collect(Collectors.joining(",","",""));
@@ -207,4 +208,25 @@ public class Persona {
     public void setPersonaName(String personaName) {
         this.personaName = personaName;
     }
+
+    public boolean checkStrength(){
+        return STRENGTH >= MAX_STAT;
+    }
+
+    public boolean checkMagic(){
+        return STRENGTH >= MAX_STAT;
+    }
+
+    public boolean checkEndurance(){
+        return STRENGTH >= MAX_STAT;
+    }
+
+    public boolean checkAgility(){
+        return STRENGTH >= MAX_STAT;
+    }
+
+    public boolean checkLuck(){
+        return STRENGTH >= MAX_STAT;
+    }
+
 }

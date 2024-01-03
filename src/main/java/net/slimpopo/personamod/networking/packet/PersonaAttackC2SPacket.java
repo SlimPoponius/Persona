@@ -1,13 +1,17 @@
 package net.slimpopo.personamod.networking.packet;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.entity.LevelEntityGetter;
 import net.minecraftforge.network.NetworkEvent;
+import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -30,21 +34,30 @@ public class PersonaAttackC2SPacket {
            //HERE ON SERVER
             ServerPlayer player = context.getSender();
             ServerLevel level = player.serverLevel();
+            player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA)
+                    .ifPresent(playerPersona -> {
 
-            //Check if Persona is already summoned
-            if(personaHasBeenSummoned(player,level)){
-                //getPersona Entity
-                ControlledPersonaEntity ownedEntity = getPersonaOwnedByPlayer(player,level);
-                //create and Add Persona Attack Goal
-//                ownedEntity.setCurrentSpellUsed("");
-                //add Attack Nearest Target Goal
+                        Minecraft.getInstance().player
+                                .sendSystemMessage(Component.literal("Current Persona skills learned: "
+                                        + Arrays.toString(playerPersona
+                                        .getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex())
+                                        .getLearnedSkills().stream().toArray())));
 
-                //remove the previous 2 goals from entity
-
-            }
-            else{
-                //Notify persona is not released
-            }
+                    });
+//            //Check if Persona is already summoned
+//            if(personaHasBeenSummoned(player,level)){
+//                //getPersona Entity
+//                ControlledPersonaEntity ownedEntity = getPersonaOwnedByPlayer(player,level);
+//                //create and Add Persona Attack Goal
+////                ownedEntity.setCurrentSpellUsed("");
+//                //add Attack Nearest Target Goal
+//
+//                //remove the previous 2 goals from entity
+//
+//            }
+//            else{
+//                //Notify persona is not released
+//            }
         });
         return true;
     }
