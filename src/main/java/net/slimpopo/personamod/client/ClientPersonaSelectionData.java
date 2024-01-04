@@ -10,8 +10,8 @@ public class ClientPersonaSelectionData {
 
     public static void set(String currentSelectedPersona, String currentSelectedPersonaSkill, boolean unlockedPersonas){
 
-        ClientPersonaSelectionData.currentSelectedPersonaSkill = currentSelectedPersona;
-        ClientPersonaSelectionData.currentSelectedPersona = currentSelectedPersonaSkill;
+        ClientPersonaSelectionData.currentSelectedPersonaSkill = currentSelectedPersonaSkill;
+        ClientPersonaSelectionData.currentSelectedPersona = currentSelectedPersona;
         ClientPersonaSelectionData.unlockedPersonas = unlockedPersonas;
         ClientPersonaSelectionData.updatedData = true;
     }

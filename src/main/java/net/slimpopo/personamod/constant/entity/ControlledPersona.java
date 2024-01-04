@@ -1,5 +1,6 @@
 package net.slimpopo.personamod.constant.entity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
@@ -9,10 +10,7 @@ import net.slimpopo.personamod.constant.entity.level.SkillLearnedLevel;
 import net.slimpopo.personamod.item.constants.SpellItem;
 import net.slimpopo.personamod.item.constants.SpellItemList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ControlledPersona extends Persona{
@@ -59,12 +57,11 @@ public class ControlledPersona extends Persona{
        learnedItems = new ArrayList<>();
         var skills = learnedSkillsFromLevel.stream()
                 .filter(skill -> personaLevel.getCurrentLevel() >= skill.getLevelRequired())
-                .map(skill -> skill.getSpellItemRelated())
-                .collect(Collectors.toList());
+                .map(SkillLearnedLevel::getSpellItemRelated).toList();
 
         for (SpellItem i: skills) {
             if(!learnedItems.contains(i))
-                learnedItems.add(new ItemStack(i));
+                learnedItems.add(new ItemStack(i,1));
         }
     }
 
@@ -109,7 +106,7 @@ public class ControlledPersona extends Persona{
     public CompoundTag createCompoundNBTData(){
         CompoundTag personaNbt = new CompoundTag();
 
-        //personaNbt.putUUID("owned_by",playerOwnerId);
+        personaNbt.putUUID("owned_by",playerOwnerId);
         personaNbt.putString("persona_name",getPersonaName());
         personaNbt.putInt("persona_strength",getSTRENGTH());
         personaNbt.putInt("persona_magic",getMAGIC());
@@ -134,6 +131,7 @@ public class ControlledPersona extends Persona{
 
     public ControlledPersona readFromCompoundNbtData(Tag persona_data) {
         CompoundTag actualData = (CompoundTag)persona_data;
+        this.setPlayerOwnerId(actualData.getUUID("owned_by"));
         this.setPersonaName(actualData.getString("persona_name"));
         this.setSTRENGTH(actualData.getInt("persona_strength"));
         this.setMAGIC(actualData.getInt("persona_magic"));
@@ -155,9 +153,28 @@ public class ControlledPersona extends Persona{
             learnedSkillsFromLevel.add(skillLearnedLevel.loadCompoundNBTData(actualData.get("learned_skill_"+i)));
         }
 
-        generateLearnedSpellList();
-        generateItemStacks();
+        updateAllSkillLists();
         return this;
+
+    }
+
+    public void updateAllSkillLists() {
+        generateLearnedSpellList();
+        generateLearnedSpellItemsList();
+        generateLearnedSkillList();
+        generateItemStacks();
+    }
+
+    private void generateLearnedSkillList() {
+        this.learnedSkillList = learnedSkillsFromLevel.stream()
+                .map(spellName -> spellName.getSpellItemRelated().getSpellData().getSPELL_NAME())
+                .collect(Collectors.toList());
+    }
+
+    private void generateLearnedSpellItemsList() {
+        this.learnedSkills = learnedSkillsFromLevel.stream()
+                .map(SkillLearnedLevel::getSpellItemRelated)
+                .collect(Collectors.toList());
     }
 
 
@@ -212,5 +229,9 @@ public class ControlledPersona extends Persona{
         return (String[]) learnedSkills.stream()
                 .map(spell -> spell.getSpellData().getSPELL_NAME()).toList()
                 .toArray(new String[learnedSkills.size()]);
+    }
+
+    public List<ItemStack> getLearnedItems() {
+        return learnedItems;
     }
 }

@@ -71,30 +71,30 @@ public class PlayerPersona implements IPlayerPersona {
 
     @Override
     public void addSP(int sp) {
-        if (sp >= maxSp) this.sp = maxSp;
+        if (this.sp + sp >= maxSp) this.sp = maxSp;
         else this.sp += sp;
     }
 
     @Override
     public void addSP() {
-        if (sp >= maxSp) this.sp = maxSp;
+        if (sp + 1 >= maxSp) this.sp = maxSp;
         else this.sp++;
     }
 
     public void subSP(){
-        if(sp <= MIN_SP) this.sp = MIN_SP;
+        if(sp - 1 <= MIN_SP) this.sp = MIN_SP;
         else this.sp--;
     }
 
     public void subSP(int sp){
-        if(sp <= MIN_SP) this.sp = MIN_SP;
+        if(this.sp - sp <= MIN_SP) this.sp = MIN_SP;
         else this.sp -= sp;
     }
 
     @Override
     public void setMaxSP(int maxSP) {
-        if(sp < MIN_SP) this.sp = MIN_SP;
-        else if (sp > MAX_SP) this.sp = MAX_SP;
+        if(maxSP <= MIN_SP) this.sp = MIN_SP;
+        else if (maxSP >= MAX_SP) this.sp = MAX_SP;
         else this.maxSp = maxSP;
     }
 

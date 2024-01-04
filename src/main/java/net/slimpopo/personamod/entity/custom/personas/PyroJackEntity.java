@@ -11,6 +11,7 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -98,7 +99,7 @@ public class PyroJackEntity extends PersonaEntity {
         this.goalSelector.addGoal(1,new PyroJackRangedAttackGoal( this,1.0D,
                 false));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-
+        this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this,Zombie.class,true));
 
     }

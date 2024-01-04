@@ -83,6 +83,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.persona_spawn_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.PYRO_JACK_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.PYRO_JACK_SUMMON_SPAWN_EGG.get());
                     })
                     .build());
 

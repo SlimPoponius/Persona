@@ -5,7 +5,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
@@ -17,11 +17,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-public class ControlledPersonaEntity extends TamableAnimal implements OwnableEntity {
+public class ControlledPersonaEntity extends TamableAnimal {
     private SpellList spellList = new SpellList();
     private ControlledPersona personaData;
 
-    protected ControlledPersonaEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel,
+    public ControlledPersonaEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel,
                                       ControlledPersona persona) {
         super(pEntityType, pLevel);
         this.personaData = persona;
@@ -29,7 +29,12 @@ public class ControlledPersonaEntity extends TamableAnimal implements OwnableEnt
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
+        super.registerGoals();
+        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D,
+                6.0F, 1.0F, false));
+        this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(7, new FloatGoal(this));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
     }
 
     public boolean hurt(DamageSource pSource, Spell spellInformation, float pAmount) {
@@ -60,29 +65,30 @@ public class ControlledPersonaEntity extends TamableAnimal implements OwnableEnt
         return null;
     }
 
-    @Override
-    public void addAdditionalSaveData(CompoundTag pCompound) {
-        super.addAdditionalSaveData(pCompound);
-        pCompound.put("persona_data",personaData.createCompoundNBTData());
+//    @Override
+//    public void addAdditionalSaveData(CompoundTag pCompound) {
+//        super.addAdditionalSaveData(pCompound);
+//        pCompound.put("persona_data",personaData.createCompoundNBTData());
+//    }
+
+//    @Override
+//    public void readAdditionalSaveData(CompoundTag pCompound) {
+//
+//        super.readAdditionalSaveData(pCompound);
+//        try{
+//            ControlledPersona cPersona = personaData.readFromCompoundNbtData(pCompound.get("persona_data"));
+//        }catch(Throwable throwable){
+//            this.die(damageSources().fellOutOfWorld());
+//        }
+//    }
+
+    public void setPersonaData(ControlledPersona personaData) {
+        this.personaData = personaData;
     }
 
-    @Override
-    public void readAdditionalSaveData(CompoundTag pCompound) {
-
-        super.readAdditionalSaveData(pCompound);
-        try{
-            ControlledPersona cPersona = personaData.readFromCompoundNbtData(pCompound.get("persona_data"));
-        }catch(Throwable throwable){
-            this.die(damageSources().fellOutOfWorld());
-        }
+    public ControlledPersona getPersonaData() {
+        return personaData;
     }
-
-    @Nullable
-    @Override
-    public UUID getOwnerUUID() {
-        return this.uuid;
-    }
-
 
     //    @Override
 //    public boolean killedEntity(ServerLevel pLevel, LivingEntity pEntity) {

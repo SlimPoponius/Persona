@@ -59,6 +59,7 @@ public class SpellItem extends Item {
             });
         }
 
+        pPlayer.getItemInHand(pUsedHand).shrink(1);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 

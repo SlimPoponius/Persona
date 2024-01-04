@@ -1,6 +1,7 @@
 package net.slimpopo.personamod.networking.packet.personanetwork;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
@@ -31,10 +32,11 @@ public class PlayerPersonaUpdateCurrentPersonaSkillC2SPacket {
             player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
 
                 ControlledPersona cp = playerPersona.getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex());
-                int skillIdx = (cp.getCurrentSelectedLearnedSkill() + 1 < cp.getLearnedSkills().size()-1)
+                int skillIdx = (cp.getCurrentSelectedLearnedSkill() + 1 < cp.getLearnedSkills().size())
                         ? cp.getCurrentSelectedLearnedSkill() + 1 : 0;
                 playerPersona.getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex())
                         .setCurrentSelectedLearnedSkill(skillIdx);
+
 
                 String currentPersona = cp.getPersonaName();
                 String currentPersonaSkill = cp.getLearnedSkills().get(cp.getCurrentSelectedLearnedSkill())

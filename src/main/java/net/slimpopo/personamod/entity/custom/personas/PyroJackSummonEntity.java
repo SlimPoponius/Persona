@@ -86,20 +86,9 @@ public class PyroJackSummonEntity extends ControlledPersonaEntity {
         this.walkAnimation.update(f,0.2f);
     }
 
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1,new PyroJackRangedAttackGoal( this,1.0D,
-                false));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this,Zombie.class,true));
-
-    }
-
     public static AttributeSupplier.Builder createAttributes(){
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20D)
+                .add(Attributes.MAX_HEALTH, 1D)
                 .add(Attributes.MOVEMENT_SPEED,0.25D);
     }
 

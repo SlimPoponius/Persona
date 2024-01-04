@@ -5,11 +5,15 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.entity.LevelEntityGetter;
 import net.minecraftforge.network.NetworkEvent;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
+import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
+import net.slimpopo.personamod.item.constants.SpellItem;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,27 +41,30 @@ public class PersonaAttackC2SPacket {
             player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA)
                     .ifPresent(playerPersona -> {
 
-                        Minecraft.getInstance().player
-                                .sendSystemMessage(Component.literal("Current Persona skills learned: "
-                                        + Arrays.toString(playerPersona
-                                        .getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex())
-                                        .getLearnedSkills().stream().toArray())));
+                        //Check if Persona is already summoned
+                        if(personaHasBeenSummoned(player,level)){
+                            //getPersona Entity
+                            ControlledPersona controlledPersona = playerPersona
+                                    .getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex());
+
+                            ItemStack spellChosen = controlledPersona.getLearnedItems()
+                                    .get(controlledPersona.getCurrentSelectedLearnedSkill());
+
+                            ItemStack heldItem = player.getMainHandItem();
+
+                            player.setItemInHand(InteractionHand.MAIN_HAND, spellChosen);
+                            player.getMainHandItem().use(level,player,InteractionHand.MAIN_HAND);
+                            player.setItemInHand(InteractionHand.MAIN_HAND,heldItem);
+                        }
+                        else{
+                            //Notify persona is not released
+                            Minecraft.getInstance().player
+                                    .sendSystemMessage(
+                                            Component.literal("You have not released you persona to use a skill."));
+                        }
 
                     });
-//            //Check if Persona is already summoned
-//            if(personaHasBeenSummoned(player,level)){
-//                //getPersona Entity
-//                ControlledPersonaEntity ownedEntity = getPersonaOwnedByPlayer(player,level);
-//                //create and Add Persona Attack Goal
-////                ownedEntity.setCurrentSpellUsed("");
-//                //add Attack Nearest Target Goal
-//
-//                //remove the previous 2 goals from entity
-//
-//            }
-//            else{
-//                //Notify persona is not released
-//            }
+
         });
         return true;
     }

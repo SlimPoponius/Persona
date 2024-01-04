@@ -99,6 +99,7 @@ public class SkillCardItem extends CardItem {
         controlledPersona
                 .addSkillToSkillList(new SkillLearnedLevel(0
                         , spellItem));
+        controlledPersona.updateAllSkillLists();
         ModMessages.sendToPlayer(
                 new PersonaPlayerPersonasS2CPacket(data.getCurrentPersonaIndex(),
                         controlledPersona.getPersonaLevel().getCurrentLevel(),

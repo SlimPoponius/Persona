@@ -24,21 +24,22 @@ import java.util.Random;
 public class SkillThrowable{
 
     public void  getBlockArea(BlockPos bPos, Level pLevel, Spell spellInformation){
-        int sideWidth = spellInformation.getSPELL_LEVEL().getRange()/2;
-        int sideLength = spellInformation.getSPELL_LEVEL().getRange()/2;
+        if(null != spellInformation) {
+            int sideWidth = spellInformation.getSPELL_LEVEL().getRange() / 2;
+            int sideLength = spellInformation.getSPELL_LEVEL().getRange() / 2;
 
-        BlockPos pos = bPos.relative(Direction.DOWN);
-        BlockState affectState = spellInformation.getBlock().defaultBlockState();
+            BlockPos pos = bPos.relative(Direction.DOWN);
+            BlockState affectState = spellInformation.getBlock().defaultBlockState();
 
 
-        if(sideLength < 1 && sideWidth <  1){
-            pLevel.setBlock(pos.above(), affectState, 11);
-        }
-        else {
-            for (int i = -sideLength; i < sideLength; i++) {
-                for (int j = -sideWidth; j < sideWidth; j++) {
-                    BlockPos tempPos = pos.offset(i, 0, j);
-                    pLevel.setBlock(tempPos.above(), affectState, 11);
+            if (sideLength < 1 && sideWidth < 1) {
+                pLevel.setBlock(pos.above(), affectState, 11);
+            } else {
+                for (int i = -sideLength; i < sideLength; i++) {
+                    for (int j = -sideWidth; j < sideWidth; j++) {
+                        BlockPos tempPos = pos.offset(i, 0, j);
+                        pLevel.setBlock(tempPos.above(), affectState, 11);
+                    }
                 }
             }
         }
@@ -46,38 +47,39 @@ public class SkillThrowable{
 
     public void  getBlockAreaForMaSpells(BlockPos bPos, Level pLevel, Spell spellInformation,
                                          boolean isBlock, boolean hasChangeBlock){
-        int sideWidth = spellInformation.getSPELL_LEVEL().getRange()/2;
-        int sideLength = spellInformation.getSPELL_LEVEL().getRange()/2;
+        if(null != spellInformation) {
+            int sideWidth = spellInformation.getSPELL_LEVEL().getRange() / 2;
+            int sideLength = spellInformation.getSPELL_LEVEL().getRange() / 2;
 
-        BlockPos pos = bPos;
-        BlockState affectStateBlockChange = null;
-        if(!isBlock)
-            pos = bPos.relative(Direction.DOWN);
-        if(hasChangeBlock)
-            affectStateBlockChange = spellInformation.getBlock().defaultBlockState();
-        BlockState affectState = pLevel.getBlockState(pos);
+            BlockPos pos = bPos;
+            BlockState affectStateBlockChange = null;
+            if (!isBlock)
+                pos = bPos.relative(Direction.DOWN);
+            if (hasChangeBlock)
+                affectStateBlockChange = spellInformation.getBlock().defaultBlockState();
+            BlockState affectState = pLevel.getBlockState(pos);
 
 
-        if(sideLength < 1 && sideWidth <  1){
-            if(changeBlockType() && hasChangeBlock)
-                pLevel.setBlock(pos.above(), affectStateBlockChange, 11);
-            damageEntityAndMaybeGiveEffect(pLevel, spellInformation, pos, affectState,
-                    checkForElectricAffinity(spellInformation.getAFFINITY()),
-                    checkForNuclearAffinity(spellInformation.getAFFINITY()),
-                    checkForWindAffinity(spellInformation.getAFFINITY()));
+            if (sideLength < 1 && sideWidth < 1) {
+                if (changeBlockType() && hasChangeBlock)
+                    pLevel.setBlock(pos.above(), affectStateBlockChange, 11);
+                damageEntityAndMaybeGiveEffect(pLevel, spellInformation, pos, affectState,
+                        checkForElectricAffinity(spellInformation.getAFFINITY()),
+                        checkForNuclearAffinity(spellInformation.getAFFINITY()),
+                        checkForWindAffinity(spellInformation.getAFFINITY()));
 
-        }
-        else {
-            for(int i = -sideLength ; i < sideLength; i++){
-                for(int j = -sideWidth ; j< sideWidth;j++) {
-                    affectState = pLevel.getBlockState(pos);
-                    if(changeBlockType() && hasChangeBlock)
-                        pLevel.setBlock(pos.above(), affectStateBlockChange, 11);
-                    damageEntityAndMaybeGiveEffect(pLevel, spellInformation, pos.offset(i,0,j),
-                            affectState, checkForElectricAffinity(spellInformation.getAFFINITY()),
-                            checkForNuclearAffinity(spellInformation.getAFFINITY()),
-                            checkForWindAffinity(spellInformation.getAFFINITY()));
+            } else {
+                for (int i = -sideLength; i < sideLength; i++) {
+                    for (int j = -sideWidth; j < sideWidth; j++) {
+                        affectState = pLevel.getBlockState(pos);
+                        if (changeBlockType() && hasChangeBlock)
+                            pLevel.setBlock(pos.above(), affectStateBlockChange, 11);
+                        damageEntityAndMaybeGiveEffect(pLevel, spellInformation, pos.offset(i, 0, j),
+                                affectState, checkForElectricAffinity(spellInformation.getAFFINITY()),
+                                checkForNuclearAffinity(spellInformation.getAFFINITY()),
+                                checkForWindAffinity(spellInformation.getAFFINITY()));
 
+                    }
                 }
             }
         }
@@ -86,27 +88,28 @@ public class SkillThrowable{
 
     public void  getBlockAreaForMudoSpells(BlockPos bPos, Level pLevel, Spell spellInformation,
                                            boolean isBlock, float chanceIncrease){
-        int sideWidth = spellInformation.getSPELL_LEVEL().getRange()/2;
-        int sideLength = spellInformation.getSPELL_LEVEL().getRange()/2;
+        if(null != spellInformation) {
+            int sideWidth = spellInformation.getSPELL_LEVEL().getRange() / 2;
+            int sideLength = spellInformation.getSPELL_LEVEL().getRange() / 2;
 
-        BlockPos pos = bPos;
-        if(!isBlock)
-            pos = bPos.relative(Direction.DOWN);
-        BlockState affectState = pLevel.getBlockState(pos);
+            BlockPos pos = bPos;
+            if (!isBlock)
+                pos = bPos.relative(Direction.DOWN);
+            BlockState affectState = pLevel.getBlockState(pos);
 
-        if(Objects.isNull(chanceIncrease)){
-            chanceIncrease = 0.0f;
-        }
+            if (Objects.isNull(chanceIncrease)) {
+                chanceIncrease = 0.0f;
+            }
 
-        if(sideLength < 1 && sideWidth <  1){
-            damageEntityForInstaKill(pLevel, spellInformation,pos, affectState,chanceIncrease);
-        }
-        else {
-            for(int i = -sideLength ; i < sideLength; i++){
-                for(int j = -sideWidth ; j< sideWidth;j++) {
-                    affectState = pLevel.getBlockState(pos);
-                    damageEntityForInstaKill(pLevel, spellInformation, pos.offset(i,0,j),
-                            affectState,chanceIncrease);
+            if (sideLength < 1 && sideWidth < 1) {
+                damageEntityForInstaKill(pLevel, spellInformation, pos, affectState, chanceIncrease);
+            } else {
+                for (int i = -sideLength; i < sideLength; i++) {
+                    for (int j = -sideWidth; j < sideWidth; j++) {
+                        affectState = pLevel.getBlockState(pos);
+                        damageEntityForInstaKill(pLevel, spellInformation, pos.offset(i, 0, j),
+                                affectState, chanceIncrease);
+                    }
                 }
             }
         }
@@ -188,25 +191,25 @@ public class SkillThrowable{
     }
 
     public void  getBlockArea(BlockPos bPos, int width, int length, Level pLevel, Spell spellInformation){
-        int sideWidth = spellInformation.getSPELL_LEVEL().getRange()/2;
-        int sideLength = spellInformation.getSPELL_LEVEL().getRange()/2;
+        if(null != spellInformation) {
+            int sideWidth = spellInformation.getSPELL_LEVEL().getRange() / 2;
+            int sideLength = spellInformation.getSPELL_LEVEL().getRange() / 2;
 
-        BlockPos pos = bPos.relative(Direction.DOWN);
-        BlockState affectState = spellInformation.getBlock().defaultBlockState();
+            BlockPos pos = bPos.relative(Direction.DOWN);
+            BlockState affectState = spellInformation.getBlock().defaultBlockState();
 
 
-        if(sideLength < 1 && sideWidth <  1){
-            pLevel.setBlock(pos.above(), affectState, 11);
-        }
-        else {
-            for (int i = -sideLength; i < sideLength; i++) {
-                for (int j = -sideWidth; j < sideWidth; j++) {
-                    BlockPos tempPos = pos.offset(i, 0, j);
-                    pLevel.setBlock(tempPos.above(), affectState, 11);
+            if (sideLength < 1 && sideWidth < 1) {
+                pLevel.setBlock(pos.above(), affectState, 11);
+            } else {
+                for (int i = -sideLength; i < sideLength; i++) {
+                    for (int j = -sideWidth; j < sideWidth; j++) {
+                        BlockPos tempPos = pos.offset(i, 0, j);
+                        pLevel.setBlock(tempPos.above(), affectState, 11);
+                    }
                 }
             }
         }
-
     }
 
 

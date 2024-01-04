@@ -48,6 +48,7 @@ public class PersonaCardItem extends CardItem {
                     .ifPresent(playerPersona -> {
                         if(playerPersona.unlockedPersonaUse() && playerPersona.getPersonaCount() < 6 &&
                            !playerPersona.findControlledPersonaWithName(persona.getPersonaName())){
+                            persona.setPlayerOwnerId(pPlayer.getUUID());
                             playerPersona.addToCurrentPersonaListing(persona);
                             postCompletionMessage(playerPersona);
                             ModMessages.sendToPlayer(
@@ -64,6 +65,7 @@ public class PersonaCardItem extends CardItem {
                         }
                         else if(!playerPersona.unlockedPersonaUse()){
                             playerPersona.setPersonaFlag(true);
+                            persona.setPlayerOwnerId(pPlayer.getUUID());
                             playerPersona.addToCurrentPersonaListing(persona);
                             postCompletionMessage(playerPersona);
                             ModMessages.sendToPlayer(new PersonaPlayerUnlockS2CPacket(playerPersona.unlockedPersonaUse(),

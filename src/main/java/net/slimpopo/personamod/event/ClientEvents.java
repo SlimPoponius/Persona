@@ -33,7 +33,6 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event){
             if(KeyBinding.SUMMON_KEY.consumeClick()){
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("Summoned a Persona!"));
                 ModMessages.sendToServer(new PersonaSummonC2SPacket());
             }
             if(KeyBinding.NEXT_PERSONA_SKILL_KEY.consumeClick()){
@@ -43,7 +42,6 @@ public class ClientEvents {
                 ModMessages.sendToServer(new PlayerPersonaUpdateCurrentPersonaC2SPacket());
             }
             if(KeyBinding.ATTACK_KEY.consumeClick()){
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("Command Persona to attack!"));
                 ModMessages.sendToServer(new PersonaAttackC2SPacket());
             }
         }

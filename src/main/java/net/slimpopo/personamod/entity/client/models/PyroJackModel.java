@@ -14,6 +14,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.slimpopo.personamod.entity.animations.ModAnimationDefinition;
 import net.slimpopo.personamod.entity.custom.personas.PyroJackEntity;
+import net.slimpopo.personamod.entity.custom.personas.PyroJackSummonEntity;
 
 public class PyroJackModel<T extends Entity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
@@ -110,11 +111,21 @@ public class PyroJackModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw,headPitch,ageInTicks);
 
-		this.animate(((PyroJackEntity)entity).idleAnimationState,
-				ModAnimationDefinition.PERSONA_PYROJACK_IDLE,ageInTicks,1f);
+		if(entity instanceof PyroJackEntity) {
+			this.animate(((PyroJackEntity) entity).idleAnimationState,
+					ModAnimationDefinition.PERSONA_PYROJACK_IDLE, ageInTicks, 1f);
 
-		this.animate(((PyroJackEntity)entity).attackAnimationState,
-				ModAnimationDefinition.PERSONA_PYROJACK_ATTACK,ageInTicks,1f);
+			this.animate(((PyroJackEntity) entity).attackAnimationState,
+					ModAnimationDefinition.PERSONA_PYROJACK_ATTACK, ageInTicks, 1f);
+		}
+
+		if(entity instanceof PyroJackSummonEntity) {
+			this.animate(((PyroJackSummonEntity) entity).idleAnimationState,
+					ModAnimationDefinition.PERSONA_PYROJACK_IDLE, ageInTicks, 1f);
+
+			this.animate(((PyroJackSummonEntity) entity).attackAnimationState,
+					ModAnimationDefinition.PERSONA_PYROJACK_ATTACK, ageInTicks, 1f);
+		}
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw,float pHeadPitch,float pAgeInTicks){

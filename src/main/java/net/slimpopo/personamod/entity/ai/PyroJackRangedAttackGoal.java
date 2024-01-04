@@ -42,7 +42,7 @@ public class PyroJackRangedAttackGoal extends MeleeAttackGoal {
     public void start() {
         super.start();
         this.attackDelay = 40;
-        this.ticksUntilNextAttack = 40;
+        this.ticksUntilNextAttack = 80;
     }
 
     @Override

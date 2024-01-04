@@ -35,6 +35,6 @@ public class MaragidyneItem extends SpellItem {
             pLevel.addFreshEntity(projectile);
         }
 
-        return InteractionResultHolder.sidedSuccess(itemStack,pLevel.isClientSide);
+        return super.use(pLevel,pPlayer,pUsedHand);
     }
 }
