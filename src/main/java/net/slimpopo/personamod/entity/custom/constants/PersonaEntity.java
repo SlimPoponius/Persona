@@ -1,5 +1,6 @@
 package net.slimpopo.personamod.entity.custom.constants;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
@@ -11,7 +12,7 @@ public class PersonaEntity extends PathfinderMob{
     private SpellList spellList = new SpellList();
     private final MobPersona personaData;
 
-    protected PersonaEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel, MobPersona mobPersona) {
+    public PersonaEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel, MobPersona mobPersona) {
         super(pEntityType, pLevel);
         this.personaData = mobPersona;
         this.xpReward = 3 * personaData.getLEVEL();
@@ -42,4 +43,5 @@ public class PersonaEntity extends PathfinderMob{
     public MobPersona getPersonaData() {
         return personaData;
     }
+
 }

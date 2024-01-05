@@ -27,3 +27,5 @@ forge*changelog.txt
 /run-data/
 /run-data/
 E:\Mincecraft Mod\Persona\run-data
+/src/generated/resources/.cache/
+/run-data/logs/
