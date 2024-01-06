@@ -5,8 +5,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
 import net.slimpopo.personamod.constant.damage.Affinity;
+import net.slimpopo.personamod.constant.entity.level.DamageLevelIdentifier;
 import net.slimpopo.personamod.constant.entity.level.PersonaLevel;
 import net.slimpopo.personamod.constant.entity.level.SkillLearnedLevel;
+import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.item.constants.SpellItem;
 import net.slimpopo.personamod.item.constants.SpellItemList;
 
@@ -233,5 +235,64 @@ public class ControlledPersona extends Persona{
 
     public List<ItemStack> getLearnedItems() {
         return learnedItems;
+    }
+
+    @Override
+    public float getDamageNumberBasedOnSpell(Spell spell, Persona source) {
+        int level = 1;
+
+
+        if(spell.isHasBeenRepelled() && this.getReflectAgainst().contains(spell.getAFFINITY())){
+            return 0f;
+        }
+
+        float base_power = (float)(Math.max(Math.sqrt(spell.getDAMAGE_TYPE().getDamageMultiplier()) *
+                Math.sqrt(source.getCorrespondingStatToSpell(spell)),1));
+
+        float total_power = (float) (base_power/(Math.sqrt((source.getENDURANCE() * 8))));
+
+        if(source instanceof ControlledPersona cp) {
+            level = cp.getPersonaLevel().getCurrentLevel();
+        }
+
+        if(source instanceof MobPersona cp) {
+            level = cp.getLEVEL();
+        }
+
+        float damageScaleBasedOnLevel = DamageLevelIdentifier
+                .getDamageMultiplierBasedOnLevel(level, this.getPersonaLevel().getCurrentLevel());
+
+        float damageScaleBasedOnElement = this.checkAffinityResistance(spell);
+
+        return total_power * damageScaleBasedOnElement * damageScaleBasedOnLevel;
+    }
+
+    public void CheckForUpdate(){
+        if(personaLevel.isHasLeveledUp()){
+            updateStats();
+            updateAllSkillLists();
+            personaLevel.setHasLeveledUp(false);
+        }
+    }
+
+    private void updateStats() {
+        for(int i =0; i< 3; i++){
+            addStatPointToRandomStat();
+        }
+    }
+
+    private void addStatPointToRandomStat() {
+        Random random = new Random();
+        int chosenStat = Math.abs(random.nextInt()%5);
+
+        switch (chosenStat){
+            default -> addSTRENGTH(1);
+            case 0 -> addSTRENGTH(1);
+            case 1 -> addMAGIC(1);
+            case 2 -> addAGILITY(1);
+            case 3 -> addENDURANCE(1);
+            case 4 -> addLUCK(1);
+        }
+
     }
 }

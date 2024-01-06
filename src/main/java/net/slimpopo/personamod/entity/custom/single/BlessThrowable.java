@@ -12,50 +12,39 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.entity.custom.SkillThrowable;
+import net.slimpopo.personamod.entity.custom.projectile.PersonaThrowableItemProjectile;
 import net.slimpopo.personamod.item.ModItems;
 
-public class BlessThrowable extends ThrowableItemProjectile {
+public class BlessThrowable extends PersonaThrowableItemProjectile {
 
     private Spell spellInformation;
 
     public BlessThrowable(EntityType<? extends ThrowableItemProjectile> entityType, Level pLevel){
-        super(entityType,pLevel);
+        super(entityType,pLevel, null);
     }
 
     public BlessThrowable(Level pLevel){
-        super(ModEntities.BLESS_THROWABLE.get(),pLevel);
+        super(ModEntities.BLESS_THROWABLE.get(),pLevel, null);
     }
 
     public BlessThrowable(Level pLevel, LivingEntity livingEntity){
-        super(ModEntities.BLESS_THROWABLE.get(), livingEntity, pLevel);
+        super(ModEntities.BLESS_THROWABLE.get(), livingEntity, pLevel, null);
     }
 
     public BlessThrowable(Level pLevel, Spell spellData) {
-        super(ModEntities.BLESS_THROWABLE.get(), pLevel);
+        super(ModEntities.BLESS_THROWABLE.get(), pLevel, spellData);
     }
 
     public BlessThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation) {
-        super(ModEntities.BLESS_THROWABLE.get(), livingEntity,pLevel);
+        super(ModEntities.BLESS_THROWABLE.get(), livingEntity,pLevel, spellInformation);
         this.spellInformation = spellInformation;
 
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult pResult) {
-        Level pLevel = this.level();
-
-        if(!pLevel.isClientSide){
-            this.level().broadcastEntityEvent(this, (byte)3);
-            SkillThrowable projectile = new SkillThrowable();
-            projectile.getBlockArea(pResult.getBlockPos(),pLevel,spellInformation);
-        }
-
-        this.discard();
-        super.onHitBlock(pResult);
-    }
-
-    @Override
     protected void onHitEntity(EntityHitResult pResult) {
+        super.onHitEntity(pResult);
+
         if (!this.level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte)3);
 
@@ -63,8 +52,6 @@ public class BlessThrowable extends ThrowableItemProjectile {
 
             if (!entity.fireImmune()) {
                 Entity entity1 = this.getOwner();
-                entity.hurt(this.damageSources().playerAttack(Minecraft.getInstance().player), 5.0F);
-
                 if (entity1 instanceof LivingEntity) {
 
                     this.doEnchantDamageEffects((LivingEntity)entity1, entity);
@@ -73,7 +60,6 @@ public class BlessThrowable extends ThrowableItemProjectile {
         }
 
         this.discard();
-        super.onHitEntity(pResult);
     }
 
 

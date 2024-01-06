@@ -42,6 +42,8 @@ public class PlayerPersonaProvider implements ICapabilityProvider, INBTSerializa
         return nbt;
     }
 
+
+
     @Override
     public void deserializeNBT(CompoundTag nbt) {
         createPlayerPersona().loadNBTData(nbt);

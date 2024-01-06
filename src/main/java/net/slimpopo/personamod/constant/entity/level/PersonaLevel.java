@@ -1,7 +1,9 @@
 package net.slimpopo.personamod.constant.entity.level;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.item.constants.SpellItem;
 
@@ -9,10 +11,12 @@ import java.util.List;
 
 public class PersonaLevel {
     private int currentXp;
-    private int neededXP;
+    private int neededXP = 15;
 
     private int currentLevel;
     private int maxLevel = 99;
+
+    private boolean hasLeveledUp;
 
     public PersonaLevel(int currentLevel){
         this.currentLevel = currentLevel;
@@ -38,54 +42,23 @@ public class PersonaLevel {
     }
 
     public void addExperience(int experience,int enemyLevel){
-        currentXp += calculateExperienceFromLevelDifference(experience, enemyLevel);
+        currentXp += ExperienceLevelIdentifier.calculateExperienceFromLevelDifference(experience, enemyLevel,currentLevel);
         if(canLevelUp()){
             levelUp();
         }
     }
 
-    public int getExperienceTotal(int experience,int enemyLevel){
-        return calculateExperienceFromLevelDifference(experience, enemyLevel);
-    }
-
-    private int calculateExperienceFromLevelDifference(int experience, int enemyLevel) {
-        int levelDiff = enemyLevel - this.currentLevel;
-
-        if(levelDiff > 10)
-            levelDiff = 10;
-        else if(levelDiff < -10)
-            levelDiff = -10;
-
-        float multiplier = switch (levelDiff){
-            case -10 ->   .247f;
-            case -9  ->   .284f;
-            case -8  ->   .327f;
-            case -7  ->   .376f;
-            case -6  ->   .432f;
-            case -5  ->   .497f;
-            case -4  ->   .572f;
-            case -3  ->   .658f;
-            case -2  ->   .756f;
-            case -1  ->   .87f;
-            case 1   ->   1.15f;
-            case 2   ->   1.323f;
-            case 3   ->   1.521f;
-            case 4   ->   1.749f;
-            case 5   ->   2.011f;
-            case 6   ->   2.313f;
-            case 7   ->   2.66f;
-            case 8   ->   3.059f;
-            case 9   ->   3.518f;
-            case 10  ->   4.046f;
-            default  ->   1f;
-
-        };
-        return (int)(Math.round(experience * multiplier));
+    public int getExperienceGainTotal(int experience,int enemyLevel){
+        return ExperienceLevelIdentifier.calculateExperienceFromLevelDifference(experience, enemyLevel,currentLevel);
     }
 
     public void levelUp(){
-        if(currentLevel != maxLevel)
+        if(currentLevel != maxLevel) {
             this.currentLevel++;
+            Minecraft.getInstance().player.sendSystemMessage(
+                    Component.literal("Persona has reached Level " + this.currentLevel));
+            hasLeveledUp = true;
+        }
         calculateExperienceNeededForNextLevel();
     }
 
@@ -114,5 +87,13 @@ public class PersonaLevel {
         this.currentLevel = playerPersonaLvl;
         this.currentXp    = playerPersonaCurrentXp;
         this.neededXP     = playerPersonaNeededXp;
+    }
+
+    public boolean isHasLeveledUp() {
+        return hasLeveledUp;
+    }
+
+    public void setHasLeveledUp(boolean hasLeveledUp) {
+        this.hasLeveledUp = hasLeveledUp;
     }
 }

@@ -32,9 +32,9 @@ import java.util.List;
 public class PyroJackEntity extends PersonaEntity {
 
     private static final MobPersona PERSONA_DATA =
-            new MobPersona("pyro_jack",2,3,3,3,2,
+            new MobPersona("pyro_jack",2,5,3,1,2,
                     new ArrayList<>(),List.of(Affinity.ICE,Affinity.WIND),new ArrayList<>(),
-                    List.of(Affinity.FIRE), List.of(ModItems.AGI.get()), 2, new ArrayList<>());
+                    List.of(Affinity.FIRE), List.of(ModItems.AGI.get()), 2, new ArrayList<>(),4);
 
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(PyroJackEntity.class, EntityDataSerializers.BOOLEAN);
@@ -95,13 +95,9 @@ public class PyroJackEntity extends PersonaEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1,new PyroJackRangedAttackGoal( this,1.0D,
+        this.goalSelector.addGoal(2,new PyroJackRangedAttackGoal( this,1.0D,
                 false));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this,Zombie.class,true));
-
+        super.registerGoals();
     }
 
     public static AttributeSupplier.Builder createAttributes(){

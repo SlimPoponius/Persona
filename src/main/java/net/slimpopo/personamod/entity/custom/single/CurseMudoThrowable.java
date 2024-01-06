@@ -15,62 +15,49 @@ import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.entity.custom.SkillThrowable;
+import net.slimpopo.personamod.entity.custom.projectile.PersonaThrowableItemProjectile;
 import net.slimpopo.personamod.item.ModItems;
 
 import java.util.Random;
 
-public class CurseMudoThrowable extends ThrowableItemProjectile {
+public class CurseMudoThrowable extends PersonaThrowableItemProjectile {
 
     private Spell spellInformation;
     private float chanceIncrease;
 
     public CurseMudoThrowable(EntityType<? extends ThrowableItemProjectile> entityType, Level pLevel){
-        super(entityType,pLevel);
+        super(entityType,pLevel,null);
     }
 
     public CurseMudoThrowable(Level pLevel){
-        super(ModEntities.CURSE_MUDO_THROWABLE.get(),pLevel);
+        super(ModEntities.CURSE_MUDO_THROWABLE.get(),pLevel,null);
     }
 
     public CurseMudoThrowable(Level pLevel, LivingEntity livingEntity){
-        super(ModEntities.CURSE_MUDO_THROWABLE.get(), livingEntity, pLevel);
+        super(ModEntities.CURSE_MUDO_THROWABLE.get(), livingEntity, pLevel,null);
     }
 
     public CurseMudoThrowable(Level pLevel, Spell spellData) {
-        super(ModEntities.CURSE_MUDO_THROWABLE.get(), pLevel);
+        super(ModEntities.CURSE_MUDO_THROWABLE.get(), pLevel,spellData);
     }
 
     public CurseMudoThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation,
                               float chanceIncrease) {
-        super(ModEntities.CURSE_MUDO_THROWABLE.get(), livingEntity,pLevel);
+        super(ModEntities.CURSE_MUDO_THROWABLE.get(), livingEntity,pLevel,spellInformation);
         this.spellInformation = spellInformation;
         this.chanceIncrease = chanceIncrease;
 
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult pResult) {
-        Level pLevel = this.level();
-
-        if(!pLevel.isClientSide){
-            this.level().broadcastEntityEvent(this, (byte)3);
-            SkillThrowable projectile = new SkillThrowable();
-            projectile.getBlockArea(pResult.getBlockPos(),pLevel,spellInformation);
-        }
-
-        this.discard();
-        super.onHitBlock(pResult);
-    }
-
-    @Override
     protected void onHitEntity(EntityHitResult pResult) {
+        super.onHitEntity(pResult);
         if (!this.level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte)3);
 
             Entity entity = pResult.getEntity();
             if (!entity.fireImmune()) {
                 Entity entity1 = this.getOwner();
-                boolean flag = entity.hurt(this.damageSources().playerAttack(Minecraft.getInstance().player), 5.0F);
                 if (entity1 instanceof LivingEntity) {
                     Random random = new Random();
                     if(random.nextFloat() > 0.90f - chanceIncrease) {
@@ -83,7 +70,7 @@ public class CurseMudoThrowable extends ThrowableItemProjectile {
         }
 
         this.discard();
-        super.onHitEntity(pResult);
+
     }
 
 

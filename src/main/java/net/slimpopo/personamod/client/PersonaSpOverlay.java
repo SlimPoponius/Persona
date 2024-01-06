@@ -22,23 +22,23 @@ public class PersonaSpOverlay {
     public static final IGuiOverlay PERSONA_SP = (((gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
         int x = screenWidth/2;
         int y = screenHeight;
-        int sp = (int)(ClientPersonaPlayerData.getPlayerSpAmount() * 183.0f);
+        int sp = (int)(ClientPersonaPlayerData.getPlayerSpAmount() * 182.0f);
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f,1.0f,1.0f,1.0f);
         RenderSystem.setShaderTexture(0,PERSONASP_UNDERLAY);
 
         guiGraphics.drawString(Minecraft.getInstance().font,String.valueOf(ClientPersonaPlayerData.getCurSp())
-                ,x,y-60,0xFFFFFF);
+                ,(x * 2) - 24,y/2,0xFFFFFF);
 
-        guiGraphics.blit(PERSONASP_UNDERLAY,x-94,y-54,0,
-                0,182,5,182,5);
+        guiGraphics.blit(PERSONASP_UNDERLAY,(x * 2) - 20,(y/2) - 91,0,
+                0,5,182,5,5);
 
 
         if(sp > 0f){
             RenderSystem.setShaderTexture(0,PERSONASP_OVERLAY);
-            guiGraphics.blit(PERSONASP_OVERLAY,x-94,y-54,0,0,sp,5,
-                    sp,5);
+            guiGraphics.blit(PERSONASP_OVERLAY,(x * 2) - 20,(y/2) - 91,0,0,5,sp,
+                    5,sp);
         }
     }));
 }

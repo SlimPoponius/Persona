@@ -14,6 +14,7 @@ public class Spell {
     private final Integer spCost;
     private final Float healthCost;
 
+    private boolean hasBeenRepelled;
     private MobEffectInstance SPELL_EFFECT;
 
     private Block block;
@@ -77,5 +78,13 @@ public class Spell {
 
     public Integer getSpCost() {
         return spCost;
+    }
+
+    public void setHasBeenRepelled(boolean hasBeenRepelled) {
+        this.hasBeenRepelled = hasBeenRepelled;
+    }
+
+    public boolean isHasBeenRepelled() {
+        return hasBeenRepelled;
     }
 }

@@ -10,30 +10,31 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.entity.custom.SkillThrowable;
+import net.slimpopo.personamod.entity.custom.projectile.PersonaThrowableItemProjectile;
 import net.slimpopo.personamod.item.ModItems;
 
-public class MaBlessHamaThrowable extends ThrowableItemProjectile {
+public class MaBlessHamaThrowable extends PersonaThrowableItemProjectile {
 
     private Spell spellInformation;
     private float chanceIncrease;
     public MaBlessHamaThrowable(EntityType<? extends ThrowableItemProjectile> entityType, Level pLevel){
-        super(entityType,pLevel);
+        super(entityType,pLevel,null);
     }
 
     public MaBlessHamaThrowable(Level pLevel){
-        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(),pLevel);
+        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(),pLevel,null);
     }
 
     public MaBlessHamaThrowable(Level pLevel, LivingEntity livingEntity){
-        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(), livingEntity, pLevel);
+        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(), livingEntity, pLevel,null);
     }
 
     public MaBlessHamaThrowable(Level pLevel, Spell spellData) {
-        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(), pLevel);
+        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(), pLevel,spellData);
     }
 
     public MaBlessHamaThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation, float chanceIncrease) {
-        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(), livingEntity,pLevel);
+        super(ModEntities.GRP_BLESS_HAMA_THROWABLE.get(), livingEntity,pLevel,spellInformation);
         this.spellInformation = spellInformation;
         this.chanceIncrease = chanceIncrease;
     }

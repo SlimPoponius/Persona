@@ -13,33 +13,34 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
+import net.slimpopo.personamod.entity.custom.projectile.PersonaThrowableItemProjectile;
 import net.slimpopo.personamod.item.ModItems;
 import net.slimpopo.personamod.constant.spell.Spell;
 
 import java.util.Random;
 
-public class ElectricThrowable extends ThrowableItemProjectile {
+public class ElectricThrowable extends PersonaThrowableItemProjectile {
 
     private Spell spellInformation;
 
     public ElectricThrowable(EntityType<? extends ThrowableItemProjectile> entityType, Level pLevel){
-        super(entityType,pLevel);
+        super(entityType,pLevel,null);
     }
 
     public ElectricThrowable(Level pLevel){
-        super(ModEntities.ELECTRIC_THROWABLE.get(),pLevel);
+        super(ModEntities.ELECTRIC_THROWABLE.get(),pLevel,null);
     }
 
     public ElectricThrowable(Level pLevel, LivingEntity livingEntity){
-        super(ModEntities.ELECTRIC_THROWABLE.get(), livingEntity, pLevel);
+        super(ModEntities.ELECTRIC_THROWABLE.get(), livingEntity, pLevel,null);
     }
 
     public ElectricThrowable(Level pLevel, Spell spellData) {
-        super(ModEntities.ELECTRIC_THROWABLE.get(), pLevel);
+        super(ModEntities.ELECTRIC_THROWABLE.get(), pLevel,spellData);
     }
 
     public ElectricThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation) {
-        super(ModEntities.ELECTRIC_THROWABLE.get(), livingEntity,pLevel);
+        super(ModEntities.ELECTRIC_THROWABLE.get(), livingEntity,pLevel,spellInformation);
         this.spellInformation = spellInformation;
     }
 
@@ -54,8 +55,6 @@ public class ElectricThrowable extends ThrowableItemProjectile {
 
             int level = null != spellInformation ? spellInformation.getSPELL_LEVEL().getLevel(): 0;
 
-
-            boolean flag = entity.hurt(this.damageSources().playerAttack(Minecraft.getInstance().player), 5.0F);
             if (entity1 instanceof LivingEntity) {
                 ServerLevel serverLevel = (ServerLevel) entity1.level();
                 Random random = new Random();

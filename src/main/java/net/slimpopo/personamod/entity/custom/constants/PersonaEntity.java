@@ -3,10 +3,20 @@ package net.slimpopo.personamod.entity.custom.constants;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
+import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.constant.entity.MobPersona;
+import net.slimpopo.personamod.constant.entity.Persona;
+import net.slimpopo.personamod.constant.entity.level.DamageLevelIdentifier;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.item.constants.SpellList;
+
+import javax.naming.ldap.Control;
 
 public class PersonaEntity extends PathfinderMob{
     private SpellList spellList = new SpellList();
@@ -43,5 +53,15 @@ public class PersonaEntity extends PathfinderMob{
     public MobPersona getPersonaData() {
         return personaData;
     }
+
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(3, new FloatGoal(this));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Zombie.class,true));
+    }
+
 
 }

@@ -38,6 +38,7 @@ public class SpellItem extends Item {
             pPlayer.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
                 if(doesSpellHaveSpCost()){
                     if(hasEnoughSpToCast(playerPersona.getSP())) {
+
                         playerPersona.subSP(spellData.getSpCost());
                         ModMessages.sendToPlayer(new PersonaPlayerSpS2CPacket(playerPersona.getSP(),
                                 playerPersona.getMaxSP()),(ServerPlayer) pPlayer);
@@ -59,7 +60,6 @@ public class SpellItem extends Item {
             });
         }
 
-        pPlayer.getItemInHand(pUsedHand).shrink(1);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
@@ -95,4 +95,5 @@ public class SpellItem extends Item {
     public Spell getSpellData() {
         return spellData;
     }
+
 }

@@ -17,6 +17,7 @@ import net.slimpopo.personamod.damagesource.ModDamageTypes;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.entity.custom.SkillThrowable;
+import net.slimpopo.personamod.entity.custom.projectile.PersonaThrowableItemProjectile;
 import net.slimpopo.personamod.item.ModItems;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.item.constants.card.PersonaCardItem;
@@ -25,47 +26,36 @@ import net.slimpopo.personamod.item.constants.card.StatCardItem;
 
 import java.util.Random;
 
-public class FlameThrowable extends ThrowableItemProjectile {
+public class FlameThrowable extends PersonaThrowableItemProjectile {
 
     private Spell spellInformation;
 
     public FlameThrowable(EntityType<? extends ThrowableItemProjectile> entityType,Level pLevel){
-        super(entityType,pLevel);
+        super(entityType,pLevel,null);
     }
 
     public FlameThrowable(Level pLevel){
-        super(ModEntities.FLAME_THROWABLE.get(),pLevel);
+        super(ModEntities.FLAME_THROWABLE.get(),pLevel,null);
     }
 
     public FlameThrowable( Level pLevel, LivingEntity livingEntity){
-        super(ModEntities.FLAME_THROWABLE.get(), livingEntity, pLevel);
+        super(ModEntities.FLAME_THROWABLE.get(), livingEntity, pLevel,null);
     }
 
     public FlameThrowable(Level pLevel, Spell spellData) {
-        super(ModEntities.FLAME_THROWABLE.get(), pLevel);
+        super(ModEntities.FLAME_THROWABLE.get(), pLevel,spellData);
     }
 
     public FlameThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation) {
-        super(ModEntities.FLAME_THROWABLE.get(), livingEntity,pLevel);
+        super(ModEntities.FLAME_THROWABLE.get(), livingEntity,pLevel, spellInformation);
         this.spellInformation = spellInformation;
     }
 
-    @Override
-    protected void onHitBlock(BlockHitResult pResult) {
-        Level pLevel = this.level();
-
-        if(!pLevel.isClientSide){
-            this.level().broadcastEntityEvent(this, (byte)3);
-            SkillThrowable projectile = new SkillThrowable();
-            projectile.getBlockArea(pResult.getBlockPos(),pLevel,spellInformation);
-        }
-
-        this.discard();
-        super.onHitBlock(pResult);
-    }
 
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
+        super.onHitEntity(pResult);
+
         if (!this.level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte)3);
 
@@ -75,7 +65,7 @@ public class FlameThrowable extends ThrowableItemProjectile {
             Entity entity = pResult.getEntity();
             if (!entity.fireImmune()) {
                 Entity entity1 = this.getOwner();
-                entity.hurt(new ModDamageSources(level().registryAccess()).personaDamage(entity1, null), 5.0F);
+
                 if (entity1 instanceof LivingEntity) {
                     Random random = new Random();
                     if(random.nextFloat() > 0.85f) {
@@ -90,7 +80,6 @@ public class FlameThrowable extends ThrowableItemProjectile {
         }
 
         this.discard();
-        super.onHitEntity(pResult);
     }
 
     @Override

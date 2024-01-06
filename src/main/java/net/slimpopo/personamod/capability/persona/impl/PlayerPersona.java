@@ -1,9 +1,16 @@
 package net.slimpopo.personamod.capability.persona.impl;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.slimpopo.personamod.capability.persona.IPlayerPersona;
 import net.slimpopo.personamod.constant.entity.ControlledPersona;
+import net.slimpopo.personamod.constant.entity.level.ExperienceLevelIdentifier;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
+import software.bernie.shadowed.eliotlash.mclib.math.functions.limit.Min;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -107,8 +114,16 @@ public class PlayerPersona implements IPlayerPersona {
     public void addSPLevel() {
         if(canLevelUp()) {
             spLevel++;
+            if(spLevel % 3 == 0)
+                Minecraft.getInstance().player.getAttribute(Attributes.MAX_HEALTH)
+                        .addPermanentModifier(new AttributeModifier("MaxHealth", 10.0f,
+                                AttributeModifier.Operation.ADDITION));
+            Minecraft.getInstance().player.sendSystemMessage(Component.literal("You are now level: " + spLevel));
             calculateExperienceForNextLevel();
         }
+        Minecraft.getInstance().player.sendSystemMessage(
+                Component.literal("Til next level: " + (this.currentSpExperience - this.spExperienceNeeded)));
+
     }
 
     public void addSpExperience(int experience){
@@ -246,5 +261,15 @@ public class PlayerPersona implements IPlayerPersona {
 
     public List<ControlledPersona> getPersonaParty() {
         return personas;
+    }
+
+    public ControlledPersona getCurrentPersona() {
+        return personas.get(currentPersonaIndex);
+    }
+
+
+
+    public int calculateExperienceGained(int experience, int level) {
+        return experience * ExperienceLevelIdentifier.calculateExperienceFromLevelDifference(experience,level,spLevel);
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.ItemStack;
@@ -45,7 +46,7 @@ public class PersonaSummonC2SPacket {
                 //get Persona
                 ControlledPersonaEntity entity = getPersonaOwnedByPlayer(player,level);
                 //remove/kill persona
-                entity.die(level.damageSources().fellOutOfWorld());
+                entity.remove(Entity.RemovalReason.DISCARDED);
             }
             else{
                 //summon persona entity that is currently being looked at

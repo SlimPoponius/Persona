@@ -1,6 +1,8 @@
 package net.slimpopo.personamod.constant.entity;
 
 import net.slimpopo.personamod.constant.damage.Affinity;
+import net.slimpopo.personamod.constant.entity.level.DamageLevelIdentifier;
+import net.slimpopo.personamod.constant.spell.Spell;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -229,4 +231,29 @@ public class Persona {
         return STRENGTH >= MAX_STAT;
     }
 
+    public double getCorrespondingStatToSpell(Spell spell) {
+        if(spell.getAFFINITY() == Affinity.PHYSICAL || spell.getAFFINITY() == Affinity.GUN){
+            return this.STRENGTH;
+        }
+        else{
+            return this.MAGIC;
+        }
+    }
+
+    protected float getDamageNumberBasedOnSpell(Spell spell, Persona source){
+        return 0f;
+    }
+
+    public float checkAffinityResistance(Spell spell) {
+        Affinity spellAffinity = spell.getAFFINITY();
+        if(getStrongAgainst().contains(spellAffinity))
+            return 0.5f;
+        else if(getAbsorbAgainst().contains(spellAffinity))
+            return -1.0f;
+        else if(getWeakAgainst().contains(spellAffinity))
+            return 2.0f;
+        else if(getNullAgainst().contains(spellAffinity))
+            return 0.0f;
+        return 0;
+    }
 }

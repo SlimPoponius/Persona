@@ -10,30 +10,31 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.entity.ModEntities;
 import net.slimpopo.personamod.entity.custom.SkillThrowable;
+import net.slimpopo.personamod.entity.custom.projectile.PersonaThrowableItemProjectile;
 import net.slimpopo.personamod.item.ModItems;
 
-public class MaCurseMudoThrowable extends ThrowableItemProjectile {
+public class MaCurseMudoThrowable extends PersonaThrowableItemProjectile {
 
     private Spell spellInformation;
     private float chanceIncrease;
     public MaCurseMudoThrowable(EntityType<? extends ThrowableItemProjectile> entityType, Level pLevel){
-        super(entityType,pLevel);
+        super(entityType,pLevel,null);
     }
 
     public MaCurseMudoThrowable(Level pLevel){
-        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(),pLevel);
+        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(),pLevel,null);
     }
 
     public MaCurseMudoThrowable(Level pLevel, LivingEntity livingEntity){
-        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(), livingEntity, pLevel);
+        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(), livingEntity, pLevel,null);
     }
 
     public MaCurseMudoThrowable(Level pLevel, Spell spellData) {
-        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(), pLevel);
+        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(), pLevel,spellData);
     }
 
     public MaCurseMudoThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation, float chanceIncrease) {
-        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(), livingEntity,pLevel);
+        super(ModEntities.GRP_CURSE_MUDO_THROWABLE.get(), livingEntity,pLevel,spellInformation);
         this.spellInformation = spellInformation;
         this.chanceIncrease = chanceIncrease;
     }
