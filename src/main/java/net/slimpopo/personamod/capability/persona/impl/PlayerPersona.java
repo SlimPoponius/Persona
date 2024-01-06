@@ -26,8 +26,16 @@ public class PlayerPersona implements IPlayerPersona {
     private int spExperienceNeeded = 15;
     private int currentSpExperience;
 
+    private float strMultiplier = 1f;
+    private float endMultiplier = 1f;
+
     private boolean hasUnlockedPersonas;
     private boolean hasPersonaReleased;
+    private boolean usedChargeSkill;
+    private boolean usedConcentrateSkill;
+    private boolean usedTetrajaSkill;
+
+
     private int currentPersonaIndex = -1;
     private List<ControlledPersona> personas = new ArrayList<>();
 
@@ -272,4 +280,45 @@ public class PlayerPersona implements IPlayerPersona {
     public int calculateExperienceGained(int experience, int level) {
         return experience * ExperienceLevelIdentifier.calculateExperienceFromLevelDifference(experience,level,spLevel);
     }
+
+    public boolean isUsedTetrajaSkill() {
+        return usedTetrajaSkill;
+    }
+
+    public boolean isUsedConcentrateSkill() {
+        return usedConcentrateSkill;
+    }
+
+    public boolean isUsedChargeSkill() {
+        return usedChargeSkill;
+    }
+
+    public void setUsedTetrajaSkill(boolean usedTetrajaSkill) {
+        this.usedTetrajaSkill = usedTetrajaSkill;
+    }
+
+    public void setUsedConcentrateSkill(boolean usedConcentrateSkill) {
+        this.usedConcentrateSkill = usedConcentrateSkill;
+    }
+
+    public void setUsedChargeSkill(boolean usedChargeSkill) {
+        this.usedChargeSkill = usedChargeSkill;
+    }
+
+    public float getStrMultiplier() {
+        return strMultiplier;
+    }
+
+    public void setStrMultiplier(float strMultiplier) {
+        this.strMultiplier = strMultiplier;
+    }
+
+    public float getEndMultiplier() {
+        return endMultiplier;
+    }
+
+    public void setEndMultiplier(float endMultiplier) {
+        this.endMultiplier = endMultiplier;
+    }
 }
+

@@ -2,10 +2,12 @@ package net.slimpopo.personamod.item.constants;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -17,6 +19,8 @@ import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerSpS2CPacket;
+
+import java.util.List;
 
 public class SpellItem extends Item {
     private final SpellList spellList = new SpellList();
@@ -94,6 +98,14 @@ public class SpellItem extends Item {
 
     public Spell getSpellData() {
         return spellData;
+    }
+
+    protected List<ServerPlayer> getPlayersWithinRange(ServerPlayer player, ServerLevel level, int range) {
+        return level.getEntitiesOfClass(ServerPlayer.class,player.getBoundingBox().inflate(range));
+    }
+
+    protected List<LivingEntity> getMobsWithinRange(ServerPlayer player, ServerLevel level, int range) {
+        return level.getEntitiesOfClass(LivingEntity.class,player.getBoundingBox().inflate(range));
     }
 
 }

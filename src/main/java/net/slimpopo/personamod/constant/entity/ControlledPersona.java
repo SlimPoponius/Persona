@@ -238,7 +238,7 @@ public class ControlledPersona extends Persona{
     }
 
     @Override
-    public float getDamageNumberBasedOnSpell(Spell spell, Persona source) {
+    public float getDamageNumberBasedOnSpell(Spell spell, Persona source, float endMultiplier) {
         int level = 1;
 
 
@@ -249,7 +249,7 @@ public class ControlledPersona extends Persona{
         float base_power = (float)(Math.max(Math.sqrt(spell.getDAMAGE_TYPE().getDamageMultiplier()) *
                 Math.sqrt(source.getCorrespondingStatToSpell(spell)),1));
 
-        float total_power = (float) (base_power/(Math.sqrt((source.getENDURANCE() * 8))));
+        float total_power = (float) (base_power/(Math.sqrt((source.getENDURANCE() * endMultiplier * 8))));
 
         if(source instanceof ControlledPersona cp) {
             level = cp.getPersonaLevel().getCurrentLevel();

@@ -20,6 +20,10 @@ import net.slimpopo.personamod.effects.custom.support.defense.NullWind;
 import net.slimpopo.personamod.effects.custom.support.defense.drain.*;
 import net.slimpopo.personamod.effects.custom.support.defense.repel.*;
 import net.slimpopo.personamod.effects.custom.support.defense.resist.*;
+import net.slimpopo.personamod.effects.custom.support.offense.AttackDownEffect;
+import net.slimpopo.personamod.effects.custom.support.offense.AttackUpEffect;
+import net.slimpopo.personamod.effects.custom.support.offense.DefenseDownEffect;
+import net.slimpopo.personamod.effects.custom.support.offense.DefenseUpEffect;
 
 
 public class ModEffects {
@@ -155,8 +159,14 @@ public class ModEffects {
             () -> new DrainBless(MobEffectCategory.BENEFICIAL,0xFFFDD0));
 
 
-
-
+    public static final RegistryObject<AttackUpEffect> ATTACK_UP = MOB_EFFECTS.register("attack_up",
+            () -> new AttackUpEffect(MobEffectCategory.BENEFICIAL,0xFFFDD0));
+    public static final RegistryObject<DefenseUpEffect> DEFENSE_UP = MOB_EFFECTS.register("defense_up",
+            () -> new DefenseUpEffect(MobEffectCategory.BENEFICIAL,0xFFFDD0));
+    public static final RegistryObject<AttackDownEffect> ATTACK_DOWN = MOB_EFFECTS.register("attack_down",
+            () -> new AttackDownEffect(MobEffectCategory.HARMFUL,0xFFFDD0));
+    public static final RegistryObject<DefenseDownEffect> DEFENSE_DOWN = MOB_EFFECTS.register("defense_down",
+            () -> new DefenseDownEffect(MobEffectCategory.HARMFUL,0xFFFDD0));
 
     public static void register(IEventBus eventBus){
         MOB_EFFECTS.register(eventBus);

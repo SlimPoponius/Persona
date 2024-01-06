@@ -75,6 +75,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemWithCustomTag(ModItems.MUDOON, ModItems.EIHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.MAMUDO, ModItems.EIHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.MAMUDOON, ModItems.EIHA.getId().getPath());
+
         simpleItem(ModItems.EIHA);
         simpleItemWithCustomTag(ModItems.EIGA, ModItems.EIHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.EIGAON, ModItems.EIHA.getId().getPath());
@@ -88,6 +89,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemWithCustomTag(ModItems.HAMAON, ModItems.KOUHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.MAHAMA, ModItems.KOUHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.MAHAMAON, ModItems.KOUHA.getId().getPath());
+
         simpleItem(ModItems.KOUHA);
         simpleItemWithCustomTag(ModItems.KOUGA, ModItems.KOUHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.KOUGAON, ModItems.KOUHA.getId().getPath());
@@ -96,6 +98,31 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemWithCustomTag(ModItems.MAKOUGAON, ModItems.KOUHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.BLESSTHROWABLE, ModItems.KOUHA.getId().getPath());
         simpleItemWithCustomTag(ModItems.MABLESSTHROWABLE, ModItems.KOUHA.getId().getPath());
+
+        simpleItem(ModItems.MEGIDO);
+        simpleItemWithCustomTag(ModItems.MEGIDOLA, ModItems.MEGIDO.getId().getPath());
+        simpleItemWithCustomTag(ModItems.MEGIDOLAON, ModItems.MEGIDO.getId().getPath());
+
+        simpleItemWithCustomTag(ModItems.TARUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.MATARUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.RAKUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.MARAKUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.SUKUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.MASUKUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.HEATRISER, "support");
+        simpleItemWithCustomTag(ModItems.DEKAJA, "support");
+        simpleItemWithCustomTag(ModItems.CONCENTRATE, "support");
+        simpleItemWithCustomTag(ModItems.CHARGE, "support");
+        simpleItemWithCustomTag(ModItems.TARUNDA, "support");
+        simpleItemWithCustomTag(ModItems.MATARUNDA, "support");
+        simpleItemWithCustomTag(ModItems.RAKUNDA, "support");
+        simpleItemWithCustomTag(ModItems.MARAKUNDA, "support");
+        simpleItemWithCustomTag(ModItems.SUKUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.MASUKUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.DEKUNDA, "support");
+        simpleItemWithCustomTag(ModItems.DEBILITATE, "support");
+        simpleItemWithCustomTag(ModItems.TETRAJA, "support");
+
 
         simpleItemWithCustomTag(ModItems.SKILLCARD, "arcana");
         simpleItemWithCustomTag(ModItems.STATCARD, "arcana");

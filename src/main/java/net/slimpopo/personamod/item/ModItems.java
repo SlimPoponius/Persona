@@ -12,6 +12,9 @@ import net.slimpopo.personamod.item.constants.card.ArcanaCardItem;
 import net.slimpopo.personamod.item.constants.card.PersonaCardItem;
 import net.slimpopo.personamod.item.constants.card.SkillCardItem;
 import net.slimpopo.personamod.item.constants.card.StatCardItem;
+import net.slimpopo.personamod.item.custom.spells.almighty.MegidoItem;
+import net.slimpopo.personamod.item.custom.spells.almighty.MegidolaItem;
+import net.slimpopo.personamod.item.custom.spells.almighty.MegidolaonItem;
 import net.slimpopo.personamod.item.custom.spells.bless.*;
 import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaItem;
 import net.slimpopo.personamod.item.custom.spells.bless.instakill.HamaonItem;
@@ -27,6 +30,8 @@ import net.slimpopo.personamod.item.custom.spells.fire.*;
 import net.slimpopo.personamod.item.custom.spells.ice.*;
 import net.slimpopo.personamod.item.custom.spells.nuke.*;
 import net.slimpopo.personamod.item.custom.spells.psy.*;
+import net.slimpopo.personamod.item.custom.spells.support.negative.*;
+import net.slimpopo.personamod.item.custom.spells.support.positive.*;
 import net.slimpopo.personamod.item.custom.spells.wind.*;
 
 public class ModItems {
@@ -162,6 +167,57 @@ public class ModItems {
     public static final RegistryObject<MakougaonItem> MAKOUGAON = ITEMS.register("makougaon",
             () -> new MakougaonItem(new Item.Properties().stacksTo(1)));
 
+    //ALMIGHTY
+    public static final RegistryObject<MegidoItem> MEGIDO = ITEMS.register("megido",
+            () -> new MegidoItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MegidolaItem> MEGIDOLA = ITEMS.register("megidola",
+            () -> new MegidolaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MegidolaonItem> MEGIDOLAON = ITEMS.register("megidolaon",
+            () -> new MegidolaonItem(new Item.Properties().stacksTo(1)));
+
+
+    //SUPPORT - POSITIVE
+    public static final RegistryObject<TarukajaItem> TARUKAJA = ITEMS.register("tarukaja",
+            () -> new TarukajaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MatarukajaItem> MATARUKAJA = ITEMS.register("matarukaja",
+            () -> new MatarukajaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<RakukajaItem> RAKUKAJA = ITEMS.register("rakukaja",
+            () -> new RakukajaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MarakukajaItem> MARAKUKAJA = ITEMS.register("marakukaja",
+            () -> new MarakukajaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<SukukajaItem> SUKUKAJA = ITEMS.register("sukukaja",
+            () -> new SukukajaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MasukukajaItem> MASUKUKAJA = ITEMS.register("masukukaja",
+            () -> new MasukukajaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<HeatRiserItem> HEATRISER = ITEMS.register("heatriser",
+            () -> new HeatRiserItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<ChargeItem> CHARGE = ITEMS.register("charge",
+            () -> new ChargeItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<ConcentrateItem> CONCENTRATE = ITEMS.register("concentrate",
+            () -> new ConcentrateItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<TetrajaItem> TETRAJA = ITEMS.register("tetraja",
+            () -> new TetrajaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<DekajaItem> DEKAJA = ITEMS.register("dekaja",
+            () -> new DekajaItem(new Item.Properties().stacksTo(1)));
+
+    //SUPPORT - NEGATIVE
+    public static final RegistryObject<TarundaItem> TARUNDA = ITEMS.register("tarunda",
+            () -> new TarundaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MatarundaItem> MATARUNDA = ITEMS.register("matarunda",
+            () -> new MatarundaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<RakundaItem> RAKUNDA = ITEMS.register("rakunda",
+            () -> new RakundaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MarakundaItem> MARAKUNDA = ITEMS.register("marakunda",
+            () -> new MarakundaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<SukundaItem> SUKUNDA = ITEMS.register("sukunda",
+            () -> new SukundaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<MasukundaItem> MASUKUNDA = ITEMS.register("masukunda",
+            () -> new MasukundaItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<DebilitateItem> DEBILITATE = ITEMS.register("debilitate",
+            () -> new DebilitateItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<DekundaItem> DEKUNDA = ITEMS.register("dekunda",
+            () -> new DekundaItem(new Item.Properties().stacksTo(1)));
+
 
     //THROWABLE ITEMS
     public static final RegistryObject<Item> FLAMETHROWABLE = ITEMS.register("flamethrowable",
@@ -204,6 +260,12 @@ public class ModItems {
     public static final RegistryObject<Item> MABLESSTHROWABLE = ITEMS.register("mablessthrowable",
             () -> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> ALMIGHTYTHROWABLE = ITEMS.register("almightythrowable",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MAALMIGHTYTHROWABLE = ITEMS.register("maalmightythrowable",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+
+    //ARCANA CARDS
     public static final RegistryObject<SkillCardItem> SKILLCARD = ITEMS.register("skillcard",
             () -> new SkillCardItem(new Item.Properties().stacksTo(1).durability(1)));
     public static final RegistryObject<StatCardItem> STATCARD = ITEMS.register("statcard",

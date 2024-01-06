@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
+import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.damagesource.ModDamageSources;
@@ -76,7 +77,7 @@ public class PersonaThrowableItemProjectile extends ThrowableItemProjectile {
 
             float damage = 1f;
             if (entity instanceof PersonaEntity personaEntity) {
-                damage = getDamageFromPersonaEntitySource(source, personaEntity);
+                damage = multiplier * getDamageFromPersonaEntitySource(source, personaEntity);
             }
             else if (entity instanceof Player player) {
                 AtomicReference<Float> dataFromPlayer = new AtomicReference<>(1f);
@@ -84,7 +85,7 @@ public class PersonaThrowableItemProjectile extends ThrowableItemProjectile {
                     ControlledPersona cp = playerPersona.getCurrentPersona();
                     dataFromPlayer.set(getDamageFromControlledPersonaEntitySource(source, cp));
                 });
-                damage = dataFromPlayer.get();
+                damage = multiplier * dataFromPlayer.get();
             }
 
             entity.hurt(new ModDamageSources(level().registryAccess())
@@ -117,12 +118,12 @@ public class PersonaThrowableItemProjectile extends ThrowableItemProjectile {
             }
             else if(source instanceof PersonaEntity personaEntity1)
                 damage.set(personaEntity.getPersonaData()
-                        .getDamageNumberBasedOnSpell(spell, personaEntity1.getPersonaData()));
+                        .getDamageNumberBasedOnSpell(spell, personaEntity1.getPersonaData(),1f));
         }
         else {
             if(source instanceof PersonaEntity personaEntity1)
                 damage.set(personaEntity.getPersonaData()
-                        .getDamageNumberBasedOnSpell(spell, personaEntity1.getPersonaData()));
+                        .getDamageNumberBasedOnSpell(spell, personaEntity1.getPersonaData(),1f));
             else if(source instanceof Player player)
                 calculatePlayerPersonaDamage(player, damage, personaEntity);
             else
@@ -136,7 +137,25 @@ public class PersonaThrowableItemProjectile extends ThrowableItemProjectile {
         player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
             ControlledPersona cp = playerPersona
                     .getControlledPersonaFromIndex(playerPersona.getCurrentPersonaIndex());
-            damage.set(cp.getDamageNumberBasedOnSpell(spell, personaEntity.getPersonaData()));
+
+            float multiplier = 1f;
+
+            if(playerPersona.isUsedChargeSkill() && (spell.getAFFINITY() == Affinity.PHYSICAL || spell.getAFFINITY() == Affinity.GUN)){
+                playerPersona.setUsedChargeSkill(false);
+                multiplier = 2f;
+            }
+
+            if(playerPersona.isUsedConcentrateSkill() &&
+                    (spell.getAFFINITY() != Affinity.PHYSICAL && spell.getAFFINITY() != Affinity.GUN)){
+                playerPersona.setUsedConcentrateSkill(false);
+                multiplier = 2f;
+            }
+
+            if(spell.getAFFINITY() != Affinity.PHYSICAL && spell.getAFFINITY() != Affinity.GUN){
+                multiplier *= playerPersona.getStrMultiplier();
+            }
+
+            damage.set(multiplier * cp.getDamageNumberBasedOnSpell(spell, personaEntity.getPersonaData(),playerPersona.getEndMultiplier()));
 
 
         });
@@ -150,7 +169,7 @@ public class PersonaThrowableItemProjectile extends ThrowableItemProjectile {
             if(source instanceof Player playerSrc) {
                 playerSrc.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
                     ControlledPersona cp2 = playerPersona.getCurrentPersona();
-                    damage.set(cp.getDamageNumberBasedOnSpell(spell, cp2));
+                    damage.set(cp.getDamageNumberBasedOnSpell(spell, cp2,playerPersona.getEndMultiplier()));
 
 
                 });
@@ -158,7 +177,7 @@ public class PersonaThrowableItemProjectile extends ThrowableItemProjectile {
         }
         else {
             if(source instanceof PersonaEntity pe)
-                damage.set(cp.getDamageNumberBasedOnSpell(spell, pe.getPersonaData()));
+                damage.set(cp.getDamageNumberBasedOnSpell(spell, pe.getPersonaData(),1f));
             else
                 damage.set(1f);
 

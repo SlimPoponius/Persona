@@ -116,6 +116,15 @@ public class ModEntities {
                     .Builder.<MaPsiThrowable>of(MaPsiThrowable::new, MobCategory.MISC)
                     .sized(0.5f,0.5f).build("grp_psi_throwable"));
 
+    public static final RegistryObject<EntityType<AlmightyThrowable>> ALMIGHTY_THROWABLE =
+            ENTITY_TYPES.register("almighty_throwable",() -> EntityType
+                    .Builder.<AlmightyThrowable>of(AlmightyThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("almighty_throwable"));
+
+    public static final RegistryObject<EntityType<MaAlmightyThrowable>> GRP_ALMIGHTY_THROWABLE =
+            ENTITY_TYPES.register("grp_almighty_throwable",() -> EntityType
+                    .Builder.<MaAlmightyThrowable>of(MaAlmightyThrowable::new, MobCategory.MISC)
+                    .sized(0.5f,0.5f).build("grp_almighty_throwable"));
 
     //Mobs
     public static final RegistryObject<EntityType<PyroJackEntity>> PYRO_JACK =

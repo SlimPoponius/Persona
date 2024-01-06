@@ -70,6 +70,32 @@
   "item.personamod.maeiga": "Maeiga",
   "item.personamod.maeigaon": "Maeigaon",
 
+  "item.personamod.megido": "Megido",
+  "item.personamod.megidola": "Megidola",
+  "item.personamod.megidolaon": "Megidolaon",
+
+
+  "item.personamod.tarukaja": "Tarukaja",
+  "item.personamod.rakukaja": "Rakukaja",
+  "item.personamod.sukukaja": "Sukukaja",
+  "item.personamod.matarukaja": "Matarukaja",
+  "item.personamod.marakukaja": "Marakukaja",
+  "item.personamod.masukukaja": "Masukukaja",
+  "item.personamod.tarunda": "Tarunda",
+  "item.personamod.matarunda": "Matarunda",
+  "item.personamod.rakunda": "Rakunda",
+  "item.personamod.marakunda": "Marakunda",
+  "item.personamod.sukunda": "Sukunda",
+  "item.personamod.masukunda": "Masukunda",
+  "item.personamod.charge": "Charge",
+  "item.personamod.concentrate": "Concentrate",
+  "item.personamod.debilitate": "Debilitate",
+  "item.personamod.dekaja": "Dekaja",
+  "item.personamod.dekunda": "Dekunda",
+  "item.personamod.tetraja": "Tetraja",
+  "item.personamod.heatriser": "Heat Riser",
+
+
   "item.personamod.flamethrowable": "Flame",
   "item.personamod.icethrowable": "Ice",
   "item.personamod.electricthrowable": "Electric",
@@ -94,6 +120,53 @@
   "effect.personamod.dizzy": "Dizzy",
   "effect.personamod.fear": "Fear",
   "effect.personamod.rage": "Rage",
+
+  "effect.personamod.resist_ice": "Resist Ice",
+  "effect.personamod.repel_ice": "Repel Ice",
+  "effect.personamod.null_ice": "Null Ice",
+  "effect.personamod.drain_ice": "Drain Ice",
+
+  "effect.personamod.resist_fire": "Resist Fire",
+  "effect.personamod.repel_fire": "Repel Fire",
+  "effect.personamod.null_fire": "Null Fire",
+  "effect.personamod.drain_fire": "Drain Fire",
+
+  "effect.personamod.resist_wind": "Resist Wind",
+  "effect.personamod.repel_wind": "Repel Wind",
+  "effect.personamod.null_wind": "Null Wind",
+  "effect.personamod.drain_wind": "Drain Wind",
+
+  "effect.personamod.resist_elec": "Resist Elec",
+  "effect.personamod.repel_elec": "Repel Elec",
+  "effect.personamod.null_elec": "Null Elec",
+  "effect.personamod.drain_elec": "Drain Elec",
+
+  "effect.personamod.resist_psy": "Resist Psy",
+  "effect.personamod.repel_psy": "Repel Psy",
+  "effect.personamod.null_psy": "Null Psy",
+  "effect.personamod.drain_psy": "Drain Psy",
+
+  "effect.personamod.resist_nuke": "Resist Nuke",
+  "effect.personamod.repel_nuke": "Repel Nuke",
+  "effect.personamod.null_nuke": "Null Nuke",
+  "effect.personamod.drain_nuke": "Drain Nuke",
+
+  "effect.personamod.resist_curse": "Resist Curse",
+  "effect.personamod.repel_curse": "Repel Curse",
+  "effect.personamod.null_curse": "Null Curse",
+  "effect.personamod.drain_curse": "Drain Curse",
+
+  "effect.personamod.resist_bless": "Resist Bless",
+  "effect.personamod.repel_bless": "Repel Bless",
+  "effect.personamod.null_bless": "Null Bless",
+  "effect.personamod.drain_bless": "Drain Bless",
+
+  "effect.personamod.attack_up": "Attack Up",
+  "effect.personamod.attack_down": "Attack Down",
+
+  "effect.personamod.defense_up": "Defense Up",
+  "effect.personamod.defense_down": "Defense Down",
+
 
   "entity.personamod.pyro_jack": "Pyro_Jack",
 

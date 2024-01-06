@@ -74,6 +74,28 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.HAMAON.get());
                         pOutput.accept(ModItems.MAHAMA.get());
                         pOutput.accept(ModItems.MAHAMAON.get());
+                        pOutput.accept(ModItems.MEGIDO.get());
+                        pOutput.accept(ModItems.MEGIDOLA.get());
+                        pOutput.accept(ModItems.MEGIDOLAON.get());
+                        pOutput.accept(ModItems.TARUKAJA.get());
+                        pOutput.accept(ModItems.MATARUKAJA.get());
+                        pOutput.accept(ModItems.RAKUKAJA.get());
+                        pOutput.accept(ModItems.MARAKUKAJA.get());
+                        pOutput.accept(ModItems.SUKUKAJA.get());
+                        pOutput.accept(ModItems.MASUKUKAJA.get());
+                        pOutput.accept(ModItems.HEATRISER.get());
+                        pOutput.accept(ModItems.DEKAJA.get());
+                        pOutput.accept(ModItems.CONCENTRATE.get());
+                        pOutput.accept(ModItems.CHARGE.get());
+                        pOutput.accept(ModItems.TARUNDA.get());
+                        pOutput.accept(ModItems.MATARUNDA.get());
+                        pOutput.accept(ModItems.RAKUNDA.get());
+                        pOutput.accept(ModItems.MARAKUNDA.get());
+                        pOutput.accept(ModItems.SUKUKAJA.get());
+                        pOutput.accept(ModItems.MASUKUKAJA.get());
+                        pOutput.accept(ModItems.DEKUNDA.get());
+                        pOutput.accept(ModItems.DEBILITATE.get());
+                        pOutput.accept(ModItems.TETRAJA.get());
 
                     })
                     .build());

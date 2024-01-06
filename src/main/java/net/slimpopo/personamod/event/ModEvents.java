@@ -22,6 +22,7 @@ import net.slimpopo.personamod.client.ClientPersonaPlayerData;
 import net.slimpopo.personamod.client.ClientPersonaPlayerPersonaData;
 import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.damagesource.ModDamageTypes;
+import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
 import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerPersonasS2CPacket;
@@ -69,23 +70,43 @@ public class ModEvents {
                     System.out.println("Mod Event Current Sp: " + playerPersona.getSP());
 
                 }
+
+                checkForStatBoostEffects(event, playerPersona);
+
                 ModMessages.sendToPlayer(
                         new PersonaPlayerSpS2CPacket(playerPersona.getSP(),playerPersona.getMaxSP()),
                         ((ServerPlayer)event.player));
-//                ModMessages.sendToPlayer(
-//                        new PlayerPersonaUpdateS2CPacket(playerPersona.getPersonaParty(),
-//                                playerPersona.getPersonaCount())
-//                        ,((ServerPlayer)event.player));
-//                if(ClientPersonaPlayerPersonaData.getUpdatedStatus()){
-//                    playerPersona.getControlledPersonaFromIndex(ClientPersonaPlayerPersonaData.getPlayerPersonaIdx())
-//                            .getPersonaLevel()
-//                            .update(ClientPersonaPlayerPersonaData.getPlayerPersonaLvl(),
-//                                    ClientPersonaPlayerPersonaData.getPlayerPersonaCurrentXp(),
-//                                    ClientPersonaPlayerPersonaData.getPlayerPersonaNeededXp());
-//                    playerPersona.getControlledPersonaFromIndex(ClientPersonaPlayerPersonaData.getPlayerPersonaIdx())
-//                            .generateItemStacks();
-//                }
             });
+        }
+    }
+
+    private static void checkForStatBoostEffects(TickEvent.PlayerTickEvent event, PlayerPersona playerPersona) {
+        if(event.player.hasEffect(ModEffects.ATTACK_UP.get())){
+            playerPersona.setStrMultiplier(1.4f);
+        }
+        else{
+            playerPersona.setStrMultiplier(1f);
+        }
+
+        if(event.player.hasEffect(ModEffects.DEFENSE_UP.get())){
+            playerPersona.setEndMultiplier(1.4f);
+        }
+        else{
+            playerPersona.setStrMultiplier(1f);
+        }
+
+        if(event.player.hasEffect(ModEffects.ATTACK_DOWN.get())){
+            playerPersona.setStrMultiplier(.6f);
+        }
+        else{
+            playerPersona.setStrMultiplier(1f);
+        }
+
+        if(event.player.hasEffect(ModEffects.DEFENSE_DOWN.get())){
+            playerPersona.setEndMultiplier(.6f);
+        }
+        else{
+            playerPersona.setStrMultiplier(1f);
         }
     }
 

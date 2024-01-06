@@ -36,8 +36,22 @@ public class MobPersona extends Persona{
     }
 
     @Override
-    public float getDamageNumberBasedOnSpell(Spell spell, Persona source) {
+    public float getDamageNumberBasedOnSpell(Spell spell, Persona source, float endMultiplier) {
         int level = 1;
+
+        float multiplier = 1;
+
+        if(isUsedChargeSkill() && (spell.getAFFINITY() == Affinity.PHYSICAL || spell.getAFFINITY() == Affinity.GUN)){
+            setUsedChargeSkill(false);
+            multiplier = 2;
+        }
+
+        if(isUsedConcentrateSkill() &&
+                (spell.getAFFINITY() != Affinity.PHYSICAL && spell.getAFFINITY() != Affinity.GUN)){
+            setUsedConcentrateSkill(false);
+            multiplier = 2;
+        }
+
 
         if(spell.isHasBeenRepelled() && this.getReflectAgainst().contains(spell.getAFFINITY())){
             return 0f;
@@ -46,7 +60,7 @@ public class MobPersona extends Persona{
         float base_power = (float)(Math.max(Math.sqrt(spell.getDAMAGE_TYPE().getDamageMultiplier()) *
                 Math.sqrt(source.getCorrespondingStatToSpell(spell)),1));
 
-        float total_power = (float) (base_power/(Math.sqrt((source.getENDURANCE() * 8))));
+        float total_power = (float) (base_power/(Math.sqrt((source.getENDURANCE() * 1f * 8))));
 
         if(source instanceof ControlledPersona cp) {
             level = cp.getPersonaLevel().getCurrentLevel();
@@ -61,7 +75,7 @@ public class MobPersona extends Persona{
 
         float damageScaleBasedOnElement = this.checkAffinityResistance(spell);
 
-        return total_power * damageScaleBasedOnElement * damageScaleBasedOnLevel;
+        return multiplier * total_power * damageScaleBasedOnElement * damageScaleBasedOnLevel;
     }
 
     public int getEXPERIENCE() {

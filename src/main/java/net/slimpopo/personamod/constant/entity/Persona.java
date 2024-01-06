@@ -12,6 +12,10 @@ public class Persona {
 
     private String personaName;
 
+    private boolean usedChargeSkill;
+    private boolean usedConcentrateSkill;
+    private boolean usedTetrajaSkill;
+
     private int STRENGTH;
     private int MAGIC;
     private int ENDURANCE;
@@ -240,7 +244,7 @@ public class Persona {
         }
     }
 
-    protected float getDamageNumberBasedOnSpell(Spell spell, Persona source){
+    protected float getDamageNumberBasedOnSpell(Spell spell, Persona source, float endMultiplier){
         return 0f;
     }
 
@@ -255,5 +259,29 @@ public class Persona {
         else if(getNullAgainst().contains(spellAffinity))
             return 0.0f;
         return 0;
+    }
+
+    public boolean isUsedChargeSkill() {
+        return usedChargeSkill;
+    }
+
+    public boolean isUsedConcentrateSkill() {
+        return usedConcentrateSkill;
+    }
+
+    public boolean isUsedTetrajaSkill() {
+        return usedTetrajaSkill;
+    }
+
+    public void setUsedChargeSkill(boolean usedChargeSkill) {
+        this.usedChargeSkill = usedChargeSkill;
+    }
+
+    public void setUsedConcentrateSkill(boolean usedConcentrateSkill) {
+        this.usedConcentrateSkill = usedConcentrateSkill;
+    }
+
+    public void setUsedTetrajaSkill(boolean usedTetrajaSkill) {
+        this.usedTetrajaSkill = usedTetrajaSkill;
     }
 }

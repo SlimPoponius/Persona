@@ -209,6 +209,15 @@ public class SpellList {
         spellList.add(new Spell("Mahamaon","High Chance of death to enemies.",
                 Affinity.BLESS, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null,
                 34,null));
+        spellList.add(new Spell("Megido","Medium Almighty damage to a wide area of foes. ",
+                Affinity.ALMIGHTY, DamageType.MEDIUM, SpellLevel.MA_ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Megidola","Medium Almighty damage to a wide area of foes. ",
+                Affinity.ALMIGHTY, DamageType.HEAVY, SpellLevel.MA_TWO_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Megidolaon","Medium Almighty damage to a wide area of foes. ",
+                Affinity.ALMIGHTY, DamageType.SEVERE, SpellLevel.MA_THREE_STAR, null,null,
+                14,null));
     }
 
     public static Spell getSpellDataWithName(String name){
