@@ -1,31 +1,17 @@
-package net.slimpopo.personamod.entity.custom.personas;
+package net.slimpopo.personamod.entity.custom.personas.pyrojack;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
-import net.slimpopo.personamod.constant.damage.Affinity;
-import net.slimpopo.personamod.constant.entity.ControlledPersona;
-import net.slimpopo.personamod.constant.entity.MobPersona;
-import net.slimpopo.personamod.entity.ai.PyroJackRangedAttackGoal;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaList;
-import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
-import net.slimpopo.personamod.item.ModItems;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PyroJackSummonEntity extends ControlledPersonaEntity {
 

@@ -9,7 +9,8 @@ public enum DamageType {
     HEAVY(2.0f),
     SEVERE(3.0f),
     COLOSSAL(4.0f),
-    INSTAKILL(0.0f);
+    INSTAKILL(0.0f),
+    NONE(0.0f);
 
 
     private float damageMultiplier;

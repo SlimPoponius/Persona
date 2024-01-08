@@ -42,7 +42,6 @@ public class PlayerPersonaUpdateCurrentPersonaSkillC2SPacket {
                 String currentPersonaSkill = cp.getLearnedSkills().get(cp.getCurrentSelectedLearnedSkill())
                         .getSpellData().getSPELL_NAME();
 
-                ClientPersonaSelectionData.set(currentPersona,currentPersonaSkill,playerPersona.unlockedPersonaUse());
                 ModMessages.sendToPlayer(new PersonaPlayerUnlockS2CPacket(playerPersona.unlockedPersonaUse(),currentPersona,
                         currentPersonaSkill), player);
 

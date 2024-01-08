@@ -14,7 +14,6 @@ import net.slimpopo.personamod.item.ModItems;
 import net.slimpopo.personamod.item.constants.SpellItem;
 import org.jetbrains.annotations.Nullable;
 import org.stringtemplate.v4.ST;
-import software.bernie.shadowed.eliotlash.mclib.math.functions.classic.Mod;
 
 import java.util.List;
 import java.util.Random;
@@ -54,7 +53,7 @@ public class ArcanaCardItem extends Item {
                 SkillCardItem sCard = ModItems.SKILLCARD.get();
                 sCard.randomizeItemOnRightClick();
                 return sCard;
-            case 3:
+            case 2:
                 StatCardItem stCard = ModItems.STATCARD.get();
                 stCard.randomizeItemOnRightClick();
                 return stCard;

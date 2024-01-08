@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.effects.ModEffects;
+import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
 import net.slimpopo.personamod.item.constants.SpellItem;
 import org.slf4j.Logger;
 
@@ -28,7 +29,7 @@ public class SukundaItem extends SpellItem {
 
         if(!pLevel.isClientSide) {
             getMobsWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,5).forEach(livingEntity -> {
-                if(!(livingEntity instanceof Player)){
+                if(!(livingEntity instanceof Player) || !(livingEntity instanceof ControlledPersonaEntity)){
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,-2));
                 }
             });

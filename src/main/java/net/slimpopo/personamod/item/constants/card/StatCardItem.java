@@ -1,6 +1,7 @@
 package net.slimpopo.personamod.item.constants.card;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -53,8 +54,14 @@ public class StatCardItem extends CardItem{
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(pPlayer.getItemInHand(pUsedHand).hasTag()){
+        if(pPlayer.getItemInHand(pUsedHand).hasTag() &&
+        !pPlayer.getItemInHand(pUsedHand).getTag().getString("personamod.statcarddata").isEmpty()){
             statToUpdate = pPlayer.getItemInHand(pUsedHand).getTag().getString("personamod.statcarddata");
+        }
+        else{
+            randomizeItemOnRightClick();
+            addNbtDataToItem(pPlayer.getItemInHand(pUsedHand));
+            return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
         }
 
         AtomicBoolean hasFailed = new AtomicBoolean(false);
@@ -116,7 +123,7 @@ public class StatCardItem extends CardItem{
             case "agility" -> controlledPersonaFromIndex.addAGILITY(1);
             case "endurance" -> controlledPersonaFromIndex.addENDURANCE(1);
             case "luck" -> controlledPersonaFromIndex.addLUCK(1);
-            default -> controlledPersonaFromIndex.addSTRENGTH(0);
+            default -> controlledPersonaFromIndex.addSTRENGTH(1);
         }
     }
 
@@ -132,9 +139,27 @@ public class StatCardItem extends CardItem{
             statToUpdate = pStack.getTag().getString("personamod.statcarddata");
         }
 
-        if(null != statToUpdate) {
-            pTooltipComponents.add(Component.literal("Status: " + statToUpdate));
+        if(!statToUpdate.isEmpty()) {
+            pTooltipComponents.add(Component.literal("Status: " + statToUpdate + "+1"));
         }
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    @Override
+    public Component getName(ItemStack pStack) {
+        if(pStack.hasTag()){
+            statToUpdate = pStack.getTag().getString("personamod.statcarddata");
+        }
+
+        if(!statToUpdate.isEmpty()) {
+            return Component.literal(statToUpdate + "+1");
+        }
+        return super.getName(pStack);
+    }
+
+    public void addNbtDataToItem(ItemStack pStack){
+        CompoundTag compoundTag = new CompoundTag();
+        compoundTag.putString("personamod.statcarddata", statToUpdate);
+        pStack.setTag(compoundTag);
     }
 }

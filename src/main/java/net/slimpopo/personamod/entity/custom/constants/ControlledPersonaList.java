@@ -18,8 +18,9 @@ public class ControlledPersonaList {
        put("pyro_jack",
                new ControlledPersona("pyro_jack",new PersonaLevel(2),2,3,3,3,2,
                        new ArrayList<>(),List.of(Affinity.ICE,Affinity.WIND),new ArrayList<>(),List.of(Affinity.FIRE),
-                       List.of(SpellItemList.getSpellItem("agi")),
-                       List.of(new SkillLearnedLevel(0,SpellItemList.getSpellItem("agi"))),
+                       List.of(SpellItemList.getSpellItem("agi"),SpellItemList.getSpellItem("rakunda")),
+                       List.of(new SkillLearnedLevel(0,SpellItemList.getSpellItem("agi")),
+                               new SkillLearnedLevel(0,SpellItemList.getSpellItem("rakunda"))),
                        new ArrayList<>()));
     }};
 

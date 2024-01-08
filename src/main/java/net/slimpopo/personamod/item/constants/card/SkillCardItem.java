@@ -44,10 +44,17 @@ public class SkillCardItem extends CardItem {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer,
                                                   InteractionHand pUsedHand) {
         AtomicBoolean hasFailed = new AtomicBoolean(false);
-        if(pPlayer.getItemInHand(pUsedHand).hasTag()){
+        if(pPlayer.getItemInHand(pUsedHand).hasTag() &&
+                !pPlayer.getItemInHand(pUsedHand).getTag().getString("personamod.skillcarddata").isEmpty()){
             spellItem = SpellItemList.getSpellItem(pPlayer.getItemInHand(pUsedHand)
                     .getTag().getString("personamod.skillcarddata"));
         }
+        else{
+            randomizeItemOnRightClick();
+            addNbtDataToItem(pPlayer.getItemInHand(pUsedHand));
+            return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
+        }
+
         if(!pLevel.isClientSide){
             pPlayer.getCapability(PlayerPersonaProvider.PLAYER_PERSONA)
                     .ifPresent(data -> {
@@ -118,17 +125,17 @@ public class SkillCardItem extends CardItem {
         return controlledPersona.getLearnedSkills().size() < val;
     }
 
-//    @Override
-//    public Component getDisplayName() {
-//        return null;
-//    }
-//
-//    @Nullable
-//    @Override
-//    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-//        return null;
-//    }
+    @Override
+    public Component getName(ItemStack pStack) {
+        if(pStack.hasTag()){
+            spellItem = SpellItemList.getSpellItem(pStack.getTag().getString("personamod.skillcarddata"));
+        }
 
+        if(null != spellItem) {
+            return Component.literal(spellItem.getSpellData().getSPELL_NAME() + " Card");
+        }
+        return super.getName(pStack);
+    }
 
     @Override
     protected void randomizeItemOnRightClick() {
@@ -150,5 +157,12 @@ public class SkillCardItem extends CardItem {
 
     public SpellItem getSpellItem() {
         return spellItem;
+    }
+
+    public void addNbtDataToItem(ItemStack pStack){
+        CompoundTag compoundTag = new CompoundTag();
+        compoundTag.putString("personamod.skillcarddata", spellItem
+                .getSpellData().getSPELL_NAME());
+        pStack.setTag(compoundTag);
     }
 }

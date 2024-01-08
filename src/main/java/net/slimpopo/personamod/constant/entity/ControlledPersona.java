@@ -295,4 +295,8 @@ public class ControlledPersona extends Persona{
         }
 
     }
+
+    public String getCurrentSelectedSkill() {
+        return getLearnedSkills().get(getCurrentSelectedLearnedSkill()).getSpellData().getSPELL_NAME();
+    }
 }

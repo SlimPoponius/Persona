@@ -1,7 +1,10 @@
 package net.slimpopo.personamod.networking.packet.personanetwork;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
+import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
+import net.slimpopo.personamod.client.ClientPersonaSelectionData;
 import net.slimpopo.personamod.client.ClientPlayerPersonaPartyData;
 import net.slimpopo.personamod.constant.entity.ControlledPersona;
 
@@ -38,6 +41,17 @@ public class PlayerPersonaUpdateS2CPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
+            ServerPlayer player = context.getSender();
+
+            player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
+                ControlledPersona cp = playerPersona.getCurrentPersona();
+                String currentPersona = cp.getPersonaName();
+                String currentPersonaSkill = cp.getLearnedSkills().get(cp.getCurrentSelectedLearnedSkill())
+                        .getSpellData().getSPELL_NAME();
+
+                ClientPersonaSelectionData
+                        .set(currentPersona,currentPersonaSkill,playerPersona.unlockedPersonaUse(),player);
+            });
             ClientPlayerPersonaPartyData.set(personas);
         });
         return true;

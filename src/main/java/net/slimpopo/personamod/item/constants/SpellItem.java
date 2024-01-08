@@ -67,17 +67,17 @@ public class SpellItem extends Item {
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
-    private boolean hasEnoughHealthToCast(float health, float maxHealth) {
+    protected boolean hasEnoughHealthToCast(float health, float maxHealth) {
         return health >= maxHealth * this.spellData.getHealthCost();
     }
 
-    private boolean hasEnoughSpToCast(int sp) {
+    protected boolean hasEnoughSpToCast(int sp) {
         return sp >= this.spellData.getSpCost();
     }
 
 
 
-    private boolean doesSpellHaveSpCost() {
+    protected boolean doesSpellHaveSpCost() {
         return null != this.spellData.getSpCost();
     }
 

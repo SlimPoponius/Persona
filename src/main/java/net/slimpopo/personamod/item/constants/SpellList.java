@@ -218,6 +218,71 @@ public class SpellList {
         spellList.add(new Spell("Megidolaon","Medium Almighty damage to a wide area of foes. ",
                 Affinity.ALMIGHTY, DamageType.SEVERE, SpellLevel.MA_THREE_STAR, null,null,
                 14,null));
+        spellList.add(new Spell("Tarukaja","Temporarily increase attack power for one ally. ",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Matarukaja","Temporarily increase attack rate for all allies. ",
+                Affinity.NONE, DamageType.NONE, SpellLevel.MA_ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Rakukaja","Temporarily increase defense for one ally.  ",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Marakukaja","Temporarily increase defense rate for all allies.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.MA_ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Sukukaja","Temporarily increase speed for one ally. ",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Masukukaja","Temporarily increase speed for all allies.  ",
+                Affinity.NONE, DamageType.NONE, SpellLevel.MA_ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Heat Riser",
+                "Increase attack, defense and speed rate of 1 ally for a certain period of time.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Dekaja","Removes all stat buffs for all foes.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Debilitate",
+                "Temporarily decrease ATK/DEF and Speed rate for an area of foes.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Concentrate","Next magical attack deals double the damage.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Charge","Next physical attack deals double the damage.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Tarunda","Temporarily decrease attack for an area of foes ",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Matarunda",
+                "Decrease attack power of foes in a wide range for a certain period of time.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Rakunda","Temporarily decrease defense for an area of foes. ",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Marakunda",
+                "Decrease defense of foes in a wide range for a certain period of time.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Sukunda","Temporarily decrease speed rate for an area of foes.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Masukunda",
+                "Decrease agility of foes in a wide range for a certain period of time.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Tetraja","A barrier that nullifies an insta-kill once for one ally.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+        spellList.add(new Spell("Dekunda","Removes all stat debuffs for all allies.",
+                Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
+                14,null));
+
+
+
     }
 
     public static Spell getSpellDataWithName(String name){

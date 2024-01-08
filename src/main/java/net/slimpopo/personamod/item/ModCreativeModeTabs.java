@@ -91,8 +91,8 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.MATARUNDA.get());
                         pOutput.accept(ModItems.RAKUNDA.get());
                         pOutput.accept(ModItems.MARAKUNDA.get());
-                        pOutput.accept(ModItems.SUKUKAJA.get());
-                        pOutput.accept(ModItems.MASUKUKAJA.get());
+                        pOutput.accept(ModItems.SUKUNDA.get());
+                        pOutput.accept(ModItems.MASUKUNDA.get());
                         pOutput.accept(ModItems.DEKUNDA.get());
                         pOutput.accept(ModItems.DEBILITATE.get());
                         pOutput.accept(ModItems.TETRAJA.get());

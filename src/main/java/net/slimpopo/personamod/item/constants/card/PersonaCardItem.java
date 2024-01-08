@@ -1,6 +1,7 @@
 package net.slimpopo.personamod.item.constants.card;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -38,9 +39,16 @@ public class PersonaCardItem extends CardItem {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         AtomicBoolean hasFailed = new AtomicBoolean(false);
 
-        if(pPlayer.getItemInHand(pUsedHand).hasTag()){
+        if(pPlayer.getItemInHand(pUsedHand).hasTag() &&
+                !pPlayer.getItemInHand(pUsedHand)
+                        .getTag().getString("personamod.personacarddata").isEmpty()){
             persona = ControlledPersonaList.getDataFromList(pPlayer.getItemInHand(pUsedHand)
                     .getTag().getString("personamod.personacarddata"));
+        }
+        else{
+            randomizeItemOnRightClick();
+            addNbtDataToItem(pPlayer.getItemInHand(pUsedHand));
+            return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
         }
 
         if(!pLevel.isClientSide){
@@ -121,7 +129,32 @@ public class PersonaCardItem extends CardItem {
     }
 
     @Override
+    public Component getName(ItemStack pStack) {
+        if(pStack.hasTag()){
+            persona = ControlledPersonaList.getDataFromList(pStack
+                    .getTag().getString("personamod.personacarddata"));
+        }
+
+        if(null != persona) {
+            String personaName = Component.translatable(personaNameKey +"."+ persona.getPersonaName()).getString();
+            return Component.literal(personaName + " Card");
+
+        }
+        return super.getName(pStack);
+
+    }
+
+    @Override
     protected void randomizeItemOnRightClick() {
         this.persona = ControlledPersonaList.getRandomPersona();
     }
+
+    public void addNbtDataToItem(ItemStack pStack){
+        CompoundTag compoundTag = new CompoundTag();
+        compoundTag.putString("personamod.personacarddata",
+                persona.getPersonaName());
+        pStack.setTag(compoundTag);
+
+    }
+
 }

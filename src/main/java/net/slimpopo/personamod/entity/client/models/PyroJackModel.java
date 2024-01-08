@@ -5,7 +5,6 @@ package net.slimpopo.personamod.entity.client.models;// Made with Blockbench 4.9
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -13,8 +12,8 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.slimpopo.personamod.entity.animations.ModAnimationDefinition;
-import net.slimpopo.personamod.entity.custom.personas.PyroJackEntity;
-import net.slimpopo.personamod.entity.custom.personas.PyroJackSummonEntity;
+import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackEntity;
+import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackSummonEntity;
 
 public class PyroJackModel<T extends Entity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor

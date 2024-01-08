@@ -117,8 +117,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemWithCustomTag(ModItems.MATARUNDA, "support");
         simpleItemWithCustomTag(ModItems.RAKUNDA, "support");
         simpleItemWithCustomTag(ModItems.MARAKUNDA, "support");
-        simpleItemWithCustomTag(ModItems.SUKUKAJA, "support");
-        simpleItemWithCustomTag(ModItems.MASUKUKAJA, "support");
+        simpleItemWithCustomTag(ModItems.SUKUNDA, "support");
+        simpleItemWithCustomTag(ModItems.MASUKUNDA, "support");
         simpleItemWithCustomTag(ModItems.DEKUNDA, "support");
         simpleItemWithCustomTag(ModItems.DEBILITATE, "support");
         simpleItemWithCustomTag(ModItems.TETRAJA, "support");

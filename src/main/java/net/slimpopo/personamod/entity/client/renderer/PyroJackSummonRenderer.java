@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.entity.client.ModModelLayers;
 import net.slimpopo.personamod.entity.client.models.PyroJackModel;
-import net.slimpopo.personamod.entity.custom.personas.PyroJackSummonEntity;
+import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackSummonEntity;
 
 public class PyroJackSummonRenderer extends MobRenderer<PyroJackSummonEntity, PyroJackModel<PyroJackSummonEntity>> {
     public PyroJackSummonRenderer(EntityRendererProvider.Context pContext) {

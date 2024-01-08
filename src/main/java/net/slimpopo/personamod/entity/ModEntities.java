@@ -1,17 +1,15 @@
 package net.slimpopo.personamod.entity;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.slimpopo.personamod.PersonaMod;
-import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
 import net.slimpopo.personamod.entity.custom.group.*;
-import net.slimpopo.personamod.entity.custom.personas.PyroJackEntity;
-import net.slimpopo.personamod.entity.custom.personas.PyroJackSummonEntity;
+import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackEntity;
+import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackSummonEntity;
 import net.slimpopo.personamod.entity.custom.single.*;
 
 public class ModEntities {

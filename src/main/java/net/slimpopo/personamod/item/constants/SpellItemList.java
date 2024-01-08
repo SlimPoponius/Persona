@@ -12,6 +12,7 @@ import java.util.Random;
 public class SpellItemList {
     private static Map<String, SpellItem> spellItemsForPersonas = new LinkedHashMap<String, SpellItem>(){
         {
+            //FIRE
             put("agi", ModItems.AGI.get());
             put("agilao", ModItems.AGILAO.get());
             put("agidyne", ModItems.AGIDYNE.get());
@@ -19,6 +20,7 @@ public class SpellItemList {
             put("maragilao", ModItems.MARAGION.get());
             put("maragidyne", ModItems.MARAGIDYNE.get());
 
+            //ICE
             put("bufu",ModItems.BUFU.get());
             put("bufula",ModItems.BUFULA.get());
             put("bufudyne",ModItems.BUFUDYNE.get());
@@ -26,6 +28,7 @@ public class SpellItemList {
             put("mabufula",ModItems.MABUFULA.get());
             put("mabufudyne",ModItems.MABUFUDYNE.get());
 
+            //WIND
             put("garu",ModItems.GARU.get());
             put("garula",ModItems.GARULA.get());
             put("garudyne",ModItems.GARUDYNE.get());
@@ -33,6 +36,7 @@ public class SpellItemList {
             put("magarula",ModItems.MAGARULA.get());
             put("magarudyne",ModItems.MAGARUDYNE.get());
 
+            //ELECTRIC
             put("zio",ModItems.ZIO.get());
             put("zionga",ModItems.ZIONGA.get());
             put("ziodyne",ModItems.ZIODYNE.get());
@@ -40,6 +44,7 @@ public class SpellItemList {
             put("mazionga",ModItems.MAZIONGA.get());
             put("maziodyne",ModItems.MAZIODYNE.get());
 
+            //PSYCHOKINESIS
             put("psi",ModItems.PSI.get());
             put("psio",ModItems.PSIO.get());
             put("psiodyne",ModItems.PSIODYNE.get());
@@ -47,6 +52,7 @@ public class SpellItemList {
             put("mapsio",ModItems.MAPSIO.get());
             put("mapsiodyne",ModItems.MAPSIODYNE.get());
 
+            //NUCLEAR
             put("frei",ModItems.FREI.get());
             put("freila",ModItems.FREILA.get());
             put("freidyne",ModItems.FREIDYNE.get());
@@ -54,6 +60,7 @@ public class SpellItemList {
             put("mafreila",ModItems.MAFREILA.get());
             put("mafreidyne",ModItems.MAFREIDYNE.get());
 
+            //CURSE
             put("mudo",ModItems.MUDO.get());
             put("mudoon",ModItems.MUDOON.get());
             put("mamudo",ModItems.MAMUDO.get());
@@ -66,6 +73,7 @@ public class SpellItemList {
             put("maeiga",ModItems.MAEIGA.get());
             put("maeigaon",ModItems.MAEIGAON.get());
 
+            //BLESS
             put("hama",ModItems.HAMA.get());
             put("hamaon",ModItems.HAMAON.get());
             put("mahama",ModItems.MAHAMA.get());
@@ -78,6 +86,31 @@ public class SpellItemList {
             put("makouga",ModItems.MAKOUGA.get());
             put("makougaon",ModItems.MAKOUGAON.get());
 
+            //ALIMIGHTY
+            put("megido",ModItems.MEGIDO.get());
+            put("megidola",ModItems.MEGIDOLA.get());
+            put("megidolaon",ModItems.MEGIDOLAON.get());
+
+            //SUPPORT
+            put("tarukaja",ModItems.TARUKAJA.get());
+            put("matarukaja",ModItems.MATARUKAJA.get());
+            put("rakukaja",ModItems.RAKUKAJA.get());
+            put("marakukaja",ModItems.MARAKUKAJA.get());
+            put("sukukaja",ModItems.SUKUKAJA.get());
+            put("masukukaja",ModItems.MASUKUKAJA.get());
+            put("heatriser",ModItems.HEATRISER.get());
+            put("dekaja",ModItems.DEKAJA.get());
+            put("concentrate",ModItems.CONCENTRATE.get());
+            put("charge",ModItems.CHARGE.get());
+            put("tarunda",ModItems.TARUNDA.get());
+            put("matarunda",ModItems.MATARUNDA.get());
+            put("rakunda",ModItems.RAKUNDA.get());
+            put("marakunda",ModItems.MARAKUNDA.get());
+            put("sukunda",ModItems.SUKUNDA.get());
+            put("masukunda",ModItems.MASUKUNDA.get());
+            put("dekunda",ModItems.DEKUNDA.get());
+            put("debilitate",ModItems.DEBILITATE.get());
+            put("tetraja",ModItems.TETRAJA.get());
         }
     };
 

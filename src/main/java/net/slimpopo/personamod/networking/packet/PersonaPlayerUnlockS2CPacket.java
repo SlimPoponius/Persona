@@ -1,6 +1,7 @@
 package net.slimpopo.personamod.networking.packet;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 import net.slimpopo.personamod.client.ClientPersonaPlayerPersonaData;
 import net.slimpopo.personamod.client.ClientPersonaSelectionData;
@@ -36,7 +37,9 @@ public class PersonaPlayerUnlockS2CPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            ClientPersonaSelectionData.set(currentSelectedPersona, currentSelectedPersonaSkill, unlockPersona);
+            Player player = context.getSender();
+            ClientPersonaSelectionData
+                    .set(currentSelectedPersona, currentSelectedPersonaSkill, unlockPersona, player);
         });
         return true;
     }

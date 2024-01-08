@@ -1,10 +1,7 @@
 package net.slimpopo.personamod.entity.custom.constants;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.entity.ModEntities;
-import net.slimpopo.personamod.entity.custom.personas.PyroJackSummonEntity;
-import net.slimpopo.personamod.item.constants.SpellItem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

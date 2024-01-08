@@ -10,7 +10,6 @@ import net.slimpopo.personamod.capability.persona.IPlayerPersona;
 import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.constant.entity.level.ExperienceLevelIdentifier;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
-import software.bernie.shadowed.eliotlash.mclib.math.functions.limit.Min;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;

@@ -1,19 +1,13 @@
 package net.slimpopo.personamod.entity.ai;
 
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.level.block.Blocks;
-import net.slimpopo.personamod.effects.ModEffects;
 //import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
-import net.slimpopo.personamod.entity.custom.personas.PyroJackEntity;
+import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackEntity;
 import net.slimpopo.personamod.entity.custom.single.FlameThrowable;
-import net.slimpopo.personamod.constant.damage.Affinity;
-import net.slimpopo.personamod.constant.damage.DamageType;
 import net.slimpopo.personamod.constant.spell.Spell;
-import net.slimpopo.personamod.constant.spell.SpellLevel;
 import net.slimpopo.personamod.item.constants.SpellList;
 
 public class PyroJackRangedAttackGoal extends MeleeAttackGoal {

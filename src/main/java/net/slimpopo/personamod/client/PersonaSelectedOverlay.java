@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 import net.slimpopo.personamod.PersonaMod;
+import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
 
 
 public class PersonaSelectedOverlay {
@@ -33,14 +34,35 @@ public class PersonaSelectedOverlay {
             guiGraphics.blit(PERSONA_SEL_SKILL_OVERLAY, -10, 10, 0,
                     0, 182, 33, 182, 33);
 
-            guiGraphics.drawString(Minecraft.getInstance().font,currentSelectedPersona,65,
+            guiGraphics.drawString(Minecraft.getInstance().font,
+                    currentSelectedPersona,65,
                     25,0xFFFFFF);
 
             guiGraphics.blit(PERSONA_SEL_OVERLAY, -10, 33, 0,
                     0, 182, 33, 182, 33);
 
-            guiGraphics.drawString(Minecraft.getInstance().font,currentSelectedPersonaSkill,55,
+            guiGraphics.drawString(Minecraft.getInstance().font,
+                    currentSelectedPersonaSkill,55,
                     48,0xFFFFFF);
+
+//            Minecraft.getInstance().player.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
+//
+//                guiGraphics.blit(PERSONA_SEL_SKILL_OVERLAY, -10, 10, 0,
+//                        0, 182, 33, 182, 33);
+//
+//                guiGraphics.drawString(Minecraft.getInstance().font,
+//                        currentSelectedPersona,65,
+//                        25,0xFFFFFF);
+//
+//                guiGraphics.blit(PERSONA_SEL_OVERLAY, -10, 33, 0,
+//                        0, 182, 33, 182, 33);
+//
+//                guiGraphics.drawString(Minecraft.getInstance().font,
+//                        currentSelectedPersonaSkill,55,
+//                        48,0xFFFFFF);
+//            });
+
+
 
         }
 

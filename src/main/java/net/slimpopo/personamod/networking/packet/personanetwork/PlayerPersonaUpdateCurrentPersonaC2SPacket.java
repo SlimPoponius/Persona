@@ -4,7 +4,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
-import net.slimpopo.personamod.client.ClientPersonaSelectionData;
 import net.slimpopo.personamod.constant.entity.ControlledPersona;
 import net.slimpopo.personamod.networking.ModMessages;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerUnlockS2CPacket;
@@ -41,7 +40,6 @@ public class PlayerPersonaUpdateCurrentPersonaC2SPacket {
                 String currentPersonaSkill = cp.getLearnedSkills().get(cp.getCurrentSelectedLearnedSkill())
                         .getSpellData().getSPELL_NAME();
 
-                ClientPersonaSelectionData.set(currentPersona,currentPersonaSkill,playerPersona.unlockedPersonaUse());
                 ModMessages.sendToPlayer(new PersonaPlayerUnlockS2CPacket(playerPersona.unlockedPersonaUse(),currentPersona,
                         currentPersonaSkill), player);
 
