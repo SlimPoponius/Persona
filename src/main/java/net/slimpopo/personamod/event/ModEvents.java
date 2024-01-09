@@ -30,6 +30,8 @@ import net.slimpopo.personamod.networking.packet.PersonaPlayerSpS2CPacket;
 import net.slimpopo.personamod.networking.packet.PersonaPlayerUnlockS2CPacket;
 import net.slimpopo.personamod.networking.packet.personanetwork.PlayerPersonaUpdateS2CPacket;
 
+import java.util.Random;
+
 
 @Mod.EventBusSubscriber(modid = PersonaMod.MOD_ID)
 public class ModEvents {
@@ -78,6 +80,24 @@ public class ModEvents {
                         ((ServerPlayer)event.player));
             });
         }
+    }
+
+    @SubscribeEvent
+    public static void onWorldTick(TickEvent.LevelTickEvent event){
+        if(event.phase == TickEvent.Phase.START) {
+            if (!event.level.isClientSide) {
+
+                if (event.level.getDayTime() == 24000) {
+                    Random random = new Random();
+                    boolean checkForMidnightHour = random.nextBoolean();
+
+                    if (checkForMidnightHour) {
+
+                    }
+                }
+            }
+        }
+
     }
 
     private static void checkForStatBoostEffects(TickEvent.PlayerTickEvent event, PlayerPersona playerPersona) {

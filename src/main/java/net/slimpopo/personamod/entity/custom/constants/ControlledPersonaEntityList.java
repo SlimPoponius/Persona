@@ -10,6 +10,7 @@ public class ControlledPersonaEntityList {
 
     private static Map<String, EntityType<? extends ControlledPersonaEntity>> personaEntityMap = new LinkedHashMap<>(){{
         put("pyro_jack", ModEntities.PYRO_JACK_SUMMON.get());
+        put("jack_frost", ModEntities.JACK_FROST_SUMMON.get());
 
     }};
 

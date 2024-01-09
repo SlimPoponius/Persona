@@ -130,7 +130,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemWithCustomTag(ModItems.ARCANACARD, "arcana");
 
         withExistingParent(ModItems.PYRO_JACK_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
-        withExistingParent(ModItems.PYRO_JACK_SUMMON_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.JACK_FROST_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.BLACK_FROST_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
 
 
     }

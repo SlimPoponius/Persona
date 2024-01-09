@@ -1,4 +1,4 @@
-package net.slimpopo.personamod.entity.custom.personas.pyrojack;
+package net.slimpopo.personamod.entity.custom.personas.jackfrost;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -10,28 +10,16 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
-import net.slimpopo.personamod.constant.damage.Affinity;
-import net.slimpopo.personamod.constant.entity.MobPersona;
-import net.slimpopo.personamod.entity.ai.PyroJackRangedAttackGoal;
-import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
-import net.slimpopo.personamod.item.ModItems;
+import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
+import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaList;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PyroJackEntity extends PersonaEntity {
-
-    private static final MobPersona PERSONA_DATA =
-            new MobPersona("pyro_jack",2,5,3,1,2,
-                    new ArrayList<>(),List.of(Affinity.ICE,Affinity.WIND),new ArrayList<>(),
-                    List.of(Affinity.FIRE), List.of(ModItems.AGI.get(),ModItems.RAKUNDA.get()),
-                    2, new ArrayList<>(),4);
+public class JackFrostSummonEntity extends ControlledPersonaEntity {
 
     private static final EntityDataAccessor<Boolean> ATTACKING =
-            SynchedEntityData.defineId(PyroJackEntity.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(JackFrostSummonEntity.class, EntityDataSerializers.BOOLEAN);
 
-    public PyroJackEntity(EntityType<? extends PersonaEntity> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel,PERSONA_DATA);
+    public JackFrostSummonEntity(EntityType<? extends ControlledPersonaEntity> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel, ControlledPersonaList.getDataFromList("jack_frost"));
     }
 
     public final AnimationState idleAnimationState = new AnimationState();
@@ -83,16 +71,9 @@ public class PyroJackEntity extends PersonaEntity {
         this.walkAnimation.update(f,0.2f);
     }
 
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(2,new PyroJackRangedAttackGoal( this,1.0D,
-                false));
-        super.registerGoals();
-    }
-
     public static AttributeSupplier.Builder createAttributes(){
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20D)
+                .add(Attributes.MAX_HEALTH, 1D)
                 .add(Attributes.MOVEMENT_SPEED,0.25D);
     }
 

@@ -22,6 +22,19 @@ public class ControlledPersonaList {
                        List.of(new SkillLearnedLevel(0,SpellItemList.getSpellItem("agi")),
                                new SkillLearnedLevel(0,SpellItemList.getSpellItem("rakunda"))),
                        new ArrayList<>()));
+       put("jack_frost",
+               new ControlledPersona("jack_frost",new PersonaLevel(11),8,9,7,9,7,
+                       new ArrayList<>(),List.of(Affinity.FIRE),List.of(Affinity.ICE),new ArrayList<>(),
+                       List.of(SpellItemList.getSpellItem("agi"),SpellItemList.getSpellItem("rakunda")),
+                       List.of(new SkillLearnedLevel(0,SpellItemList.getSpellItem("bufu")),
+                               new SkillLearnedLevel(13,SpellItemList.getSpellItem("rakunda"))),
+                       new ArrayList<>()));
+       put("black_frost",
+               new ControlledPersona("black_frost",new PersonaLevel(67),44,46,41,42,35,
+                       new ArrayList<>(),new ArrayList<>(),List.of(Affinity.NUCLEAR),List.of(Affinity.ICE),
+                       List.of(SpellItemList.getSpellItem("agi"),SpellItemList.getSpellItem("rakunda")),
+                       List.of(new SkillLearnedLevel(0,SpellItemList.getSpellItem("mabufudyne"))),
+                       List.of(Affinity.FIRE,Affinity.CURSE)));
     }};
 
     public static ControlledPersona getDataFromList(String id){

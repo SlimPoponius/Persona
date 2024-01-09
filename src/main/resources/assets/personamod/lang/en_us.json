@@ -109,8 +109,8 @@
   "item.personamod.statcard":    "Stat Card",
 
   "item.personamod.pyro_jack_spawn_egg": "Pyro Jack Egg",
-  "item.personamod.pyro_jack_summon_spawn_egg": "Pyro Jack Summon Egg",
-
+  "item.personamod.jack_frost_spawn_egg": "Jack Frost Egg",
+  "item.personamod.black_frost_spawn_egg": "Black Frost Egg",
 
   "effect.personamod.freeze": "Freeze",
   "effect.personamod.shock": "Shock",
@@ -167,9 +167,9 @@
   "effect.personamod.defense_up": "Defense Up",
   "effect.personamod.defense_down": "Defense Down",
 
-
-  "entity.personamod.pyro_jack": "Pyro_Jack",
-
+  "entity.personamod.pyro_jack": "Pyro Jack",
+  "entity.personamod.jack_frost": "Jack Frost",
+  "entity.personamod.black_frost": "Black Frost",
 
   "key.category.personamod.persona": "Persona Mod",
   "key.personamod.persona.summon": "Summon Persona",
@@ -179,5 +179,8 @@
 
   "menu.title.personamod.skillreplace" : "Replace Skill",
 
-  "key.personamod.personaname.pyro_jack": "Pyro Jack"
+  "key.personamod.personaname.pyro_jack": "Pyro Jack",
+  "key.personamod.personaname.jack_frost": "Jack Frost",
+  "key.personamod.personaname.black_frost": "Black Frost"
+
 }

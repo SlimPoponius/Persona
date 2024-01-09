@@ -5,7 +5,7 @@ import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
-public class ModAnimationDefinition {
+public class PyroJackAnimationDefinition {
 
     public static final AnimationDefinition PERSONA_PYROJACK_ATTACK = AnimationDefinition.Builder.withLength(1.5f)
             .addAnimation("mid",

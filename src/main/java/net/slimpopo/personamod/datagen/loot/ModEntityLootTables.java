@@ -31,7 +31,11 @@ public class ModEntityLootTables extends EntityLootSubProvider {
 
     @Override
     public void generate() {
+
         this.add(ModEntities.PYRO_JACK.get(),createPersonaTable());
+        this.add(ModEntities.JACK_FROST.get(),createPersonaTable());
+        this.add(ModEntities.BLACK_FROST.get(),createPersonaTable());
+
     }
 
     @Override
@@ -44,9 +48,5 @@ public class ModEntityLootTables extends EntityLootSubProvider {
                 .setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(ModItems.ARCANACARD.get())))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f,3.0f)));
-//                .withPool(LootPool.lootPool()
-//                        .setRolls(ConstantValue.exactly(1.0F))
-//                        .add(LootTableReference
-//                                .lootTableReference(EntityType.SHEEP.getDefaultLootTable())));
     }
 }

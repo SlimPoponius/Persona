@@ -33,8 +33,7 @@ public class PyroJackSummonEntity extends ControlledPersonaEntity {
         super.tick();
 
         if(this.level().isClientSide){
-
-
+            setupAnimationStates();
         }
     }
 

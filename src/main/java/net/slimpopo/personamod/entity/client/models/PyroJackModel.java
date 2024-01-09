@@ -11,7 +11,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.slimpopo.personamod.entity.animations.ModAnimationDefinition;
+import net.slimpopo.personamod.entity.animations.PyroJackAnimationDefinition;
 import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackEntity;
 import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackSummonEntity;
 
@@ -110,20 +110,23 @@ public class PyroJackModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw,headPitch,ageInTicks);
 
+		this.animateWalk(PyroJackAnimationDefinition.PERSONA_PYROJACK_IDLE,
+				limbSwing,limbSwingAmount,2f,2.5f);
+
 		if(entity instanceof PyroJackEntity) {
 			this.animate(((PyroJackEntity) entity).idleAnimationState,
-					ModAnimationDefinition.PERSONA_PYROJACK_IDLE, ageInTicks, 1f);
+					PyroJackAnimationDefinition.PERSONA_PYROJACK_IDLE, ageInTicks, 1f);
 
 			this.animate(((PyroJackEntity) entity).attackAnimationState,
-					ModAnimationDefinition.PERSONA_PYROJACK_ATTACK, ageInTicks, 1f);
+					PyroJackAnimationDefinition.PERSONA_PYROJACK_ATTACK, ageInTicks, 1f);
 		}
 
 		if(entity instanceof PyroJackSummonEntity) {
 			this.animate(((PyroJackSummonEntity) entity).idleAnimationState,
-					ModAnimationDefinition.PERSONA_PYROJACK_IDLE, ageInTicks, 1f);
+					PyroJackAnimationDefinition.PERSONA_PYROJACK_IDLE, ageInTicks, 1f);
 
 			this.animate(((PyroJackSummonEntity) entity).attackAnimationState,
-					ModAnimationDefinition.PERSONA_PYROJACK_ATTACK, ageInTicks, 1f);
+					PyroJackAnimationDefinition.PERSONA_PYROJACK_ATTACK, ageInTicks, 1f);
 		}
 	}
 

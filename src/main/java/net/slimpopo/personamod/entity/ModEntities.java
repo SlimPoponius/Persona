@@ -8,6 +8,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.slimpopo.personamod.PersonaMod;
 import net.slimpopo.personamod.entity.custom.group.*;
+import net.slimpopo.personamod.entity.custom.personas.blackfrost.BlackFrostEntity;
+import net.slimpopo.personamod.entity.custom.personas.blackfrost.BlackFrostSummonEntity;
+import net.slimpopo.personamod.entity.custom.personas.jackfrost.JackFrostEntity;
+import net.slimpopo.personamod.entity.custom.personas.jackfrost.JackFrostSummonEntity;
 import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackEntity;
 import net.slimpopo.personamod.entity.custom.personas.pyrojack.PyroJackSummonEntity;
 import net.slimpopo.personamod.entity.custom.single.*;
@@ -128,9 +132,23 @@ public class ModEntities {
     public static final RegistryObject<EntityType<PyroJackEntity>> PYRO_JACK =
             ENTITY_TYPES.register("pyro_jack", () -> EntityType.Builder.of(PyroJackEntity::new, MobCategory.MONSTER)
                     .sized(1.0f,1.0f).build("pyro_jack"));
+    public static final RegistryObject<EntityType<JackFrostEntity>> JACK_FROST =
+            ENTITY_TYPES.register("jack_frost", () -> EntityType.Builder.of(JackFrostEntity::new, MobCategory.MONSTER)
+                    .sized(1.0f,1.0f).build("jack_frost"));
+    public static final RegistryObject<EntityType<BlackFrostEntity>> BLACK_FROST =
+            ENTITY_TYPES.register("black_frost", () -> EntityType.Builder.of(BlackFrostEntity::new, MobCategory.MONSTER)
+                    .sized(1.0f,1.0f).build("black_frost"));
+
+    //Tameable
+    public static final RegistryObject<EntityType<JackFrostSummonEntity>> JACK_FROST_SUMMON =
+            ENTITY_TYPES.register("jack_frost_summon", () -> EntityType.Builder.of(JackFrostSummonEntity::new, MobCategory.MISC)
+                    .sized(1.0f,1.0f).build("jack_frost_summon"));
     public static final RegistryObject<EntityType<PyroJackSummonEntity>> PYRO_JACK_SUMMON =
             ENTITY_TYPES.register("pyro_jack_summon", () -> EntityType.Builder.of(PyroJackSummonEntity::new, MobCategory.MISC)
                     .sized(1.0f,1.0f).build("pyro_jack_summon"));
+    public static final RegistryObject<EntityType<BlackFrostSummonEntity>> BLACK_FROST_SUMMON =
+            ENTITY_TYPES.register("black_frost_summon", () -> EntityType.Builder.of(BlackFrostSummonEntity::new, MobCategory.MISC)
+                    .sized(1.0f,1.0f).build("black_frost_summon"));
 
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);

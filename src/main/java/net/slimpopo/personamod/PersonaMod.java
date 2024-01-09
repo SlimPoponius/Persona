@@ -16,8 +16,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.ModEntities;
-import net.slimpopo.personamod.entity.client.renderer.PyroJackRenderer;
-import net.slimpopo.personamod.entity.client.renderer.PyroJackSummonRenderer;
+import net.slimpopo.personamod.entity.client.renderer.blackfrost.BlackFrostRenderer;
+import net.slimpopo.personamod.entity.client.renderer.blackfrost.BlackFrostSummonRenderer;
+import net.slimpopo.personamod.entity.client.renderer.jackfrost.JackFrostRenderer;
+import net.slimpopo.personamod.entity.client.renderer.jackfrost.JackFrostSummonRenderer;
+import net.slimpopo.personamod.entity.client.renderer.pyrojack.PyroJackRenderer;
+import net.slimpopo.personamod.entity.client.renderer.pyrojack.PyroJackSummonRenderer;
 import net.slimpopo.personamod.item.ModCreativeModeTabs;
 import net.slimpopo.personamod.item.ModItems;
 import net.slimpopo.personamod.item.block.ModBlocks;
@@ -89,7 +93,14 @@ public class PersonaMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.PYRO_JACK.get(), PyroJackRenderer::new);
+            EntityRenderers.register(ModEntities.JACK_FROST.get(), JackFrostRenderer::new);
+            EntityRenderers.register(ModEntities.BLACK_FROST.get(), BlackFrostRenderer::new);
+
+
             EntityRenderers.register(ModEntities.PYRO_JACK_SUMMON.get(), PyroJackSummonRenderer::new);
+            EntityRenderers.register(ModEntities.JACK_FROST_SUMMON.get(), JackFrostSummonRenderer::new);
+            EntityRenderers.register(ModEntities.BLACK_FROST_SUMMON.get(), BlackFrostSummonRenderer::new);
+
 
             EntityRenderers.register(ModEntities.FLAME_THROWABLE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.GRP_FLAME_THROWABLE.get(), ThrownItemRenderer::new);

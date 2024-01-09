@@ -17,6 +17,7 @@ public class SpellList {
     private static List<Spell> spellList = new ArrayList<>();
 
     public SpellList() {
+        //FIRE
         spellList.add(new Spell("Agi", "Light Fire damage to 1 foe.",
                 Affinity.FIRE, DamageType.LIGHT, SpellLevel.ONE_STAR, Blocks.MAGMA_BLOCK,
                 new MobEffectInstance(ModEffects.BURN.get(), 60 * SpellLevel.ONE_STAR.getLevel(), 1),
@@ -41,6 +42,8 @@ public class SpellList {
                 Affinity.FIRE, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, Blocks.MAGMA_BLOCK,
                 new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1)
                 ,22,null));
+
+        //ICE
         spellList.add(new Spell("Bufu","Light Ice damage to 1 foe.",
                 Affinity.ICE, DamageType.LIGHT, SpellLevel.ONE_STAR, Blocks.ICE,
                 new MobEffectInstance(ModEffects.FREEZE.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1)
@@ -65,6 +68,8 @@ public class SpellList {
                 Affinity.ICE, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, Blocks.ICE,
                 new MobEffectInstance(ModEffects.FREEZE.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1)
                 ,22,null));
+
+        //ELECTRIC
         spellList.add(new Spell("Zio","Light Electricity damage to 1 foe.",
                 Affinity.ELECTRIC, DamageType.LIGHT, SpellLevel.ONE_STAR, null,
                 new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1)
@@ -89,6 +94,8 @@ public class SpellList {
                 Affinity.ELECTRIC, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null,
                 new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1)
                 ,22,null));
+
+        //NUCLEAR
         spellList.add(new Spell("Frei","Light Nuke damage to 1 foe.",
                 Affinity.NUCLEAR, DamageType.LIGHT, SpellLevel.ONE_STAR, null, null,
                 4,null));
@@ -107,6 +114,8 @@ public class SpellList {
         spellList.add(new Spell("Mafreidyne","Heavy Nuke damage to all foe.",
                 Affinity.NUCLEAR, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null, null,
                 22,null));
+
+        //PSYCHOKINESIS
         spellList.add(new Spell("Psi","Light Psy damage to 1 foe.",
                 Affinity.PSYCHOKINESIS, DamageType.LIGHT, SpellLevel.ONE_STAR, null, null,
                 4,null));
@@ -125,6 +134,8 @@ public class SpellList {
         spellList.add(new Spell("Mapsiodyne","Heavy Psy damage to all foe.",
                 Affinity.PSYCHOKINESIS, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null, null,
                 22,null));
+
+        //WIND
         spellList.add(new Spell("Garu","Light Wind damage to 1 foe.",
                 Affinity.WIND, DamageType.LIGHT, SpellLevel.ONE_STAR, null,
                 new MobEffectInstance(MobEffects.LEVITATION,60 * SpellLevel.ONE_STAR.getLevel(), 1),
@@ -149,6 +160,8 @@ public class SpellList {
                 Affinity.WIND, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null,
                 new MobEffectInstance(MobEffects.LEVITATION,60 * SpellLevel.THREE_STAR.getLevel(), 1),
                 22,null));
+
+        //CURSE
         spellList.add(new Spell("Eiha","Light Curse damage to enemy.",
                 Affinity.CURSE, DamageType.LIGHT, SpellLevel.ONE_STAR, null,null,
                 4,null));
@@ -179,6 +192,8 @@ public class SpellList {
         spellList.add(new Spell("Mamudoon","High Chance of death to enemies.",
                 Affinity.CURSE, DamageType.INSTAKILL, SpellLevel.TWO_STAR, null,null,
                 34,null));
+
+        //BLESS
         spellList.add(new Spell("Kouha","Light bless damage to enemy.",
                 Affinity.BLESS, DamageType.LIGHT, SpellLevel.ONE_STAR, null,null,
                 4,null));
@@ -209,77 +224,81 @@ public class SpellList {
         spellList.add(new Spell("Mahamaon","High Chance of death to enemies.",
                 Affinity.BLESS, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null,
                 34,null));
+
+        //ALMIGHTY
         spellList.add(new Spell("Megido","Medium Almighty damage to a wide area of foes. ",
                 Affinity.ALMIGHTY, DamageType.MEDIUM, SpellLevel.MA_ONE_STAR, null,null,
                 14,null));
         spellList.add(new Spell("Megidola","Medium Almighty damage to a wide area of foes. ",
                 Affinity.ALMIGHTY, DamageType.HEAVY, SpellLevel.MA_TWO_STAR, null,null,
-                14,null));
+                24,null));
         spellList.add(new Spell("Megidolaon","Medium Almighty damage to a wide area of foes. ",
                 Affinity.ALMIGHTY, DamageType.SEVERE, SpellLevel.MA_THREE_STAR, null,null,
-                14,null));
+                36,null));
+
+        //STAT-CHANGING
         spellList.add(new Spell("Tarukaja","Temporarily increase attack power for one ally. ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                12,null));
         spellList.add(new Spell("Matarukaja","Temporarily increase attack rate for all allies. ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.MA_ONE_STAR, null,null,
-                14,null));
+                24,null));
         spellList.add(new Spell("Rakukaja","Temporarily increase defense for one ally.  ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                12,null));
         spellList.add(new Spell("Marakukaja","Temporarily increase defense rate for all allies.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.MA_ONE_STAR, null,null,
-                14,null));
+                24,null));
         spellList.add(new Spell("Sukukaja","Temporarily increase speed for one ally. ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                12,null));
         spellList.add(new Spell("Masukukaja","Temporarily increase speed for all allies.  ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.MA_ONE_STAR, null,null,
-                14,null));
+                24,null));
         spellList.add(new Spell("Heat Riser",
                 "Increase attack, defense and speed rate of 1 ally for a certain period of time.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                36,null));
         spellList.add(new Spell("Dekaja","Removes all stat buffs for all foes.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                6,null));
         spellList.add(new Spell("Debilitate",
                 "Temporarily decrease ATK/DEF and Speed rate for an area of foes.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                35,null));
         spellList.add(new Spell("Concentrate","Next magical attack deals double the damage.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                26,null));
         spellList.add(new Spell("Charge","Next physical attack deals double the damage.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                26,null));
         spellList.add(new Spell("Tarunda","Temporarily decrease attack for an area of foes ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                12,null));
         spellList.add(new Spell("Matarunda",
                 "Decrease attack power of foes in a wide range for a certain period of time.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                24,null));
         spellList.add(new Spell("Rakunda","Temporarily decrease defense for an area of foes. ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                12,null));
         spellList.add(new Spell("Marakunda",
                 "Decrease defense of foes in a wide range for a certain period of time.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                24,null));
         spellList.add(new Spell("Sukunda","Temporarily decrease speed rate for an area of foes.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                12,null));
         spellList.add(new Spell("Masukunda",
                 "Decrease agility of foes in a wide range for a certain period of time.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                24,null));
         spellList.add(new Spell("Tetraja","A barrier that nullifies an insta-kill once for one ally.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                6,null));
         spellList.add(new Spell("Dekunda","Removes all stat debuffs for all allies.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
-                14,null));
+                6,null));
 
 
 

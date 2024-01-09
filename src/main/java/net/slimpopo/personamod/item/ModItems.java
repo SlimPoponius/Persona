@@ -279,10 +279,12 @@ public class ModItems {
     public static final RegistryObject<Item> PYRO_JACK_SPAWN_EGG = ITEMS.register("pyro_jack_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.PYRO_JACK,0xda9113,0x0d426b,
                     new Item.Properties()));
-    public static final RegistryObject<Item> PYRO_JACK_SUMMON_SPAWN_EGG = ITEMS.register("pyro_jack_summon_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.PYRO_JACK_SUMMON,0xda9113,0x0d426b,
+    public static final RegistryObject<Item> JACK_FROST_SPAWN_EGG = ITEMS.register("jack_frost_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.JACK_FROST,0xFFFFFF,0x00008b,
                     new Item.Properties()));
-
+    public static final RegistryObject<Item> BLACK_FROST_SPAWN_EGG = ITEMS.register("black_frost_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.BLACK_FROST,0x222021,0x330066,
+                    new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
