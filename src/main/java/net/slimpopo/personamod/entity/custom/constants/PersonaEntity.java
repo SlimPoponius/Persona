@@ -12,11 +12,13 @@ import net.slimpopo.personamod.constant.entity.MobPersona;
 import net.slimpopo.personamod.constant.entity.Persona;
 import net.slimpopo.personamod.constant.entity.level.DamageLevelIdentifier;
 import net.slimpopo.personamod.constant.spell.Spell;
+import net.slimpopo.personamod.entity.ai.PersonaUseSkillGoal;
 import net.slimpopo.personamod.item.constants.SpellList;
 
 import javax.naming.ldap.Control;
 
 public class PersonaEntity extends PathfinderMob{
+    public int attackAnimationTimeOut;
     private SpellList spellList = new SpellList();
     private final MobPersona personaData;
 
@@ -60,7 +62,10 @@ public class PersonaEntity extends PathfinderMob{
         this.goalSelector.addGoal(7, new RandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Zombie.class,true));
+
     }
 
 
+    public void setAttacking(boolean b) {
+    }
 }

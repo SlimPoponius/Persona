@@ -12,6 +12,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.entity.MobPersona;
+import net.slimpopo.personamod.entity.ai.PersonaUseSkillGoal;
 import net.slimpopo.personamod.entity.ai.PyroJackRangedAttackGoal;
 import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
 import net.slimpopo.personamod.item.ModItems;
@@ -38,7 +39,7 @@ public class PyroJackEntity extends PersonaEntity {
     private int idleAnimationTimeOut = 0;
 
     public final AnimationState attackAnimationState = new AnimationState();
-    public int attackAnimationTimeOut = 0;
+
 
     @Override
     public void tick() {
@@ -83,13 +84,6 @@ public class PyroJackEntity extends PersonaEntity {
         this.walkAnimation.update(f,0.2f);
     }
 
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(2,new PyroJackRangedAttackGoal( this,1.0D,
-                false));
-        super.registerGoals();
-    }
-
     public static AttributeSupplier.Builder createAttributes(){
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 20D)
@@ -108,5 +102,12 @@ public class PyroJackEntity extends PersonaEntity {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(ATTACKING,false);
+    }
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(3,new PersonaUseSkillGoal(this, 1.0D,
+                false,PERSONA_DATA.getCurrentSkills()));
     }
 }

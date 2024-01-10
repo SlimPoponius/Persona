@@ -28,12 +28,16 @@ public class EihaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            CurseThrowable projectile = new CurseThrowable(pLevel, pPlayer, getSpellData());
-            projectile.setItem(itemStack);
-            projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
-            pLevel.addFreshEntity(projectile);
-        }
+            if(isAbleToPerformSkill(pLevel,pPlayer)) {
+                CurseThrowable projectile = new CurseThrowable(pLevel, pPlayer, getSpellData());
+                projectile.setItem(itemStack);
+                projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
+                pLevel.addFreshEntity(projectile);
+            }
 
-        return super.use(pLevel,pPlayer,pUsedHand);
+            return super.use(pLevel,pPlayer,pUsedHand);
+
+        }
+        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
     }
 }

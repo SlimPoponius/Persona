@@ -26,22 +26,21 @@ public class HeatRiserItem extends SupportSpellItem {
                         new MobEffectInstance(MobEffects.DAMAGE_BOOST,900),
                         new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,2),
                         new MobEffectInstance(ModEffects.DEFENSE_UP.get(),900),
-                        new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,900)));
+                        new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,900)),true);
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
 
         if(!pLevel.isClientSide) {
-            this.addEffectsToUser(pPlayer);
-//            pPlayer.addEffect(new MobEffectInstance(ModEffects.ATTACK_UP.get(),900));
-//            pPlayer.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,900));
-//            pPlayer.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,2));
-//            pPlayer.addEffect(new MobEffectInstance(ModEffects.DEFENSE_UP.get(),900));
-//            pPlayer.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,900));
-        }
+            if(isAbleToPerformSkill(pLevel,pPlayer)) {
+                this.addEffectsToUser(pPlayer);
+                return super.use(pLevel,pPlayer,pUsedHand);
 
-        return super.use(pLevel,pPlayer,pUsedHand);
+            }
+        }
+        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
+
     }
 
 }

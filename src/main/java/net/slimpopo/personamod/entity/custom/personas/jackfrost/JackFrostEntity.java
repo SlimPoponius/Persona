@@ -12,6 +12,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.entity.MobPersona;
+import net.slimpopo.personamod.entity.ai.PersonaUseSkillGoal;
 import net.slimpopo.personamod.entity.ai.PyroJackRangedAttackGoal;
 import net.slimpopo.personamod.entity.custom.constants.PersonaEntity;
 import net.slimpopo.personamod.item.ModItems;
@@ -88,6 +89,8 @@ public class JackFrostEntity extends PersonaEntity {
 //        this.goalSelector.addGoal(2,new PyroJackRangedAttackGoal( this,1.0D,
 //                false));
         super.registerGoals();
+        this.goalSelector.addGoal(3,new PersonaUseSkillGoal(this, 1.0D,
+                false,PERSONA_DATA.getCurrentSkills()));
     }
 
     public static AttributeSupplier.Builder createAttributes(){
@@ -96,6 +99,7 @@ public class JackFrostEntity extends PersonaEntity {
                 .add(Attributes.MOVEMENT_SPEED,0.25D);
     }
 
+    @Override
     public void setAttacking(boolean attacking){
         this.entityData.set(ATTACKING,attacking);
     }

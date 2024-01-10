@@ -12,13 +12,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.item.constants.SpellItem;
+import net.slimpopo.personamod.item.constants.SupportSpellItem;
 import org.slf4j.Logger;
 
-public class MasukukajaItem extends SpellItem {
+import java.util.List;
+
+public class MasukukajaItem extends SupportSpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public MasukukajaItem(Properties pProperties) {
-        super(pProperties,"MASUKUKAJA");
+        super(pProperties,"MASUKUKAJA",
+                List.of(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,2)), true);
     }
 
     @Override
@@ -27,14 +31,14 @@ public class MasukukajaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            pPlayer.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,2));
-            getPlayersWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,10).forEach(serverPlayer -> {
-                serverPlayer.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,2));
+            if(isAbleToPerformSkill(pLevel,pPlayer)) {
+                addEffectsToUser(pPlayer);
+                getPlayersWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,10).forEach(this::addEffectsToUser);
+                return super.use(pLevel,pPlayer,pUsedHand);
 
-            });
+            }
 
         }
-
-        return super.use(pLevel,pPlayer,pUsedHand);
+        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
     }
 }

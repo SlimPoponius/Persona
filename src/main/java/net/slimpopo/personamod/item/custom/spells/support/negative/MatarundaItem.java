@@ -13,13 +13,18 @@ import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
 import net.slimpopo.personamod.item.constants.SpellItem;
+import net.slimpopo.personamod.item.constants.SupportSpellItem;
 import org.slf4j.Logger;
 
-public class MatarundaItem extends SpellItem {
+import java.util.List;
+
+public class MatarundaItem extends SupportSpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public MatarundaItem(Properties pProperties) {
-        super(pProperties,"TARUNDA");
+        super(pProperties,"TARUNDA",
+                List.of(new MobEffectInstance(ModEffects.ATTACK_DOWN.get(),900),
+                        new MobEffectInstance(MobEffects.DAMAGE_BOOST,900,-2)),false);
     }
 
     @Override
@@ -28,14 +33,16 @@ public class MatarundaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            getMobsWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,15).forEach(livingEntity -> {
-                if(!(livingEntity instanceof Player) || !(livingEntity instanceof ControlledPersonaEntity)){
-                    livingEntity.addEffect(new MobEffectInstance(ModEffects.ATTACK_DOWN.get(),900));
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,900,-2));
-                }
-            });
+            if(isAbleToPerformSkill(pLevel,pPlayer)) {
+                getMobsWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,15).forEach(livingEntity -> {
+                    if(!(livingEntity instanceof Player) && !(livingEntity instanceof ControlledPersonaEntity)){
+                        addEffectsToEntity(livingEntity);
+                    }
+                });
+                return super.use(pLevel,pPlayer,pUsedHand);
+            }
         }
+        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
 
-        return super.use(pLevel,pPlayer,pUsedHand);
     }
 }

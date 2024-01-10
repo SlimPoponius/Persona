@@ -24,6 +24,7 @@ import java.util.Random;
 public class BlessHamaThrowable extends PersonaThrowableItemProjectile {
 
     private Spell spellInformation;
+    private float chanceIncrease;
 
     public BlessHamaThrowable(EntityType<? extends ThrowableItemProjectile> entityType, Level pLevel){
         super(entityType,pLevel,null);
@@ -41,9 +42,11 @@ public class BlessHamaThrowable extends PersonaThrowableItemProjectile {
         super(ModEntities.BLESS_HAMA_THROWABLE.get(), pLevel, spellData);
     }
 
-    public BlessHamaThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation) {
+    public BlessHamaThrowable(Level pLevel, LivingEntity livingEntity, Spell spellInformation,
+                              float chanceIncrease) {
         super(ModEntities.BLESS_HAMA_THROWABLE.get(), livingEntity,pLevel, spellInformation);
         this.spellInformation = spellInformation;
+        this.chanceIncrease = chanceIncrease;
     }
 
     @Override
@@ -59,7 +62,7 @@ public class BlessHamaThrowable extends PersonaThrowableItemProjectile {
 
 
                     Random random = new Random();
-                    if(random.nextFloat() > 0.90f) {
+                    if(random.nextFloat() > 0.90f - chanceIncrease) {
                         if(entity instanceof PersonaEntity personaEntity) {
                             if(personaEntity.getPersonaData().isUsedTetrajaSkill()){
                                 personaEntity.getPersonaData().setUsedTetrajaSkill(false);

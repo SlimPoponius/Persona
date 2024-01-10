@@ -12,15 +12,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.effects.ModEffects;
 import net.slimpopo.personamod.item.constants.SpellItem;
+import net.slimpopo.personamod.item.constants.SupportSpellItem;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DekundaItem extends SpellItem {
+public class DekundaItem extends SupportSpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public DekundaItem(Properties pProperties) {
-        super(pProperties,"DEKUNDA");
+        super(pProperties,"DEKUNDA",new ArrayList<>(),false);
     }
 
     @Override
@@ -29,22 +31,24 @@ public class DekundaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            List<MobEffectInstance> harmful_effects = pPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
-                    !mobEffectInstance.getEffect().isBeneficial()
-            ).toList();
-
-            pPlayer.getActiveEffects().removeAll(harmful_effects);
-
-            getPlayersWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,10).forEach(serverPlayer -> {
-                List<MobEffectInstance> hEffects = serverPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
+            if(isAbleToPerformSkill(pLevel,pPlayer)) {
+                List<MobEffectInstance> harmful_effects = pPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
                         !mobEffectInstance.getEffect().isBeneficial()
                 ).toList();
 
-                serverPlayer.getActiveEffects().removeAll(hEffects);
-            });
+                pPlayer.getActiveEffects().removeAll(harmful_effects);
 
+                getPlayersWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,10).forEach(serverPlayer -> {
+                    List<MobEffectInstance> hEffects = serverPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
+                            !mobEffectInstance.getEffect().isBeneficial()
+                    ).toList();
+
+                    serverPlayer.getActiveEffects().removeAll(hEffects);
+                });
+
+                return super.use(pLevel,pPlayer,pUsedHand);
+            }
         }
-
-        return super.use(pLevel,pPlayer,pUsedHand);
+        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
     }
 }

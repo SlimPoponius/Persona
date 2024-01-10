@@ -12,9 +12,6 @@ public class MobPersona extends Persona{
     private int LEVEL;
     private int EXPERIENCE;
     private List<SpellItem> currentSkills;
-    public List<SpellItem> getCurrentSkills() {
-        return currentSkills;
-    }
 
     public MobPersona(String name,int STRENGTH, int MAGIC, int ENDURANCE, int AGILITY, int LUCK, List<Affinity> strongAgainst,
                       List<Affinity> weakAgainst, List<Affinity> nullAgainst, List<Affinity> absorbAgainst,
@@ -81,4 +78,8 @@ public class MobPersona extends Persona{
     public int getEXPERIENCE() {
         return EXPERIENCE;
     }
+    public List<SpellItem> getCurrentSkills() {
+        return currentSkills;
+    }
+
 }

@@ -12,13 +12,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.entity.custom.constants.ControlledPersonaEntity;
 import net.slimpopo.personamod.item.constants.SpellItem;
+import net.slimpopo.personamod.item.constants.SupportSpellItem;
 import org.slf4j.Logger;
 
-public class MasukundaItem extends SpellItem {
+import java.util.List;
+
+public class MasukundaItem extends SupportSpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public MasukundaItem(Properties pProperties) {
-        super(pProperties,"MASUKUNDA");
+        super(pProperties,"MASUKUNDA", List.of(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,-2)),false);
     }
 
     @Override
@@ -28,8 +31,8 @@ public class MasukundaItem extends SpellItem {
 
         if(!pLevel.isClientSide) {
             getMobsWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,15).forEach(livingEntity -> {
-                if(!(livingEntity instanceof Player) || !(livingEntity instanceof ControlledPersonaEntity)){
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,900,-2));
+                if(!(livingEntity instanceof Player) && !(livingEntity instanceof ControlledPersonaEntity)){
+                    addEffectsToEntity(livingEntity);
                 }
             });
         }

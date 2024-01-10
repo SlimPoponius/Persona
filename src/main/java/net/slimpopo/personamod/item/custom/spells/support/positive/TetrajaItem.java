@@ -8,13 +8,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.capability.persona.PlayerPersonaProvider;
 import net.slimpopo.personamod.item.constants.SpellItem;
+import net.slimpopo.personamod.item.constants.SupportSpellItem;
 import org.slf4j.Logger;
 
-public class TetrajaItem extends SpellItem {
+import java.util.ArrayList;
+
+public class TetrajaItem extends SupportSpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public TetrajaItem(Properties pProperties) {
-        super(pProperties,"CHARGE");
+        super(pProperties,"TETRAJA", new ArrayList<>(), true);
     }
 
     @Override
@@ -23,11 +26,16 @@ public class TetrajaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-           pPlayer.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
-               playerPersona.setUsedTetrajaSkill(true);
-           });
-        }
+            if(isAbleToPerformSkill(pLevel,pPlayer)){
+                pPlayer.getCapability(PlayerPersonaProvider.PLAYER_PERSONA).ifPresent(playerPersona -> {
+                    playerPersona.setUsedTetrajaSkill(true);
+                });
+                return super.use(pLevel,pPlayer,pUsedHand);
 
-        return super.use(pLevel,pPlayer,pUsedHand);
+            }
+
+        }
+        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
+
     }
 }

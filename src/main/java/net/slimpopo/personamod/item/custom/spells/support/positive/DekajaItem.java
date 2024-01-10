@@ -10,15 +10,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.slimpopo.personamod.item.constants.SpellItem;
+import net.slimpopo.personamod.item.constants.SupportSpellItem;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DekajaItem extends SpellItem {
+public class DekajaItem extends SupportSpellItem {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public DekajaItem(Properties pProperties) {
-        super(pProperties,"DEKAJA");
+        super(pProperties,"DEKAJA", new ArrayList<>(), false);
     }
 
     @Override
@@ -27,22 +29,27 @@ public class DekajaItem extends SpellItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
         if(!pLevel.isClientSide) {
-            List<MobEffectInstance> harmful_effects = pPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
-                    mobEffectInstance.getEffect().isBeneficial()
-            ).toList();
-
-            pPlayer.getActiveEffects().removeAll(harmful_effects);
-
-            getMobsWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,10).forEach(serverPlayer -> {
-                List<MobEffectInstance> hEffects = serverPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
+            if(isAbleToPerformSkill(pLevel,pPlayer)) {
+                List<MobEffectInstance> harmful_effects = pPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
                         mobEffectInstance.getEffect().isBeneficial()
                 ).toList();
 
-                serverPlayer.getActiveEffects().removeAll(hEffects);
-            });
+                pPlayer.getActiveEffects().removeAll(harmful_effects);
+
+                getMobsWithinRange((ServerPlayer) pPlayer,(ServerLevel) pLevel,10).forEach(serverPlayer -> {
+                    List<MobEffectInstance> hEffects = serverPlayer.getActiveEffects().stream().filter(mobEffectInstance ->
+                            mobEffectInstance.getEffect().isBeneficial()
+                    ).toList();
+
+                    serverPlayer.getActiveEffects().removeAll(hEffects);
+                });
+                return super.use(pLevel,pPlayer,pUsedHand);
+
+            }
+
 
         }
+        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
 
-        return super.use(pLevel,pPlayer,pUsedHand);
     }
 }

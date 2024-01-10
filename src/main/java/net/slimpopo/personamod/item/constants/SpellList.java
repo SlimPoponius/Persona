@@ -5,6 +5,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.Blocks;
 import net.slimpopo.personamod.constant.damage.Affinity;
 import net.slimpopo.personamod.constant.damage.DamageType;
+import net.slimpopo.personamod.constant.damage.RangeType;
+import net.slimpopo.personamod.constant.spell.PhysicalSpell;
 import net.slimpopo.personamod.constant.spell.Spell;
 import net.slimpopo.personamod.constant.spell.SpellLevel;
 import net.slimpopo.personamod.effects.ModEffects;
@@ -17,7 +19,7 @@ public class SpellList {
     private static List<Spell> spellList = new ArrayList<>();
 
     public SpellList() {
-        //FIRE
+        //region FIRE
         spellList.add(new Spell("Agi", "Light Fire damage to 1 foe.",
                 Affinity.FIRE, DamageType.LIGHT, SpellLevel.ONE_STAR, Blocks.MAGMA_BLOCK,
                 new MobEffectInstance(ModEffects.BURN.get(), 60 * SpellLevel.ONE_STAR.getLevel(), 1),
@@ -42,8 +44,8 @@ public class SpellList {
                 Affinity.FIRE, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, Blocks.MAGMA_BLOCK,
                 new MobEffectInstance(ModEffects.BURN.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1)
                 ,22,null));
-
-        //ICE
+        //endregion
+        //region ICE
         spellList.add(new Spell("Bufu","Light Ice damage to 1 foe.",
                 Affinity.ICE, DamageType.LIGHT, SpellLevel.ONE_STAR, Blocks.ICE,
                 new MobEffectInstance(ModEffects.FREEZE.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1)
@@ -68,8 +70,8 @@ public class SpellList {
                 Affinity.ICE, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, Blocks.ICE,
                 new MobEffectInstance(ModEffects.FREEZE.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1)
                 ,22,null));
-
-        //ELECTRIC
+        //endregion
+        //region ELECTRIC
         spellList.add(new Spell("Zio","Light Electricity damage to 1 foe.",
                 Affinity.ELECTRIC, DamageType.LIGHT, SpellLevel.ONE_STAR, null,
                 new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.ONE_STAR.getLevel(), 1)
@@ -94,8 +96,8 @@ public class SpellList {
                 Affinity.ELECTRIC, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null,
                 new MobEffectInstance(ModEffects.SHOCK.get(),60 * SpellLevel.THREE_STAR.getLevel(), 1)
                 ,22,null));
-
-        //NUCLEAR
+        //endregion
+        //region NUCLEAR
         spellList.add(new Spell("Frei","Light Nuke damage to 1 foe.",
                 Affinity.NUCLEAR, DamageType.LIGHT, SpellLevel.ONE_STAR, null, null,
                 4,null));
@@ -114,8 +116,8 @@ public class SpellList {
         spellList.add(new Spell("Mafreidyne","Heavy Nuke damage to all foe.",
                 Affinity.NUCLEAR, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null, null,
                 22,null));
-
-        //PSYCHOKINESIS
+        //endregion
+        //region PSYCHOKINESIS
         spellList.add(new Spell("Psi","Light Psy damage to 1 foe.",
                 Affinity.PSYCHOKINESIS, DamageType.LIGHT, SpellLevel.ONE_STAR, null, null,
                 4,null));
@@ -134,8 +136,8 @@ public class SpellList {
         spellList.add(new Spell("Mapsiodyne","Heavy Psy damage to all foe.",
                 Affinity.PSYCHOKINESIS, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null, null,
                 22,null));
-
-        //WIND
+        //endregion
+        //region WIND
         spellList.add(new Spell("Garu","Light Wind damage to 1 foe.",
                 Affinity.WIND, DamageType.LIGHT, SpellLevel.ONE_STAR, null,
                 new MobEffectInstance(MobEffects.LEVITATION,60 * SpellLevel.ONE_STAR.getLevel(), 1),
@@ -160,8 +162,8 @@ public class SpellList {
                 Affinity.WIND, DamageType.HEAVY, SpellLevel.MA_THREE_STAR, null,
                 new MobEffectInstance(MobEffects.LEVITATION,60 * SpellLevel.THREE_STAR.getLevel(), 1),
                 22,null));
-
-        //CURSE
+        //endregion
+        //region CURSE
         spellList.add(new Spell("Eiha","Light Curse damage to enemy.",
                 Affinity.CURSE, DamageType.LIGHT, SpellLevel.ONE_STAR, null,null,
                 4,null));
@@ -192,8 +194,8 @@ public class SpellList {
         spellList.add(new Spell("Mamudoon","High Chance of death to enemies.",
                 Affinity.CURSE, DamageType.INSTAKILL, SpellLevel.TWO_STAR, null,null,
                 34,null));
-
-        //BLESS
+        //endregion
+        //region BLESS
         spellList.add(new Spell("Kouha","Light bless damage to enemy.",
                 Affinity.BLESS, DamageType.LIGHT, SpellLevel.ONE_STAR, null,null,
                 4,null));
@@ -224,8 +226,8 @@ public class SpellList {
         spellList.add(new Spell("Mahamaon","High Chance of death to enemies.",
                 Affinity.BLESS, DamageType.INSTAKILL, SpellLevel.ONE_STAR, null,null,
                 34,null));
-
-        //ALMIGHTY
+        //endregion
+        //region ALMIGHTY
         spellList.add(new Spell("Megido","Medium Almighty damage to a wide area of foes. ",
                 Affinity.ALMIGHTY, DamageType.MEDIUM, SpellLevel.MA_ONE_STAR, null,null,
                 14,null));
@@ -235,8 +237,8 @@ public class SpellList {
         spellList.add(new Spell("Megidolaon","Medium Almighty damage to a wide area of foes. ",
                 Affinity.ALMIGHTY, DamageType.SEVERE, SpellLevel.MA_THREE_STAR, null,null,
                 36,null));
-
-        //STAT-CHANGING
+        //endregion
+        //region STAT-CHANGING
         spellList.add(new Spell("Tarukaja","Temporarily increase attack power for one ally. ",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
                 12,null));
@@ -299,8 +301,47 @@ public class SpellList {
         spellList.add(new Spell("Dekunda","Removes all stat debuffs for all allies.",
                 Affinity.NONE, DamageType.NONE, SpellLevel.ONE_STAR, null,null,
                 6,null));
-
-
+        //endregion
+        //region PHYSICAL
+        spellList.add(new PhysicalSpell("Lunge","Light Physical damage to a narrow range of foes.",Affinity.PHYSICAL,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Cleave","Light Physical damage to a narrow range of foes with Medium chance of Critical.",Affinity.PHYSICAL,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Giant Slice","Medium Physical damage to a narrow range of foes.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.15f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Assault Dive","Heavy Physical damage to a narrow range of foes.",Affinity.PHYSICAL,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.15f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Megaton Raid","Severe Physical damage to a narrow range of foes.",Affinity.PHYSICAL,DamageType.SEVERE,SpellLevel.MA_ONE_STAR,null,null,null,0.24f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("God's Hand","Colossal Physical damage to a narrow range of foes.",Affinity.PHYSICAL,DamageType.COLOSSAL,SpellLevel.MA_ONE_STAR,null,null,null,0.25f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Brave Blade","Heavy Physical damage to a narrow range of foes with High chance of Critical.",Affinity.PHYSICAL,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.2f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Sword Dance","Severe Physical damage to a narrow range of foes with High chance of Critical.",Affinity.PHYSICAL,DamageType.SEVERE,SpellLevel.MA_ONE_STAR,null,null,null,0.25f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Double Fangs","Medium Physical damage to a narrow range of foes with Medium chance of Critical.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Dream Needle","Light Physical damage to a narrow range of foes with Medium chance of Sleep.",Affinity.PHYSICAL,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Terror Claw","Light Physical damage to a narrow range of foes with Medium chance of Fear.",Affinity.PHYSICAL,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Headbutt","Light Physical damage to a narrow range of foes with Medium chance of Forget.",Affinity.PHYSICAL,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Vorpal Blade","Severe Physical damage to a narrow range of foes with Medium chance of Critical.",Affinity.PHYSICAL,DamageType.SEVERE,SpellLevel.MA_ONE_STAR,null,null,null,0.18f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Hysterical Slap","Medium Physical damage to a narrow range of foes with Medium chance of Rage.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Brain Shake","Medium Physical damage to a narrow range of foes with Medium chance of Brainwash.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Sledgehammer","Medium Physical damage to a narrow range of foes with Medium chance of Dizzy.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.1f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Miracle Punch","Heavy Physical damage to a narrow range of foes. High chance of Critical.",Affinity.PHYSICAL,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.2f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Vajra Blast","Medium Physical damage to wide range of foes.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Vicious Strike","Light Physical damage to wide range of foes with Medium chance of Critical hit.",Affinity.PHYSICAL,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Heat Wave","Heavy Physical damage to wide range of foes with High chance of Critical hit.",Affinity.PHYSICAL,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.18f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Tempest Slash","Heavy Physical damage to wide range Foes with high chance of Critical hit.",Affinity.PHYSICAL,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.17f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Gigantomachia","Severe Physical damage to wide range Foes with high chance of Critical hit.",Affinity.PHYSICAL,DamageType.SEVERE,SpellLevel.MA_ONE_STAR,null,null,null,0.24f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Deathbound","Severe Physical damage to wide range Foes with medium chance of Critical hit.",Affinity.PHYSICAL,DamageType.SEVERE,SpellLevel.MA_ONE_STAR,null,null,null,0.24f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Rampage","Medium Physical damage to a wide range Foes",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Agneyastra","Colossal Physical damage to wide range Foes with high chance of Critical",Affinity.PHYSICAL,DamageType.COLOSSAL,SpellLevel.MA_ONE_STAR,null,null,null,0.24f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Swift Strike","Heavy Physical damage to wide range of Foes",Affinity.PHYSICAL,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.18f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Myriad Slashes","Severe Physical damage to a wide area of foes with high chance of Critical",Affinity.PHYSICAL,DamageType.SEVERE,SpellLevel.MA_ONE_STAR,null,null,null,0.24f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Hassou Tobi","Colossal Physical damage to a wide area of foes with high chance of Critical. ",Affinity.PHYSICAL,DamageType.COLOSSAL,SpellLevel.MA_ONE_STAR,null,null,null,0.3f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Memory Blow","Light Physical damage to a wide range of foes with Medium chance of Forget.",Affinity.PHYSICAL,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Dormin Rush","Medium Physical damage to a wide range of foes with Medium chance of Sleep.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Oni-Kagura","Medium Physical damage to a wide range of foes with Medium chance of Rage.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.16f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Flash Bomb","Medium Physical damage to a wide range of foes with Medium chance of Dizzy.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Bloodbath","Medium Physical damage to a wide range of foes with Medium chance of Fear.",Affinity.PHYSICAL,DamageType.MEDIUM,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Brain Buster","Heavy Physical damage to a wide range of foes with Medium chance of Brainwash.",Affinity.PHYSICAL,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.12f,RangeType.WIDE));        //endregion
+        //region GUN
+        spellList.add(new PhysicalSpell("Snap","Light Gun damage to a narrow range.",Affinity.GUN,DamageType.LIGHT,SpellLevel.MA_ONE_STAR,null,null,null,0.16f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("One-shot Kill","Heavy Gun damage to a narrow range with very high chance of Critical.",Affinity.GUN,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.3f,RangeType.NARROW));
+        spellList.add(new PhysicalSpell("Triple Down","Heavy Gun damage to wide range of foes with high change of Critical.",Affinity.GUN,DamageType.HEAVY,SpellLevel.MA_ONE_STAR,null,null,null,0.24f,RangeType.WIDE));
+        spellList.add(new PhysicalSpell("Riot Gun","Severe Gun damage to a wide area of foes with high change of Critical.",Affinity.GUN,DamageType.SEVERE,SpellLevel.MA_ONE_STAR,null,null,null,0.4f,RangeType.WIDE));        //endregion
 
     }
 

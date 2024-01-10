@@ -29,11 +29,13 @@ public class SupportSpellItem extends SpellItem {
 
     private List<MobEffectInstance> mobEffectInstances;
     private Player caster;
+    private boolean isBeneficial;
 
 
-    public SupportSpellItem(Properties pProperties, String spellName, List<MobEffectInstance> mobEffectInstances) {
+    public SupportSpellItem(Properties pProperties, String spellName, List<MobEffectInstance> mobEffectInstances, boolean isBeneficial) {
         super(pProperties, spellName);
         this.mobEffectInstances = mobEffectInstances;
+        this.isBeneficial = isBeneficial;
     }
 
     public void setCaster(Player caster) {
@@ -74,7 +76,21 @@ public class SupportSpellItem extends SpellItem {
         return InteractionResult.SUCCESS;
     }
 
+    public boolean isBeneficial() {
+        return isBeneficial;
+    }
+
+    public List<MobEffectInstance> getMobEffectInstances() {
+        return mobEffectInstances;
+    }
+
     protected void addEffectsToUser(Player targetplayer) {
+        mobEffectInstances.forEach(mobEffectInstance -> {
+            targetplayer.addEffect(mobEffectInstance);
+        });
+    }
+
+    protected void addEffectsToEntity(LivingEntity targetplayer) {
         mobEffectInstances.forEach(mobEffectInstance -> {
             targetplayer.addEffect(mobEffectInstance);
         });

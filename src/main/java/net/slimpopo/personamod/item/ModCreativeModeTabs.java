@@ -96,7 +96,44 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.DEKUNDA.get());
                         pOutput.accept(ModItems.DEBILITATE.get());
                         pOutput.accept(ModItems.TETRAJA.get());
-
+                        pOutput.accept(ModItems.LUNGE.get());
+                        pOutput.accept(ModItems.CLEAVE.get());
+                        pOutput.accept(ModItems.GIANTSLICE.get());
+                        pOutput.accept(ModItems.ASSAULTDIVE.get());
+                        pOutput.accept(ModItems.MEGATONRAID.get());
+                        pOutput.accept(ModItems.GODSHAND.get());
+                        pOutput.accept(ModItems.BRAVEBLADE.get());
+                        pOutput.accept(ModItems.SWORDDANCE.get());
+                        pOutput.accept(ModItems.DOUBLEFANGS.get());
+                        pOutput.accept(ModItems.DREAMNEEDLE.get());
+                        pOutput.accept(ModItems.TERRORCLAW.get());
+                        pOutput.accept(ModItems.HEADBUTT.get());
+                        pOutput.accept(ModItems.VORPALBLADE.get());
+                        pOutput.accept(ModItems.HYSTERICALSLAP.get());
+                        pOutput.accept(ModItems.BRAINSHAKE.get());
+                        pOutput.accept(ModItems.SLEDGEHAMMER.get());
+                        pOutput.accept(ModItems.MIRACLEPUNCH.get());
+                        pOutput.accept(ModItems.VAJRABLAST.get());
+                        pOutput.accept(ModItems.VICIOUSSTRIKE.get());
+                        pOutput.accept(ModItems.HEATWAVE.get());
+                        pOutput.accept(ModItems.TEMPESTSLASH.get());
+                        pOutput.accept(ModItems.GIGANTOMACHIA.get());
+                        pOutput.accept(ModItems.DEATHBOUND.get());
+                        pOutput.accept(ModItems.RAMPAGE.get());
+                        pOutput.accept(ModItems.AGNEYASTRA.get());
+                        pOutput.accept(ModItems.SWIFTSTRIKE.get());
+                        pOutput.accept(ModItems.MYRIADSLASHES.get());
+                        pOutput.accept(ModItems.HASSOUTOBI.get());
+                        pOutput.accept(ModItems.MEMORYBLOW.get());
+                        pOutput.accept(ModItems.DORMINRUSH.get());
+                        pOutput.accept(ModItems.ONIKAGURA.get());
+                        pOutput.accept(ModItems.FLASHBOMB.get());
+                        pOutput.accept(ModItems.BLOODBATH.get());
+                        pOutput.accept(ModItems.BRAINBUSTER.get());
+                        pOutput.accept(ModItems.SNAP.get());
+                        pOutput.accept(ModItems.ONESHOTKILL.get());
+                        pOutput.accept(ModItems.TRIPLEDOWN.get());
+                        pOutput.accept(ModItems.RIOTGUN.get());
                     })
                     .build());
 

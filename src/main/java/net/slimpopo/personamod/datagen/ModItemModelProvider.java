@@ -123,6 +123,45 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemWithCustomTag(ModItems.DEBILITATE, "support");
         simpleItemWithCustomTag(ModItems.TETRAJA, "support");
 
+        simpleItemWithCustomTag(ModItems.LUNGE,"phys");
+        simpleItemWithCustomTag(ModItems.CLEAVE,"phys");
+        simpleItemWithCustomTag(ModItems.GIANTSLICE,"phys");
+        simpleItemWithCustomTag(ModItems.ASSAULTDIVE,"phys");
+        simpleItemWithCustomTag(ModItems.MEGATONRAID,"phys");
+        simpleItemWithCustomTag(ModItems.GODSHAND,"phys");
+        simpleItemWithCustomTag(ModItems.BRAVEBLADE,"phys");
+        simpleItemWithCustomTag(ModItems.SWORDDANCE,"phys");
+        simpleItemWithCustomTag(ModItems.DOUBLEFANGS,"phys");
+        simpleItemWithCustomTag(ModItems.DREAMNEEDLE,"phys");
+        simpleItemWithCustomTag(ModItems.TERRORCLAW,"phys");
+        simpleItemWithCustomTag(ModItems.HEADBUTT,"phys");
+        simpleItemWithCustomTag(ModItems.VORPALBLADE,"phys");
+        simpleItemWithCustomTag(ModItems.HYSTERICALSLAP,"phys");
+        simpleItemWithCustomTag(ModItems.BRAINSHAKE,"phys");
+        simpleItemWithCustomTag(ModItems.SLEDGEHAMMER,"phys");
+        simpleItemWithCustomTag(ModItems.MIRACLEPUNCH,"phys");
+        simpleItemWithCustomTag(ModItems.VAJRABLAST,"phys");
+        simpleItemWithCustomTag(ModItems.VICIOUSSTRIKE,"phys");
+        simpleItemWithCustomTag(ModItems.HEATWAVE,"phys");
+        simpleItemWithCustomTag(ModItems.TEMPESTSLASH,"phys");
+        simpleItemWithCustomTag(ModItems.GIGANTOMACHIA,"phys");
+        simpleItemWithCustomTag(ModItems.DEATHBOUND,"phys");
+        simpleItemWithCustomTag(ModItems.RAMPAGE,"phys");
+        simpleItemWithCustomTag(ModItems.AGNEYASTRA,"phys");
+        simpleItemWithCustomTag(ModItems.SWIFTSTRIKE,"phys");
+        simpleItemWithCustomTag(ModItems.MYRIADSLASHES,"phys");
+        simpleItemWithCustomTag(ModItems.HASSOUTOBI,"phys");
+        simpleItemWithCustomTag(ModItems.MEMORYBLOW,"phys");
+        simpleItemWithCustomTag(ModItems.DORMINRUSH,"phys");
+        simpleItemWithCustomTag(ModItems.ONIKAGURA,"phys");
+        simpleItemWithCustomTag(ModItems.FLASHBOMB,"phys");
+        simpleItemWithCustomTag(ModItems.BLOODBATH,"phys");
+        simpleItemWithCustomTag(ModItems.BRAINBUSTER,"phys");
+
+        simpleItemWithCustomTag(ModItems.SNAP,"gun");
+        simpleItemWithCustomTag(ModItems.ONESHOTKILL,"gun");
+        simpleItemWithCustomTag(ModItems.TRIPLEDOWN,"gun");
+        simpleItemWithCustomTag(ModItems.RIOTGUN,"gun");
 
         simpleItemWithCustomTag(ModItems.SKILLCARD, "arcana");
         simpleItemWithCustomTag(ModItems.STATCARD, "arcana");
